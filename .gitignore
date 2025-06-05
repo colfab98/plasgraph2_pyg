@@ -11,6 +11,7 @@ __pycache__/
 # Large data / model outputs
 plasgraph2-datasets/
 model/ESKAPEE_model/*
+old_code/
 
 !model/ESKAPEE_model/optuna_visualizations/
 !retraining_loss_over_epochs.png
