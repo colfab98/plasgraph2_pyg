@@ -16,3 +16,4 @@ old_code/
 !model/ESKAPEE_model/optuna_visualizations/
 !retraining_loss_over_epochs.png
 !model/ESKAPEE_model.log
+!model/ESKAPEE_model/test_run.log

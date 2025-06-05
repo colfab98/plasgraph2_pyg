@@ -1,0 +1,40 @@
+============================================================
+🔍 PyTorch Geometric Graph Diagnostic (Test Set)
+============================================================
+
+type(data): <class 'torch_geometric.data.data.Data'>
+type(data.x): <class 'torch.Tensor'>
+🧬 Feature matrix shape: torch.Size([43296, 6])
+📋 Features used (from config): ('coverage_norm', 'gc_norm', 'kmer_dot', 'degree', 'length_norm', 'loglength')
+🧾 Sample features (first 2 nodes):
+tensor([[2.0662e+00, 2.2300e-02, 2.6464e-03, 4.0000e+00, 4.1050e-04, 6.7117e+00],
+        [1.0703e+00, 1.0800e-02, 2.7713e-03, 2.0000e+00, 2.5576e-02, 1.0843e+01]])
+type(data.y): <class 'torch.Tensor'>
+
+🏷️ Label matrix shape: torch.Size([43296, 2])
+🔢 Label sample (first 5):
+tensor([[1., 0.],
+        [0., 1.],
+        [0., 1.],
+        [0., 1.],
+        [0., 1.]])
+
+📊 Label counts:
+  [0.0, 0.0] → 5024 nodes
+  [0.0, 1.0] → 32907 nodes
+  [1.0, 0.0] → 3974 nodes
+  [1.0, 1.0] → 1391 nodes
+type(data.edge_index): <class 'torch.Tensor'>
+
+🔗 Edge index shape: torch.Size([2, 188432])
+  → Number of edges: 188432
+  → Density: 0.000101
+🧍 Isolated nodes: 1314
+
+📦 Available attributes in data object: ['y', 'x', 'edge_attr', 'edge_index']
+============================================================
+['plasmid', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'plasmid', 'chromosome', 'plasmid', 'chromosome', 'plasmid', 'plasmid', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'plasmid', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'unlabeled', 'chromosome', 'chromosome', 'plasmid', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'plasmid', 'plasmid', 'plasmid', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'plasmid', 'chromosome']
+Chromosome contigs: 43296 Plasmid contigs: 32907 Ambiguous contigs: 1391 Unlabeled contigs: 5024
+Using device: mps
+Test PLASMID Metrics | F1: 0.7126 @ Thresh: 0.38 | Acc: 0.9181 | Prec: 0.7012 | Rec: 0.7243 | AUROC: 0.9336
+Test CHROMOSOME Metrics | F1: 0.9619 @ Thresh: 0.53 | Acc: 0.9317 | Prec: 0.9614 | Rec: 0.9625 | AUROC: 0.9415

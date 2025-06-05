@@ -80,7 +80,6 @@ def get_kmer_distribution(sequence, kmer_length=5, scale=False):
         #scaler = MinMaxScaler()
         #k_mer_counts = scaler.fit_transform(np.array(k_mer_counts).reshape(-1, 1))
         #k_mer_counts = list(k_mer_counts.flatten())
-    print('k_mer_counts', k_mer_counts)
     return k_mer_counts
 
 
