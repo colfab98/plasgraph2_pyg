@@ -1,0 +1,12 @@
+# Python / VS Code
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.vscode/
+
+# Large data / model outputs
+plasgraph2-datasets/
+ESKAPEE_model*/
+*.log
+*.err
