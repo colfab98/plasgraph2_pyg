@@ -5,8 +5,13 @@ __pycache__/
 .env
 .vscode/
 
-# Large data / model outputs
-plasgraph2-datasets/
-ESKAPEE_model*/
 *.log
 *.err
+
+# Large data / model outputs
+plasgraph2-datasets/
+model/ESKAPEE_model/*
+
+!model/ESKAPEE_model/optuna_visualizations/
+!retraining_loss_over_epochs.png
+!model/ESKAPEE_model.log
