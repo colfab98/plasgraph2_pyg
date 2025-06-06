@@ -104,6 +104,8 @@ def main(best_config_file: 'YAML configuration file of the best model saved',
     if log_dir is not None:
         os.makedirs(log_dir, exist_ok=True)
 
+    node_to_idx_map = {node_id: i for i, node_id in enumerate(node_list_test)}
+
     num_total_nodes_test = data_test.num_nodes
     labels_text_test = [G_test.nodes[node_id]["text_label"] for node_id in node_list_test]
     num_chromosome_test = labels_text_test.count("chromosome")
@@ -116,8 +118,8 @@ def main(best_config_file: 'YAML configuration file of the best model saved',
     print(labels_text_test[:50])
 
 
-    print("Chromosome contigs:", num_total_nodes_test,
-          "Plasmid contigs:", num_chromosome_test,
+    print("Chromosome contigs:", num_chromosome_test,
+          "Plasmid contigs:", num_plasmid_test,
           "Ambiguous contigs:", num_ambiguous_test,
           "Unlabeled contigs:", num_unlabeled_test)
     
@@ -164,51 +166,158 @@ def main(best_config_file: 'YAML configuration file of the best model saved',
     model.eval()
 
     with torch.no_grad():
-        test_outputs = model(data_test)
+        all_nodes_outputs = model(data_test)
+    
+    sample_ids = sorted(list(set(G_test.nodes[node_id]["sample"] for node_id in node_list_test)))
 
-        probs_plasmid_test = test_outputs[:, 0]
-        probs_chromosome_test = test_outputs[:, 1]
+    all_f1_plasmid_scores = []
+    all_acc_plasmid_scores = []
+    all_prec_plasmid_scores = []
+    all_rec_plasmid_scores = []
+    all_auroc_plasmid_scores = []
 
-        active_test_mask = masks_test > 0
+    all_f1_chromosome_scores = []
+    all_acc_chromosome_scores = []
+    all_prec_chromosome_scores = []
+    all_rec_chromosome_scores = []
+    all_auroc_chromosome_scores = []
 
-        # --- Plasmid Evaluation ---
-        labels_plasmid_test_active = data_test.y[active_test_mask, 0]
-        probs_plasmid_test_active = probs_plasmid_test[active_test_mask]
+
+    for sample_id in sample_ids:
+        current_sample_node_indices_global = [
+            node_to_idx_map[node_id] 
+            for node_id in node_list_test 
+            if G_test.nodes[node_id]["sample"] == sample_id
+        ]
+
+        current_sample_node_indices_global = torch.tensor(current_sample_node_indices_global, dtype=torch.long, device=device)
+
+        y_sample = data_test.y[current_sample_node_indices_global]
+        outputs_sample = all_nodes_outputs[current_sample_node_indices_global]
+        masks_sample = masks_test[current_sample_node_indices_global]
+
+        sample_node_ids = [nid for nid in node_list_test if G_test.nodes[nid]["sample"] == sample_id]
+        labels_text_sample = [G_test.nodes[node_id]["text_label"] for node_id in sample_node_ids]
+        num_total_sample = len(labels_text_sample)
+        num_chromosome_sample = labels_text_sample.count("chromosome")
+        num_plasmid_sample = labels_text_sample.count("plasmid")
+        num_ambiguous_sample = labels_text_sample.count("ambiguous")
+        num_unlabeled_sample = labels_text_sample.count("unlabeled")
+
+        active_mask_for_sample = masks_sample > 0
+
+        probs_plasmid_sample = outputs_sample[:, 0]
+        probs_chromosome_sample = outputs_sample[:, 1]
+
+        # --- Plasmid Evaluation for the current sample ---
+        labels_plasmid_sample_active = y_sample[active_mask_for_sample, 0]
+        probs_plasmid_sample_active = probs_plasmid_sample[active_mask_for_sample]
         
-        y_true_plasmid = labels_plasmid_test_active.cpu().numpy()
-        y_probs_plasmid = probs_plasmid_test_active.cpu().numpy()
-        sample_weight_plasmid = masks_test[active_test_mask].cpu().numpy()
+        y_true_plasmid = labels_plasmid_sample_active.cpu().numpy()
+        y_probs_plasmid = probs_plasmid_sample_active.cpu().numpy()
+        sample_weight_plasmid = masks_sample[active_mask_for_sample].cpu().numpy()
+        
+        final_best_thresh_plasmid = best_parameters['plasmid_threshold'] #
+        y_pred_plasmid = (y_probs_plasmid >= final_best_thresh_plasmid).astype(int) #
 
-        final_best_thresh_plasmid = best_parameters['plasmid_threshold']
-        y_pred_plasmid = (y_probs_plasmid >= final_best_thresh_plasmid).astype(int)
+        acc_plasmid = accuracy_score(y_true_plasmid, y_pred_plasmid, sample_weight=sample_weight_plasmid) #
+        prec_plasmid = precision_score(y_true_plasmid, y_pred_plasmid, sample_weight=sample_weight_plasmid, zero_division=0) #
+        rec_plasmid = recall_score(y_true_plasmid, y_pred_plasmid, sample_weight=sample_weight_plasmid, zero_division=0) #
+        f1_plasmid = f1_score(y_true_plasmid, y_pred_plasmid, sample_weight=sample_weight_plasmid, zero_division=0) #    
+        if len(np.unique(y_true_plasmid)) < 2:
+            auroc_plasmid = np.nan
+        else:
+            auroc_plasmid = roc_auc_score(y_true_plasmid, y_probs_plasmid, sample_weight=sample_weight_plasmid)  
+            all_auroc_plasmid_scores.append(auroc_plasmid) 
 
-        acc_plasmid = accuracy_score(y_true_plasmid, y_pred_plasmid, sample_weight=sample_weight_plasmid)
-        prec_plasmid = precision_score(y_true_plasmid, y_pred_plasmid, sample_weight=sample_weight_plasmid, zero_division=0)
-        rec_plasmid = recall_score(y_true_plasmid, y_pred_plasmid, sample_weight=sample_weight_plasmid, zero_division=0)
-        f1_plasmid = f1_score(y_true_plasmid, y_pred_plasmid, sample_weight=sample_weight_plasmid, zero_division=0)         
-        auroc_plasmid = roc_auc_score(y_true_plasmid, y_probs_plasmid, sample_weight=sample_weight_plasmid)
+        print(f"  Sample {sample_id} - Test PLASMID Metrics | F1: {f1_plasmid:.4f} @ Thresh: {final_best_thresh_plasmid:.2f} | Acc: {acc_plasmid:.4f} | Prec: {prec_plasmid:.4f} | Rec: {rec_plasmid:.4f} | AUROC: {auroc_plasmid:.4f}") #
+        
+        all_f1_plasmid_scores.append(f1_plasmid)
+        all_acc_plasmid_scores.append(acc_plasmid)
+        all_prec_plasmid_scores.append(prec_plasmid)
+        all_rec_plasmid_scores.append(rec_plasmid)       
 
-        print(f"Test PLASMID Metrics | F1: {f1_plasmid:.4f} @ Thresh: {final_best_thresh_plasmid:.2f} | Acc: {acc_plasmid:.4f} | Prec: {prec_plasmid:.4f} | Rec: {rec_plasmid:.4f} | AUROC: {auroc_plasmid:.4f}")
+
+        # --- Chromosome Evaluation for the current sample ---
+        labels_chromosome_sample_active = y_sample[active_mask_for_sample, 1]
+        probs_chromosome_sample_active = probs_chromosome_sample[active_mask_for_sample]
+
+        y_true_chromosome = labels_chromosome_sample_active.cpu().numpy()
+        y_probs_chromosome = probs_chromosome_sample_active.cpu().numpy()
+        sample_weight_chromosome = masks_sample[active_mask_for_sample].cpu().numpy()
+
+        final_best_thresh_chromosome = best_parameters['chromosome_threshold'] #
+        y_pred_chromosome = (y_probs_chromosome >= final_best_thresh_chromosome).astype(int) #
+
+        acc_chromosome = accuracy_score(y_true_chromosome, y_pred_chromosome, sample_weight=sample_weight_chromosome) #
+        prec_chromosome = precision_score(y_true_chromosome, y_pred_chromosome, sample_weight=sample_weight_chromosome, zero_division=0) #
+        rec_chromosome = recall_score(y_true_chromosome, y_pred_chromosome, sample_weight=sample_weight_chromosome, zero_division=0) #
+        f1_chromosome = f1_score(y_true_chromosome, y_pred_chromosome, sample_weight=sample_weight_chromosome, zero_division=0) #
+        auroc_chromosome = roc_auc_score(y_true_chromosome, y_probs_chromosome, sample_weight=sample_weight_chromosome) #
+
+        if len(np.unique(y_true_plasmid)) < 2:
+            auroc_chromosome = np.nan
+        else:
+            auroc_chromosome = roc_auc_score(y_true_chromosome, y_probs_chromosome, sample_weight=sample_weight_chromosome)  
+            all_auroc_chromosome_scores.append(auroc_chromosome)
+
+        print(f"  Sample {sample_id} - Test CHROMOSOME Metrics | F1: {f1_chromosome:.4f} @ Thresh: {final_best_thresh_chromosome:.2f} | Acc: {acc_chromosome:.4f} | Prec: {prec_chromosome:.4f} | Rec: {rec_chromosome:.4f} | AUROC: {auroc_chromosome:.4f}") #
+        
+        all_f1_chromosome_scores.append(f1_chromosome)
+        all_acc_chromosome_scores.append(acc_chromosome)
+        all_prec_chromosome_scores.append(prec_chromosome)
+        all_rec_chromosome_scores.append(rec_chromosome)
 
 
-        # --- Chromosome Evaluation ---
-        labels_chromosome_test_active = data_test.y[active_test_mask, 1]
-        probs_chromosome_test_active = probs_chromosome_test[active_test_mask]
+    median_f1_plasmid = np.median(all_f1_plasmid_scores)
+    median_acc_plasmid = np.median(all_acc_plasmid_scores)
+    median_prec_plasmid = np.median(all_prec_plasmid_scores)
+    median_rec_plasmid = np.median(all_rec_plasmid_scores)
+    median_auroc_plasmid = np.median(all_auroc_plasmid_scores)
+    print(f"Median PLASMID Metrics | F1: {median_f1_plasmid:.4f} | Acc: {median_acc_plasmid:.4f} | Prec: {median_prec_plasmid:.4f} | Rec: {median_rec_plasmid:.4f} | AUROC: {median_auroc_plasmid:.4f}")
 
-        y_true_chromosome = labels_chromosome_test_active.cpu().numpy()
-        y_probs_chromosome = probs_chromosome_test_active.cpu().numpy()
-        sample_weight_chromosome = masks_test[active_test_mask].cpu().numpy()
+    median_f1_chromosome = np.median(all_f1_chromosome_scores)
+    median_acc_chromosome = np.median(all_acc_chromosome_scores)
+    median_prec_chromosome = np.median(all_prec_chromosome_scores)
+    median_rec_chromosome = np.median(all_rec_chromosome_scores)
+    median_auroc_chromosome = np.median(all_auroc_chromosome_scores)
+    print(f"Median CHROMOSOME Metrics | F1: {median_f1_chromosome:.4f} | Acc: {median_acc_chromosome:.4f} | Prec: {median_prec_chromosome:.4f} | Rec: {median_rec_chromosome:.4f} | AUROC: {median_auroc_chromosome:.4f}")
 
-        final_best_thresh_chromosome = best_parameters['chromosome_threshold']
-        y_pred_chromosome = (y_probs_chromosome >= final_best_thresh_chromosome).astype(int)
 
-        acc_chromosome = accuracy_score(y_true_chromosome, y_pred_chromosome, sample_weight=sample_weight_chromosome)
-        prec_chromosome = precision_score(y_true_chromosome, y_pred_chromosome, sample_weight=sample_weight_chromosome, zero_division=0)
-        rec_chromosome = recall_score(y_true_chromosome, y_pred_chromosome, sample_weight=sample_weight_chromosome, zero_division=0)
-        f1_chromosome = f1_score(y_true_chromosome, y_pred_chromosome, sample_weight=sample_weight_chromosome, zero_division=0)
-        auroc_chromosome = roc_auc_score(y_true_chromosome, y_probs_chromosome, sample_weight=sample_weight_chromosome)
 
-        print(f"Test CHROMOSOME Metrics | F1: {f1_chromosome:.4f} @ Thresh: {final_best_thresh_chromosome:.2f} | Acc: {acc_chromosome:.4f} | Prec: {prec_chromosome:.4f} | Rec: {rec_chromosome:.4f} | AUROC: {auroc_chromosome:.4f}")
+    plt.figure(figsize=(10, 7)) 
+    data_to_plot = []
+    labels = []
+    data_to_plot.append(all_f1_plasmid_scores)
+    labels.append('Plasmid F1 Scores')
+    data_to_plot.append(all_f1_chromosome_scores)
+    labels.append('Chromosome F1 Scores')
+    parts = plt.violinplot(data_to_plot, showmeans=False, showmedians=True, showextrema=True)
+    for i, pc in enumerate(parts['bodies']):
+                pc.set_facecolor('skyblue' if labels[i].startswith('Plasmid') else 'lightcoral')
+                pc.set_edgecolor('black')
+                pc.set_alpha(0.8)
+    for partname in ('cbars', 'cmins', 'cmaxes', 'cmedians'):
+        if partname in parts:
+            vp = parts[partname]
+            vp.set_edgecolor('grey')
+            vp.set_linewidth(1)
+    parts['cmedians'].set_edgecolor('red')
+    parts['cmedians'].set_linewidth(1.5)
+    for i, d_list in enumerate(data_to_plot): 
+            x_jitter = np.random.normal(loc=i + 1, scale=0.04, size=len(d_list))
+            plt.scatter(x_jitter, d_list, alpha=0.4, s=20, color='dimgray', zorder=3) # zorder to plot dots on top
+    plt.ylabel('F1 Score', fontsize=14)
+    plt.title('Distribution of F1 Scores Across Samples', fontsize=16)
+    plt.xticks(np.arange(1, len(labels) + 1), labels, rotation=0, ha='center', fontsize=12) # Use np.arange
+    plt.yticks(fontsize=10)
+    plt.grid(True, linestyle='--', alpha=0.6, axis='y') # Grid for y-axis
+    plt.tight_layout() # Adjust layout to prevent labels from overlapping
+    plot_filename = "f1_scores_violin_plot.png"
+    plot_path = os.path.join(log_dir, plot_filename)
+    plt.savefig(plot_path)
+    plt.close()
+
 
 
 

@@ -41,8 +41,8 @@ def objective(trial, parameters, data, masks_train, masks_validate, device, mode
 
     trial_params_dict['learning_rate'] = trial.suggest_float(
         "learning_rate", 
-        parameters._params.get('learning_rate_min', 1e-4), 
-        parameters._params.get('learning_rate_max', 1e-2), 
+        parameters._params.get('learning_rate_min', 1e-5), 
+        parameters._params.get('learning_rate_max', 1e-3), 
         log=True
     )
     trial_params_dict['l2_reg'] = trial.suggest_float(
