@@ -1,1598 +1,251 @@
-============================================================
-🔍 PyTorch Geometric Graph Diagnostic
-============================================================
 
-type(data): <class 'torch_geometric.data.data.Data'>
-type(data.x): <class 'torch.Tensor'>
-type(data.y): <class 'torch.Tensor'>
-type(data.edge_index): <class 'torch.Tensor'>
-
-🧬 Feature matrix shape: torch.Size([34310, 6])
-📋 Features used: ('coverage_norm', 'gc_norm', 'kmer_dot', 'degree', 'length_norm', 'loglength')
-🧾 Sample features (first 2 nodes):
-tensor([[1.2287e+00, 7.7000e-03, 2.7754e-03, 1.0000e+00, 1.6705e-01, 1.2719e+01],
-        [1.1816e+00, 5.0000e-03, 2.8050e-03, 1.0000e+00, 9.5188e-02, 1.2157e+01]])
-
-🏷️ Label matrix shape: torch.Size([34310, 2])
-🔢 Label sample (first 5):
-tensor([[0., 1.],
-        [0., 1.],
-        [0., 1.],
-        [0., 1.],
-        [0., 1.]])
-
-📊 Label counts:
-  [0.0, 0.0] → 3733 nodes
-  [0.0, 1.0] → 25271 nodes
-  [1.0, 0.0] → 3850 nodes
-  [1.0, 1.0] → 1456 nodes
-
-🔗 Edge index shape: torch.Size([2, 151268])
-  → Number of edges: 151268
-  → Density: 0.000129
-🧍 Isolated nodes: 5511
-
-📦 Available attributes: ['edge_index', 'edge_attr', 'y', 'x']
-['chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'unlabeled', 'chromosome', 'chromosome', 'chromosome', 'unlabeled', 'unlabeled', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'unlabeled', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'unlabeled', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'chromosome', 'plasmid', 'plasmid', 'chromosome', 'chromosome', 'chromosome', 'unlabeled', 'chromosome', 'chromosome']
-Chromosome contigs: 25271 Plasmid contigs: 3850 Ambiguous contigs: 1456 Unlabeled contigs: 3733
-Final masks list: [1. 1. 1. ... 1. 1. 1.]
-[1. 1. 1. 1. 0. 1. 1. 0. 0. 1. 1. 0. 0. 1. 1. 1. 1. 1. 1. 1.]
-[0. 0. 0. 0. 1. 0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
-34310
-34310
+Generated 5 folds for cross-validation on 30577 labeled nodes.
 Using device: mps
-🔍 Label breakdown (new format):
-  Plasmid ([1,0]):      3850
-  Chromosome ([0,1]):   25271
-  Ambiguous ([1,1]):    1456
-  Unlabeled ([0,0]):    3733
-  Total label rows:     34310
-Trial 0 finished. Best Val Loss for trial: 0.8199. Params: {'learning_rate': 2.3819364453100677e-05, 'l2_reg': 2.8014075479704587e-06, 'n_channels': 96, 'n_gnn_layers': 5, 'dropout_rate': 0.22950809629489158, 'gradient_clipping': 0.04693343416699214, 'edge_gate_hidden_dim': 8}
-Trial 1 finished. Best Val Loss for trial: 0.6224. Params: {'learning_rate': 0.00026582305228303423, 'l2_reg': 2.1826883961914546e-06, 'n_channels': 112, 'n_gnn_layers': 2, 'dropout_rate': 0.017469213957821927, 'gradient_clipping': 0.464527305841936, 'edge_gate_hidden_dim': 24}
-Trial 2 finished. Best Val Loss for trial: 1.1683. Params: {'learning_rate': 1.6007205199608317e-05, 'l2_reg': 2.654702361938159e-05, 'n_channels': 48, 'n_gnn_layers': 1, 'dropout_rate': 0.06858655446031328, 'gradient_clipping': 0.3951584889858586, 'edge_gate_hidden_dim': 16}
-Trial 3 finished. Best Val Loss for trial: 0.7093. Params: {'learning_rate': 0.0001815600937859142, 'l2_reg': 1.1041718234330068e-06, 'n_channels': 96, 'n_gnn_layers': 1, 'dropout_rate': 0.21014791830239815, 'gradient_clipping': 0.3685867374697598, 'edge_gate_hidden_dim': 40}
-Trial 4 finished. Best Val Loss for trial: 0.7699. Params: {'learning_rate': 0.0001296581740322033, 'l2_reg': 0.0005405039178982881, 'n_channels': 64, 'n_gnn_layers': 4, 'dropout_rate': 0.6142525109802364, 'gradient_clipping': 0.9022667615568113, 'edge_gate_hidden_dim': 48}
-Trial 5 finished. Best Val Loss for trial: 0.8600. Params: {'learning_rate': 0.00019017152391783123, 'l2_reg': 6.592444373749234e-06, 'n_channels': 16, 'n_gnn_layers': 2, 'dropout_rate': 0.612576436918929, 'gradient_clipping': 0.1402147508672139, 'edge_gate_hidden_dim': 32}
-Trial 6 finished. Best Val Loss for trial: 0.7751. Params: {'learning_rate': 0.0004849037268864124, 'l2_reg': 0.0007902840782281606, 'n_channels': 16, 'n_gnn_layers': 1, 'dropout_rate': 0.24616807734029947, 'gradient_clipping': 0.30989067840591344, 'edge_gate_hidden_dim': 16}
-Trial 7 finished. Best Val Loss for trial: 0.7086. Params: {'learning_rate': 0.0003338386521423001, 'l2_reg': 1.2958699776145252e-05, 'n_channels': 64, 'n_gnn_layers': 4, 'dropout_rate': 0.6214550110763312, 'gradient_clipping': 0.1807246997482408, 'edge_gate_hidden_dim': 64}
-Trial 8 finished. Best Val Loss for trial: 0.7114. Params: {'learning_rate': 0.00012739728080703194, 'l2_reg': 2.0028915099709576e-06, 'n_channels': 112, 'n_gnn_layers': 3, 'dropout_rate': 0.4445521895176173, 'gradient_clipping': 0.22251471169487447, 'edge_gate_hidden_dim': 32}
-Trial 9 finished. Best Val Loss for trial: 0.7807. Params: {'learning_rate': 0.000308522417180285, 'l2_reg': 2.8985608456498304e-06, 'n_channels': 16, 'n_gnn_layers': 2, 'dropout_rate': 0.32535352551309765, 'gradient_clipping': 0.14073244206286917, 'edge_gate_hidden_dim': 48}
-Trial 10 finished. Best Val Loss for trial: 0.5600. Params: {'learning_rate': 0.000873859780018825, 'l2_reg': 0.00010322720734377979, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.010002147391820704, 'gradient_clipping': 0.6840821107070147, 'edge_gate_hidden_dim': 24}
-Trial 11 finished. Best Val Loss for trial: 0.5469. Params: {'learning_rate': 0.0009520935418115666, 'l2_reg': 0.0001413308748775851, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.047765837005219136, 'gradient_clipping': 0.6402070043498229, 'edge_gate_hidden_dim': 24}
-Trial 12 finished. Best Val Loss for trial: 0.5447. Params: {'learning_rate': 0.0009703316642893496, 'l2_reg': 0.00013929542734990598, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.10683302499073123, 'gradient_clipping': 0.6962630469275144, 'edge_gate_hidden_dim': 24}
-Trial 13 finished. Best Val Loss for trial: 0.5608. Params: {'learning_rate': 0.000949605326872529, 'l2_reg': 0.00014719714004344183, 'n_channels': 128, 'n_gnn_layers': 4, 'dropout_rate': 0.11939163129515437, 'gradient_clipping': 0.6259642306537266, 'edge_gate_hidden_dim': 8}
-Trial 14 finished. Best Val Loss for trial: 0.7982. Params: {'learning_rate': 5.034385349787017e-05, 'l2_reg': 0.0001266025142678598, 'n_channels': 96, 'n_gnn_layers': 3, 'dropout_rate': 0.11357331731445712, 'gradient_clipping': 0.8329018299319086, 'edge_gate_hidden_dim': 24}
-Trial 15 finished. Best Val Loss for trial: 0.5994. Params: {'learning_rate': 0.0005786480096124434, 'l2_reg': 0.00027053096481512135, 'n_channels': 128, 'n_gnn_layers': 5, 'dropout_rate': 0.44821570332160665, 'gradient_clipping': 0.6381382863233545, 'edge_gate_hidden_dim': 40}
-Trial 16 finished. Best Val Loss for trial: 0.7698. Params: {'learning_rate': 5.8629656733203305e-05, 'l2_reg': 4.9135727716302e-05, 'n_channels': 112, 'n_gnn_layers': 4, 'dropout_rate': 0.15993872577476578, 'gradient_clipping': 0.7848168939918316, 'edge_gate_hidden_dim': 16}
-Trial 17 finished. Best Val Loss for trial: 0.5982. Params: {'learning_rate': 0.0005706655012769388, 'l2_reg': 4.770152372029859e-05, 'n_channels': 80, 'n_gnn_layers': 2, 'dropout_rate': 0.33868372979870875, 'gradient_clipping': 0.5390117082974277, 'edge_gate_hidden_dim': 64}
-Trial 18 finished. Best Val Loss for trial: 0.6092. Params: {'learning_rate': 0.000939873704169097, 'l2_reg': 0.0003255146185660784, 'n_channels': 48, 'n_gnn_layers': 3, 'dropout_rate': 0.44316183522306646, 'gradient_clipping': 0.9518413508076596, 'edge_gate_hidden_dim': 32}
-Trial 19 finished. Best Val Loss for trial: 0.7643. Params: {'learning_rate': 5.1636903343890045e-05, 'l2_reg': 2.2258489271675796e-05, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.07704447376086225, 'gradient_clipping': 0.7565937120228131, 'edge_gate_hidden_dim': 48}
+
+============================================================
+🏛️  Stage 1: Optuna Search for Best Architecture (fixed LR)
+Using fixed Learning Rate: 0.005
+============================================================
+
+--- Starting Trial 0 with params: {'l2_reg': 2.2499461453716427e-06, 'n_channels': 32, 'n_gnn_layers': 1, 'dropout_rate': 0.1641983625461992, 'gradient_clipping': 0.07699688841962926, 'edge_gate_hidden_dim': 40} ---
+[I 2025-06-08 16:52:54,639] Trial 0 finished with value: 0.715071189403534 and parameters: {'l2_reg': 2.2499461453716427e-06, 'n_channels': 32, 'n_gnn_layers': 1, 'dropout_rate': 0.1641983625461992, 'gradient_clipping': 0.07699688841962926, 'edge_gate_hidden_dim': 40}. Best is trial 0 with value: 0.715071189403534.
+
+--- Starting Trial 1 with params: {'l2_reg': 9.762988006087049e-05, 'n_channels': 16, 'n_gnn_layers': 5, 'dropout_rate': 0.3301623794841022, 'gradient_clipping': 0.8024991372639432, 'edge_gate_hidden_dim': 24} ---
+[I 2025-06-08 16:54:24,803] Trial 1 finished with value: 0.7713363409042359 and parameters: {'l2_reg': 9.762988006087049e-05, 'n_channels': 16, 'n_gnn_layers': 5, 'dropout_rate': 0.3301623794841022, 'gradient_clipping': 0.8024991372639432, 'edge_gate_hidden_dim': 24}. Best is trial 0 with value: 0.715071189403534.
+
+--- Starting Trial 2 with params: {'l2_reg': 7.72547140029526e-05, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.4506096036446616, 'gradient_clipping': 0.7430925433964896, 'edge_gate_hidden_dim': 24} ---
+[I 2025-06-08 16:59:27,447] Trial 2 finished with value: 0.6688024401664734 and parameters: {'l2_reg': 7.72547140029526e-05, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.4506096036446616, 'gradient_clipping': 0.7430925433964896, 'edge_gate_hidden_dim': 24}. Best is trial 2 with value: 0.6688024401664734.
+
+--- Starting Trial 3 with params: {'l2_reg': 1.541090261057933e-06, 'n_channels': 64, 'n_gnn_layers': 3, 'dropout_rate': 0.42379194407072734, 'gradient_clipping': 0.1302725213332444, 'edge_gate_hidden_dim': 16} ---
+[I 2025-06-08 17:02:09,576] Trial 3 finished with value: 0.6995789408683777 and parameters: {'l2_reg': 1.541090261057933e-06, 'n_channels': 64, 'n_gnn_layers': 3, 'dropout_rate': 0.42379194407072734, 'gradient_clipping': 0.1302725213332444, 'edge_gate_hidden_dim': 16}. Best is trial 2 with value: 0.6688024401664734.
+
+--- Starting Trial 4 with params: {'l2_reg': 2.95785484227645e-05, 'n_channels': 128, 'n_gnn_layers': 5, 'dropout_rate': 0.5071062772621138, 'gradient_clipping': 0.9609426126830675, 'edge_gate_hidden_dim': 16} ---
+[I 2025-06-08 17:10:14,299] Trial 4 finished with value: 0.6715787172317504 and parameters: {'l2_reg': 2.95785484227645e-05, 'n_channels': 128, 'n_gnn_layers': 5, 'dropout_rate': 0.5071062772621138, 'gradient_clipping': 0.9609426126830675, 'edge_gate_hidden_dim': 16}. Best is trial 2 with value: 0.6688024401664734.
+
+--- Starting Trial 5 with params: {'l2_reg': 5.214132423525942e-06, 'n_channels': 112, 'n_gnn_layers': 1, 'dropout_rate': 0.6342652612695645, 'gradient_clipping': 0.7083751196850355, 'edge_gate_hidden_dim': 24} ---
+[I 2025-06-08 17:11:58,352] Trial 5 finished with value: 0.6776414155960083 and parameters: {'l2_reg': 5.214132423525942e-06, 'n_channels': 112, 'n_gnn_layers': 1, 'dropout_rate': 0.6342652612695645, 'gradient_clipping': 0.7083751196850355, 'edge_gate_hidden_dim': 24}. Best is trial 2 with value: 0.6688024401664734.
+
+--- Starting Trial 6 with params: {'l2_reg': 0.0009924254041859917, 'n_channels': 128, 'n_gnn_layers': 1, 'dropout_rate': 0.36826688089691806, 'gradient_clipping': 0.36815937513226704, 'edge_gate_hidden_dim': 64} ---
+[I 2025-06-08 17:12:21,972] Trial 6 pruned. 
+
+--- Starting Trial 7 with params: {'l2_reg': 0.0003733912653938866, 'n_channels': 112, 'n_gnn_layers': 4, 'dropout_rate': 0.6622342482138216, 'gradient_clipping': 0.3394070641049982, 'edge_gate_hidden_dim': 56} ---
+[I 2025-06-08 17:18:23,300] Trial 7 finished with value: 0.6839305996894837 and parameters: {'l2_reg': 0.0003733912653938866, 'n_channels': 112, 'n_gnn_layers': 4, 'dropout_rate': 0.6622342482138216, 'gradient_clipping': 0.3394070641049982, 'edge_gate_hidden_dim': 56}. Best is trial 2 with value: 0.6688024401664734.
+
+--- Starting Trial 8 with params: {'l2_reg': 3.097161003089907e-06, 'n_channels': 80, 'n_gnn_layers': 4, 'dropout_rate': 0.09778943795355499, 'gradient_clipping': 0.5049834715648822, 'edge_gate_hidden_dim': 16} ---
+[I 2025-06-08 17:22:27,789] Trial 8 finished with value: 0.6694200038909912 and parameters: {'l2_reg': 3.097161003089907e-06, 'n_channels': 80, 'n_gnn_layers': 4, 'dropout_rate': 0.09778943795355499, 'gradient_clipping': 0.5049834715648822, 'edge_gate_hidden_dim': 16}. Best is trial 2 with value: 0.6688024401664734.
+
+--- Starting Trial 9 with params: {'l2_reg': 5.0584177004335324e-05, 'n_channels': 16, 'n_gnn_layers': 2, 'dropout_rate': 0.580017666221273, 'gradient_clipping': 0.8995342670056518, 'edge_gate_hidden_dim': 24} ---
+[I 2025-06-08 17:22:35,799] Trial 9 pruned. 
+
+--- Starting Trial 10 with params: {'l2_reg': 1.1983129253813262e-05, 'n_channels': 80, 'n_gnn_layers': 3, 'dropout_rate': 0.2598320535214984, 'gradient_clipping': 0.6206262515892333, 'edge_gate_hidden_dim': 40} ---
+[I 2025-06-08 17:25:54,060] Trial 10 finished with value: 0.6815457344055176 and parameters: {'l2_reg': 1.1983129253813262e-05, 'n_channels': 80, 'n_gnn_layers': 3, 'dropout_rate': 0.2598320535214984, 'gradient_clipping': 0.6206262515892333, 'edge_gate_hidden_dim': 40}. Best is trial 2 with value: 0.6688024401664734.
+
+--- Starting Trial 11 with params: {'l2_reg': 0.0001393706693626943, 'n_channels': 80, 'n_gnn_layers': 4, 'dropout_rate': 0.04728915118226158, 'gradient_clipping': 0.5284934517056926, 'edge_gate_hidden_dim': 8} ---
+[I 2025-06-08 17:26:43,431] Trial 11 pruned. 
+
+--- Starting Trial 12 with params: {'l2_reg': 1.6079461430229112e-05, 'n_channels': 48, 'n_gnn_layers': 4, 'dropout_rate': 0.04576320954601798, 'gradient_clipping': 0.41389113896351315, 'edge_gate_hidden_dim': 8} ---
+[I 2025-06-08 17:27:14,981] Trial 12 pruned. 
+
+--- Starting Trial 13 with params: {'l2_reg': 8.067207884186877e-06, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.19425050382091996, 'gradient_clipping': 0.6162749986578835, 'edge_gate_hidden_dim': 32} ---
+[I 2025-06-08 17:29:55,989] Trial 13 finished with value: 0.659518039226532 and parameters: {'l2_reg': 8.067207884186877e-06, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.19425050382091996, 'gradient_clipping': 0.6162749986578835, 'edge_gate_hidden_dim': 32}. Best is trial 13 with value: 0.659518039226532.
+
+--- Starting Trial 14 with params: {'l2_reg': 7.944405804124523e-06, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.23160006778086337, 'gradient_clipping': 0.7225206678435863, 'edge_gate_hidden_dim': 32} ---
+[I 2025-06-08 17:32:34,047] Trial 14 finished with value: 0.6711914539337158 and parameters: {'l2_reg': 7.944405804124523e-06, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.23160006778086337, 'gradient_clipping': 0.7225206678435863, 'edge_gate_hidden_dim': 32}. Best is trial 13 with value: 0.659518039226532.
+
+--- Starting Trial 15 with params: {'l2_reg': 2.948149371316669e-05, 'n_channels': 112, 'n_gnn_layers': 2, 'dropout_rate': 0.47945496338062965, 'gradient_clipping': 0.8374950878275487, 'edge_gate_hidden_dim': 48} ---
+[I 2025-06-08 17:33:11,193] Trial 15 pruned. 
+
+--- Starting Trial 16 with params: {'l2_reg': 0.00016256550304973605, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.29156052222901574, 'gradient_clipping': 0.6040760132097286, 'edge_gate_hidden_dim': 32} ---
+[I 2025-06-08 17:35:50,282] Trial 16 finished with value: 0.674619996547699 and parameters: {'l2_reg': 0.00016256550304973605, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.29156052222901574, 'gradient_clipping': 0.6040760132097286, 'edge_gate_hidden_dim': 32}. Best is trial 13 with value: 0.659518039226532.
+
+--- Starting Trial 17 with params: {'l2_reg': 6.693310395725377e-05, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.17592878349127128, 'gradient_clipping': 0.22825514712341177, 'edge_gate_hidden_dim': 48} ---
+[I 2025-06-08 17:40:58,193] Trial 17 finished with value: 0.651492464542389 and parameters: {'l2_reg': 6.693310395725377e-05, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.17592878349127128, 'gradient_clipping': 0.22825514712341177, 'edge_gate_hidden_dim': 48}. Best is trial 17 with value: 0.651492464542389.
+
+--- Starting Trial 18 with params: {'l2_reg': 1.0792430384065852e-06, 'n_channels': 96, 'n_gnn_layers': 3, 'dropout_rate': 0.17821668799599027, 'gradient_clipping': 0.21736895624809893, 'edge_gate_hidden_dim': 48} ---
+[I 2025-06-08 17:41:46,075] Trial 18 pruned. 
+
+--- Starting Trial 19 with params: {'l2_reg': 0.0002936422228582711, 'n_channels': 64, 'n_gnn_layers': 2, 'dropout_rate': 0.13533567952820247, 'gradient_clipping': 0.28166193938026723, 'edge_gate_hidden_dim': 48} ---
+[I 2025-06-08 17:42:08,929] Trial 19 pruned. 
 
 Optuna study finished.
 Best trial:
-  Value (Best Validation Loss): 0.5447
+  Value (Best Avg Validation Loss): 0.6515
   Params: 
-    learning_rate: 0.0009703316642893496
-    l2_reg: 0.00013929542734990598
+    l2_reg: 6.693310395725377e-05
     n_channels: 128
     n_gnn_layers: 3
-    dropout_rate: 0.10683302499073123
-    gradient_clipping: 0.6962630469275144
-    edge_gate_hidden_dim: 24
+    dropout_rate: 0.17592878349127128
+    gradient_clipping: 0.22825514712341177
+    edge_gate_hidden_dim: 48
 
---- Generating Optuna Visualizations ---
-Saved Optuna optimization history plot to ./ESKAPEE_model/optuna_visualizations
-Saved Optuna parameter importances plot to ./ESKAPEE_model/optuna_visualizations
-Saved Optuna slice plots to ./ESKAPEE_model/optuna_visualizations
-Saved Optuna parallel coordinate plot to ./ESKAPEE_model/optuna_visualizations
-Saved Optuna contour plot for learning_rate and l2_reg to ./ESKAPEE_model/optuna_visualizations
+============================================================
+🔬 Stage 2: Learning Rate Search & Final K-Fold Evaluation
+============================================================
 
---- Starting Final Model Retraining ---
-Retraining Epoch 1/1500 - Train Loss: 1.3842, Val Loss: 1.3299
-Retraining Epoch 2/1500 - Train Loss: 1.3317, Val Loss: 1.2803
-Retraining Epoch 3/1500 - Train Loss: 1.2831, Val Loss: 1.2351
-Retraining Epoch 4/1500 - Train Loss: 1.2376, Val Loss: 1.1920
-Retraining Epoch 5/1500 - Train Loss: 1.1940, Val Loss: 1.1495
-Retraining Epoch 6/1500 - Train Loss: 1.1506, Val Loss: 1.1063
-Retraining Epoch 7/1500 - Train Loss: 1.1070, Val Loss: 1.0622
-Retraining Epoch 8/1500 - Train Loss: 1.0624, Val Loss: 1.0161
-Retraining Epoch 9/1500 - Train Loss: 1.0166, Val Loss: 0.9691
-Retraining Epoch 10/1500 - Train Loss: 0.9697, Val Loss: 0.9234
-Retraining Epoch 11/1500 - Train Loss: 0.9247, Val Loss: 0.8816
-Retraining Epoch 12/1500 - Train Loss: 0.8831, Val Loss: 0.8480
-Retraining Epoch 13/1500 - Train Loss: 0.8502, Val Loss: 0.8286
-Retraining Epoch 14/1500 - Train Loss: 0.8314, Val Loss: 0.8297
-Retraining Epoch 15/1500 - Train Loss: 0.8342, Val Loss: 0.8492
-Retraining Epoch 16/1500 - Train Loss: 0.8544, Val Loss: 0.8680
-Retraining Epoch 17/1500 - Train Loss: 0.8718, Val Loss: 0.8738
-Retraining Epoch 18/1500 - Train Loss: 0.8794, Val Loss: 0.8682
-Retraining Epoch 19/1500 - Train Loss: 0.8725, Val Loss: 0.8572
-Retraining Epoch 20/1500 - Train Loss: 0.8608, Val Loss: 0.8456
-Retraining Epoch 21/1500 - Train Loss: 0.8489, Val Loss: 0.8362
-Retraining Epoch 22/1500 - Train Loss: 0.8387, Val Loss: 0.8299
-Retraining Epoch 23/1500 - Train Loss: 0.8335, Val Loss: 0.8265
-Retraining Epoch 24/1500 - Train Loss: 0.8296, Val Loss: 0.8255
-Retraining Epoch 25/1500 - Train Loss: 0.8274, Val Loss: 0.8259
-Retraining Epoch 26/1500 - Train Loss: 0.8280, Val Loss: 0.8272
-Retraining Epoch 27/1500 - Train Loss: 0.8285, Val Loss: 0.8285
-Retraining Epoch 28/1500 - Train Loss: 0.8310, Val Loss: 0.8296
-Retraining Epoch 29/1500 - Train Loss: 0.8312, Val Loss: 0.8302
-Retraining Epoch 30/1500 - Train Loss: 0.8331, Val Loss: 0.8304
-Retraining Epoch 31/1500 - Train Loss: 0.8333, Val Loss: 0.8301
-Retraining Epoch 32/1500 - Train Loss: 0.8324, Val Loss: 0.8293
-Retraining Epoch 33/1500 - Train Loss: 0.8314, Val Loss: 0.8282
-Retraining Epoch 34/1500 - Train Loss: 0.8311, Val Loss: 0.8269
-Retraining Epoch 35/1500 - Train Loss: 0.8285, Val Loss: 0.8255
-Retraining Epoch 36/1500 - Train Loss: 0.8278, Val Loss: 0.8241
-Retraining Epoch 37/1500 - Train Loss: 0.8260, Val Loss: 0.8229
-Retraining Epoch 38/1500 - Train Loss: 0.8256, Val Loss: 0.8218
-Retraining Epoch 39/1500 - Train Loss: 0.8247, Val Loss: 0.8210
-Retraining Epoch 40/1500 - Train Loss: 0.8229, Val Loss: 0.8204
-Retraining Epoch 41/1500 - Train Loss: 0.8229, Val Loss: 0.8199
-Retraining Epoch 42/1500 - Train Loss: 0.8224, Val Loss: 0.8197
-Retraining Epoch 43/1500 - Train Loss: 0.8221, Val Loss: 0.8195
-Retraining Epoch 44/1500 - Train Loss: 0.8226, Val Loss: 0.8194
-Retraining Epoch 45/1500 - Train Loss: 0.8216, Val Loss: 0.8191
-Retraining Epoch 46/1500 - Train Loss: 0.8211, Val Loss: 0.8187
-Retraining Epoch 47/1500 - Train Loss: 0.8215, Val Loss: 0.8183
-Retraining Epoch 48/1500 - Train Loss: 0.8207, Val Loss: 0.8177
-Retraining Epoch 49/1500 - Train Loss: 0.8195, Val Loss: 0.8170
-Retraining Epoch 50/1500 - Train Loss: 0.8192, Val Loss: 0.8164
-Retraining Epoch 51/1500 - Train Loss: 0.8190, Val Loss: 0.8157
-Retraining Epoch 52/1500 - Train Loss: 0.8181, Val Loss: 0.8151
-Retraining Epoch 53/1500 - Train Loss: 0.8179, Val Loss: 0.8145
-Retraining Epoch 54/1500 - Train Loss: 0.8166, Val Loss: 0.8139
-Retraining Epoch 55/1500 - Train Loss: 0.8161, Val Loss: 0.8134
-Retraining Epoch 56/1500 - Train Loss: 0.8160, Val Loss: 0.8129
-Retraining Epoch 57/1500 - Train Loss: 0.8155, Val Loss: 0.8123
-Retraining Epoch 58/1500 - Train Loss: 0.8157, Val Loss: 0.8117
-Retraining Epoch 59/1500 - Train Loss: 0.8142, Val Loss: 0.8111
-Retraining Epoch 60/1500 - Train Loss: 0.8140, Val Loss: 0.8105
-Retraining Epoch 61/1500 - Train Loss: 0.8133, Val Loss: 0.8099
-Retraining Epoch 62/1500 - Train Loss: 0.8127, Val Loss: 0.8094
-Retraining Epoch 63/1500 - Train Loss: 0.8113, Val Loss: 0.8088
-Retraining Epoch 64/1500 - Train Loss: 0.8116, Val Loss: 0.8084
-Retraining Epoch 65/1500 - Train Loss: 0.8112, Val Loss: 0.8079
-Retraining Epoch 66/1500 - Train Loss: 0.8106, Val Loss: 0.8074
-Retraining Epoch 67/1500 - Train Loss: 0.8102, Val Loss: 0.8069
-Retraining Epoch 68/1500 - Train Loss: 0.8102, Val Loss: 0.8064
-Retraining Epoch 69/1500 - Train Loss: 0.8089, Val Loss: 0.8059
-Retraining Epoch 70/1500 - Train Loss: 0.8098, Val Loss: 0.8053
-Retraining Epoch 71/1500 - Train Loss: 0.8097, Val Loss: 0.8048
-Retraining Epoch 72/1500 - Train Loss: 0.8082, Val Loss: 0.8043
-Retraining Epoch 73/1500 - Train Loss: 0.8084, Val Loss: 0.8038
-Retraining Epoch 74/1500 - Train Loss: 0.8078, Val Loss: 0.8033
-Retraining Epoch 75/1500 - Train Loss: 0.8067, Val Loss: 0.8028
-Retraining Epoch 76/1500 - Train Loss: 0.8065, Val Loss: 0.8022
-Retraining Epoch 77/1500 - Train Loss: 0.8069, Val Loss: 0.8016
-Retraining Epoch 78/1500 - Train Loss: 0.8061, Val Loss: 0.8009
-Retraining Epoch 79/1500 - Train Loss: 0.8059, Val Loss: 0.8002
-Retraining Epoch 80/1500 - Train Loss: 0.8057, Val Loss: 0.7995
-Retraining Epoch 81/1500 - Train Loss: 0.8059, Val Loss: 0.7988
-Retraining Epoch 82/1500 - Train Loss: 0.8034, Val Loss: 0.7981
-Retraining Epoch 83/1500 - Train Loss: 0.8037, Val Loss: 0.7973
-Retraining Epoch 84/1500 - Train Loss: 0.8035, Val Loss: 0.7964
-Retraining Epoch 85/1500 - Train Loss: 0.8025, Val Loss: 0.7954
-Retraining Epoch 86/1500 - Train Loss: 0.8024, Val Loss: 0.7945
-Retraining Epoch 87/1500 - Train Loss: 0.8013, Val Loss: 0.7935
-Retraining Epoch 88/1500 - Train Loss: 0.7993, Val Loss: 0.7924
-Retraining Epoch 89/1500 - Train Loss: 0.7995, Val Loss: 0.7913
-Retraining Epoch 90/1500 - Train Loss: 0.7985, Val Loss: 0.7901
-Retraining Epoch 91/1500 - Train Loss: 0.7967, Val Loss: 0.7889
-Retraining Epoch 92/1500 - Train Loss: 0.7957, Val Loss: 0.7876
-Retraining Epoch 93/1500 - Train Loss: 0.7970, Val Loss: 0.7863
-Retraining Epoch 94/1500 - Train Loss: 0.7948, Val Loss: 0.7849
-Retraining Epoch 95/1500 - Train Loss: 0.7943, Val Loss: 0.7833
-Retraining Epoch 96/1500 - Train Loss: 0.7928, Val Loss: 0.7817
-Retraining Epoch 97/1500 - Train Loss: 0.7907, Val Loss: 0.7801
-Retraining Epoch 98/1500 - Train Loss: 0.7904, Val Loss: 0.7786
-Retraining Epoch 99/1500 - Train Loss: 0.7879, Val Loss: 0.7768
-Retraining Epoch 100/1500 - Train Loss: 0.7871, Val Loss: 0.7752
-Retraining Epoch 101/1500 - Train Loss: 0.7862, Val Loss: 0.7736
-Retraining Epoch 102/1500 - Train Loss: 0.7838, Val Loss: 0.7717
-Retraining Epoch 103/1500 - Train Loss: 0.7833, Val Loss: 0.7699
-Retraining Epoch 104/1500 - Train Loss: 0.7829, Val Loss: 0.7687
-Retraining Epoch 105/1500 - Train Loss: 0.7805, Val Loss: 0.7665
-Retraining Epoch 106/1500 - Train Loss: 0.7792, Val Loss: 0.7647
-Retraining Epoch 107/1500 - Train Loss: 0.7786, Val Loss: 0.7641
-Retraining Epoch 108/1500 - Train Loss: 0.7775, Val Loss: 0.7614
-Retraining Epoch 109/1500 - Train Loss: 0.7748, Val Loss: 0.7597
-Retraining Epoch 110/1500 - Train Loss: 0.7722, Val Loss: 0.7595
-Retraining Epoch 111/1500 - Train Loss: 0.7702, Val Loss: 0.7565
-Retraining Epoch 112/1500 - Train Loss: 0.7719, Val Loss: 0.7551
-Retraining Epoch 113/1500 - Train Loss: 0.7676, Val Loss: 0.7542
-Retraining Epoch 114/1500 - Train Loss: 0.7668, Val Loss: 0.7520
-Retraining Epoch 115/1500 - Train Loss: 0.7657, Val Loss: 0.7503
-Retraining Epoch 116/1500 - Train Loss: 0.7627, Val Loss: 0.7489
-Retraining Epoch 117/1500 - Train Loss: 0.7616, Val Loss: 0.7475
-Retraining Epoch 118/1500 - Train Loss: 0.7641, Val Loss: 0.7456
-Retraining Epoch 119/1500 - Train Loss: 0.7601, Val Loss: 0.7442
-Retraining Epoch 120/1500 - Train Loss: 0.7591, Val Loss: 0.7425
-Retraining Epoch 121/1500 - Train Loss: 0.7583, Val Loss: 0.7408
-Retraining Epoch 122/1500 - Train Loss: 0.7552, Val Loss: 0.7393
-Retraining Epoch 123/1500 - Train Loss: 0.7534, Val Loss: 0.7379
-Retraining Epoch 124/1500 - Train Loss: 0.7538, Val Loss: 0.7362
-Retraining Epoch 125/1500 - Train Loss: 0.7475, Val Loss: 0.7348
-Retraining Epoch 126/1500 - Train Loss: 0.7506, Val Loss: 0.7329
-Retraining Epoch 127/1500 - Train Loss: 0.7479, Val Loss: 0.7312
-Retraining Epoch 128/1500 - Train Loss: 0.7452, Val Loss: 0.7301
-Retraining Epoch 129/1500 - Train Loss: 0.7437, Val Loss: 0.7298
-Retraining Epoch 130/1500 - Train Loss: 0.7464, Val Loss: 0.7330
-Retraining Epoch 131/1500 - Train Loss: 0.7459, Val Loss: 0.7272
-Retraining Epoch 132/1500 - Train Loss: 0.7431, Val Loss: 0.7246
-Retraining Epoch 133/1500 - Train Loss: 0.7417, Val Loss: 0.7277
-Retraining Epoch 134/1500 - Train Loss: 0.7416, Val Loss: 0.7216
-Retraining Epoch 135/1500 - Train Loss: 0.7376, Val Loss: 0.7230
-Retraining Epoch 136/1500 - Train Loss: 0.7388, Val Loss: 0.7199
-Retraining Epoch 137/1500 - Train Loss: 0.7354, Val Loss: 0.7207
-Retraining Epoch 138/1500 - Train Loss: 0.7368, Val Loss: 0.7178
-Retraining Epoch 139/1500 - Train Loss: 0.7316, Val Loss: 0.7170
-Retraining Epoch 140/1500 - Train Loss: 0.7311, Val Loss: 0.7166
-Retraining Epoch 141/1500 - Train Loss: 0.7320, Val Loss: 0.7139
-Retraining Epoch 142/1500 - Train Loss: 0.7300, Val Loss: 0.7138
-Retraining Epoch 143/1500 - Train Loss: 0.7300, Val Loss: 0.7116
-Retraining Epoch 144/1500 - Train Loss: 0.7271, Val Loss: 0.7112
-Retraining Epoch 145/1500 - Train Loss: 0.7268, Val Loss: 0.7097
-Retraining Epoch 146/1500 - Train Loss: 0.7255, Val Loss: 0.7084
-Retraining Epoch 147/1500 - Train Loss: 0.7237, Val Loss: 0.7085
-Retraining Epoch 148/1500 - Train Loss: 0.7249, Val Loss: 0.7070
-Retraining Epoch 149/1500 - Train Loss: 0.7234, Val Loss: 0.7057
-Retraining Epoch 150/1500 - Train Loss: 0.7228, Val Loss: 0.7064
-Retraining Epoch 151/1500 - Train Loss: 0.7231, Val Loss: 0.7048
-Retraining Epoch 152/1500 - Train Loss: 0.7208, Val Loss: 0.7034
-Retraining Epoch 153/1500 - Train Loss: 0.7187, Val Loss: 0.7044
-Retraining Epoch 154/1500 - Train Loss: 0.7197, Val Loss: 0.7032
-Retraining Epoch 155/1500 - Train Loss: 0.7178, Val Loss: 0.7016
-Retraining Epoch 156/1500 - Train Loss: 0.7177, Val Loss: 0.7023
-Retraining Epoch 157/1500 - Train Loss: 0.7171, Val Loss: 0.7011
-Retraining Epoch 158/1500 - Train Loss: 0.7156, Val Loss: 0.7000
-Retraining Epoch 159/1500 - Train Loss: 0.7162, Val Loss: 0.7004
-Retraining Epoch 160/1500 - Train Loss: 0.7114, Val Loss: 0.6992
-Retraining Epoch 161/1500 - Train Loss: 0.7131, Val Loss: 0.6984
-Retraining Epoch 162/1500 - Train Loss: 0.7139, Val Loss: 0.6982
-Retraining Epoch 163/1500 - Train Loss: 0.7102, Val Loss: 0.6976
-Retraining Epoch 164/1500 - Train Loss: 0.7106, Val Loss: 0.6967
-Retraining Epoch 165/1500 - Train Loss: 0.7120, Val Loss: 0.6962
-Retraining Epoch 166/1500 - Train Loss: 0.7095, Val Loss: 0.6957
-Retraining Epoch 167/1500 - Train Loss: 0.7084, Val Loss: 0.6952
-Retraining Epoch 168/1500 - Train Loss: 0.7098, Val Loss: 0.6949
-Retraining Epoch 169/1500 - Train Loss: 0.7075, Val Loss: 0.6945
-Retraining Epoch 170/1500 - Train Loss: 0.7074, Val Loss: 0.6940
-Retraining Epoch 171/1500 - Train Loss: 0.7080, Val Loss: 0.6936
-Retraining Epoch 172/1500 - Train Loss: 0.7077, Val Loss: 0.6933
-Retraining Epoch 173/1500 - Train Loss: 0.7050, Val Loss: 0.6927
-Retraining Epoch 174/1500 - Train Loss: 0.7050, Val Loss: 0.6922
-Retraining Epoch 175/1500 - Train Loss: 0.7046, Val Loss: 0.6920
-Retraining Epoch 176/1500 - Train Loss: 0.7041, Val Loss: 0.6922
-Retraining Epoch 177/1500 - Train Loss: 0.7047, Val Loss: 0.6924
-Retraining Epoch 178/1500 - Train Loss: 0.7056, Val Loss: 0.6914
-Retraining Epoch 179/1500 - Train Loss: 0.7034, Val Loss: 0.6901
-Retraining Epoch 180/1500 - Train Loss: 0.7005, Val Loss: 0.6899
-Retraining Epoch 181/1500 - Train Loss: 0.7015, Val Loss: 0.6900
-Retraining Epoch 182/1500 - Train Loss: 0.7009, Val Loss: 0.6903
-Retraining Epoch 183/1500 - Train Loss: 0.7023, Val Loss: 0.6891
-Retraining Epoch 184/1500 - Train Loss: 0.7010, Val Loss: 0.6879
-Retraining Epoch 185/1500 - Train Loss: 0.6984, Val Loss: 0.6878
-Retraining Epoch 186/1500 - Train Loss: 0.6982, Val Loss: 0.6880
-Retraining Epoch 187/1500 - Train Loss: 0.6983, Val Loss: 0.6887
-Retraining Epoch 188/1500 - Train Loss: 0.7017, Val Loss: 0.6870
-Retraining Epoch 189/1500 - Train Loss: 0.6985, Val Loss: 0.6858
-Retraining Epoch 190/1500 - Train Loss: 0.6962, Val Loss: 0.6864
-Retraining Epoch 191/1500 - Train Loss: 0.6975, Val Loss: 0.6871
-Retraining Epoch 192/1500 - Train Loss: 0.6984, Val Loss: 0.6862
-Retraining Epoch 193/1500 - Train Loss: 0.6969, Val Loss: 0.6845
-Retraining Epoch 194/1500 - Train Loss: 0.6971, Val Loss: 0.6851
-Retraining Epoch 195/1500 - Train Loss: 0.6934, Val Loss: 0.6857
-Retraining Epoch 196/1500 - Train Loss: 0.6954, Val Loss: 0.6840
-Retraining Epoch 197/1500 - Train Loss: 0.6942, Val Loss: 0.6831
-Retraining Epoch 198/1500 - Train Loss: 0.6938, Val Loss: 0.6839
-Retraining Epoch 199/1500 - Train Loss: 0.6954, Val Loss: 0.6836
-Retraining Epoch 200/1500 - Train Loss: 0.6949, Val Loss: 0.6821
-Retraining Epoch 201/1500 - Train Loss: 0.6924, Val Loss: 0.6815
-Retraining Epoch 202/1500 - Train Loss: 0.6909, Val Loss: 0.6823
-Retraining Epoch 203/1500 - Train Loss: 0.6914, Val Loss: 0.6817
-Retraining Epoch 204/1500 - Train Loss: 0.6907, Val Loss: 0.6801
-Retraining Epoch 205/1500 - Train Loss: 0.6882, Val Loss: 0.6809
-Retraining Epoch 206/1500 - Train Loss: 0.6912, Val Loss: 0.6809
-Retraining Epoch 207/1500 - Train Loss: 0.6878, Val Loss: 0.6789
-Retraining Epoch 208/1500 - Train Loss: 0.6876, Val Loss: 0.6794
-Retraining Epoch 209/1500 - Train Loss: 0.6890, Val Loss: 0.6796
-Retraining Epoch 210/1500 - Train Loss: 0.6910, Val Loss: 0.6781
-Retraining Epoch 211/1500 - Train Loss: 0.6866, Val Loss: 0.6774
-Retraining Epoch 212/1500 - Train Loss: 0.6872, Val Loss: 0.6777
-Retraining Epoch 213/1500 - Train Loss: 0.6863, Val Loss: 0.6772
-Retraining Epoch 214/1500 - Train Loss: 0.6871, Val Loss: 0.6765
-Retraining Epoch 215/1500 - Train Loss: 0.6851, Val Loss: 0.6757
-Retraining Epoch 216/1500 - Train Loss: 0.6830, Val Loss: 0.6753
-Retraining Epoch 217/1500 - Train Loss: 0.6859, Val Loss: 0.6756
-Retraining Epoch 218/1500 - Train Loss: 0.6853, Val Loss: 0.6751
-Retraining Epoch 219/1500 - Train Loss: 0.6847, Val Loss: 0.6740
-Retraining Epoch 220/1500 - Train Loss: 0.6827, Val Loss: 0.6736
-Retraining Epoch 221/1500 - Train Loss: 0.6840, Val Loss: 0.6732
-Retraining Epoch 222/1500 - Train Loss: 0.6828, Val Loss: 0.6727
-Retraining Epoch 223/1500 - Train Loss: 0.6809, Val Loss: 0.6719
-Retraining Epoch 224/1500 - Train Loss: 0.6785, Val Loss: 0.6714
-Retraining Epoch 225/1500 - Train Loss: 0.6815, Val Loss: 0.6710
-Retraining Epoch 226/1500 - Train Loss: 0.6812, Val Loss: 0.6704
-Retraining Epoch 227/1500 - Train Loss: 0.6764, Val Loss: 0.6701
-Retraining Epoch 228/1500 - Train Loss: 0.6786, Val Loss: 0.6693
-Retraining Epoch 229/1500 - Train Loss: 0.6798, Val Loss: 0.6693
-Retraining Epoch 230/1500 - Train Loss: 0.6772, Val Loss: 0.6681
-Retraining Epoch 231/1500 - Train Loss: 0.6766, Val Loss: 0.6677
-Retraining Epoch 232/1500 - Train Loss: 0.6758, Val Loss: 0.6667
-Retraining Epoch 233/1500 - Train Loss: 0.6774, Val Loss: 0.6661
-Retraining Epoch 234/1500 - Train Loss: 0.6770, Val Loss: 0.6655
-Retraining Epoch 235/1500 - Train Loss: 0.6734, Val Loss: 0.6647
-Retraining Epoch 236/1500 - Train Loss: 0.6761, Val Loss: 0.6657
-Retraining Epoch 237/1500 - Train Loss: 0.6753, Val Loss: 0.6657
-Retraining Epoch 238/1500 - Train Loss: 0.6771, Val Loss: 0.6694
-Retraining Epoch 239/1500 - Train Loss: 0.6804, Val Loss: 0.6645
-Retraining Epoch 240/1500 - Train Loss: 0.6762, Val Loss: 0.6616
-Retraining Epoch 241/1500 - Train Loss: 0.6721, Val Loss: 0.6607
-Retraining Epoch 242/1500 - Train Loss: 0.6703, Val Loss: 0.6620
-Retraining Epoch 243/1500 - Train Loss: 0.6729, Val Loss: 0.6618
-Retraining Epoch 244/1500 - Train Loss: 0.6724, Val Loss: 0.6575
-Retraining Epoch 245/1500 - Train Loss: 0.6693, Val Loss: 0.6581
-Retraining Epoch 246/1500 - Train Loss: 0.6682, Val Loss: 0.6614
-Retraining Epoch 247/1500 - Train Loss: 0.6721, Val Loss: 0.6565
-Retraining Epoch 248/1500 - Train Loss: 0.6693, Val Loss: 0.6543
-Retraining Epoch 249/1500 - Train Loss: 0.6639, Val Loss: 0.6557
-Retraining Epoch 250/1500 - Train Loss: 0.6662, Val Loss: 0.6540
-Retraining Epoch 251/1500 - Train Loss: 0.6675, Val Loss: 0.6528
-Retraining Epoch 252/1500 - Train Loss: 0.6637, Val Loss: 0.6503
-Retraining Epoch 253/1500 - Train Loss: 0.6606, Val Loss: 0.6503
-Retraining Epoch 254/1500 - Train Loss: 0.6640, Val Loss: 0.6525
-Retraining Epoch 255/1500 - Train Loss: 0.6640, Val Loss: 0.6482
-Retraining Epoch 256/1500 - Train Loss: 0.6624, Val Loss: 0.6464
-Retraining Epoch 257/1500 - Train Loss: 0.6593, Val Loss: 0.6458
-Retraining Epoch 258/1500 - Train Loss: 0.6599, Val Loss: 0.6450
-Retraining Epoch 259/1500 - Train Loss: 0.6572, Val Loss: 0.6450
-Retraining Epoch 260/1500 - Train Loss: 0.6592, Val Loss: 0.6413
-Retraining Epoch 261/1500 - Train Loss: 0.6563, Val Loss: 0.6405
-Retraining Epoch 262/1500 - Train Loss: 0.6583, Val Loss: 0.6447
-Retraining Epoch 263/1500 - Train Loss: 0.6585, Val Loss: 0.6409
-Retraining Epoch 264/1500 - Train Loss: 0.6566, Val Loss: 0.6395
-Retraining Epoch 265/1500 - Train Loss: 0.6525, Val Loss: 0.6365
-Retraining Epoch 266/1500 - Train Loss: 0.6525, Val Loss: 0.6373
-Retraining Epoch 267/1500 - Train Loss: 0.6526, Val Loss: 0.6422
-Retraining Epoch 268/1500 - Train Loss: 0.6542, Val Loss: 0.6341
-Retraining Epoch 269/1500 - Train Loss: 0.6519, Val Loss: 0.6348
-Retraining Epoch 270/1500 - Train Loss: 0.6517, Val Loss: 0.6414
-Retraining Epoch 271/1500 - Train Loss: 0.6565, Val Loss: 0.6315
-Retraining Epoch 272/1500 - Train Loss: 0.6450, Val Loss: 0.6333
-Retraining Epoch 273/1500 - Train Loss: 0.6501, Val Loss: 0.6404
-Retraining Epoch 274/1500 - Train Loss: 0.6569, Val Loss: 0.6295
-Retraining Epoch 275/1500 - Train Loss: 0.6447, Val Loss: 0.6350
-Retraining Epoch 276/1500 - Train Loss: 0.6522, Val Loss: 0.6397
-Retraining Epoch 277/1500 - Train Loss: 0.6543, Val Loss: 0.6292
-Retraining Epoch 278/1500 - Train Loss: 0.6434, Val Loss: 0.6380
-Retraining Epoch 279/1500 - Train Loss: 0.6554, Val Loss: 0.6328
-Retraining Epoch 280/1500 - Train Loss: 0.6461, Val Loss: 0.6347
-Retraining Epoch 281/1500 - Train Loss: 0.6461, Val Loss: 0.6290
-Retraining Epoch 282/1500 - Train Loss: 0.6452, Val Loss: 0.6263
-Retraining Epoch 283/1500 - Train Loss: 0.6450, Val Loss: 0.6313
-Retraining Epoch 284/1500 - Train Loss: 0.6447, Val Loss: 0.6257
-Retraining Epoch 285/1500 - Train Loss: 0.6380, Val Loss: 0.6276
-Retraining Epoch 286/1500 - Train Loss: 0.6436, Val Loss: 0.6231
-Retraining Epoch 287/1500 - Train Loss: 0.6372, Val Loss: 0.6261
-Retraining Epoch 288/1500 - Train Loss: 0.6393, Val Loss: 0.6213
-Retraining Epoch 289/1500 - Train Loss: 0.6368, Val Loss: 0.6211
-Retraining Epoch 290/1500 - Train Loss: 0.6392, Val Loss: 0.6232
-Retraining Epoch 291/1500 - Train Loss: 0.6352, Val Loss: 0.6214
-Retraining Epoch 292/1500 - Train Loss: 0.6340, Val Loss: 0.6208
-Retraining Epoch 293/1500 - Train Loss: 0.6397, Val Loss: 0.6204
-Retraining Epoch 294/1500 - Train Loss: 0.6354, Val Loss: 0.6189
-Retraining Epoch 295/1500 - Train Loss: 0.6344, Val Loss: 0.6183
-Retraining Epoch 296/1500 - Train Loss: 0.6341, Val Loss: 0.6191
-Retraining Epoch 297/1500 - Train Loss: 0.6317, Val Loss: 0.6191
-Retraining Epoch 298/1500 - Train Loss: 0.6342, Val Loss: 0.6169
-Retraining Epoch 299/1500 - Train Loss: 0.6327, Val Loss: 0.6159
-Retraining Epoch 300/1500 - Train Loss: 0.6294, Val Loss: 0.6170
-Retraining Epoch 301/1500 - Train Loss: 0.6311, Val Loss: 0.6152
-Retraining Epoch 302/1500 - Train Loss: 0.6319, Val Loss: 0.6154
-Retraining Epoch 303/1500 - Train Loss: 0.6286, Val Loss: 0.6152
-Retraining Epoch 304/1500 - Train Loss: 0.6326, Val Loss: 0.6139
-Retraining Epoch 305/1500 - Train Loss: 0.6305, Val Loss: 0.6139
-Retraining Epoch 306/1500 - Train Loss: 0.6315, Val Loss: 0.6138
-Retraining Epoch 307/1500 - Train Loss: 0.6289, Val Loss: 0.6128
-Retraining Epoch 308/1500 - Train Loss: 0.6302, Val Loss: 0.6142
-Retraining Epoch 309/1500 - Train Loss: 0.6262, Val Loss: 0.6116
-Retraining Epoch 310/1500 - Train Loss: 0.6266, Val Loss: 0.6113
-Retraining Epoch 311/1500 - Train Loss: 0.6255, Val Loss: 0.6128
-Retraining Epoch 312/1500 - Train Loss: 0.6268, Val Loss: 0.6111
-Retraining Epoch 313/1500 - Train Loss: 0.6282, Val Loss: 0.6114
-Retraining Epoch 314/1500 - Train Loss: 0.6247, Val Loss: 0.6099
-Retraining Epoch 315/1500 - Train Loss: 0.6280, Val Loss: 0.6094
-Retraining Epoch 316/1500 - Train Loss: 0.6249, Val Loss: 0.6112
-Retraining Epoch 317/1500 - Train Loss: 0.6233, Val Loss: 0.6088
-Retraining Epoch 318/1500 - Train Loss: 0.6246, Val Loss: 0.6082
-Retraining Epoch 319/1500 - Train Loss: 0.6225, Val Loss: 0.6101
-Retraining Epoch 320/1500 - Train Loss: 0.6234, Val Loss: 0.6070
-Retraining Epoch 321/1500 - Train Loss: 0.6239, Val Loss: 0.6075
-Retraining Epoch 322/1500 - Train Loss: 0.6230, Val Loss: 0.6078
-Retraining Epoch 323/1500 - Train Loss: 0.6222, Val Loss: 0.6063
-Retraining Epoch 324/1500 - Train Loss: 0.6212, Val Loss: 0.6095
-Retraining Epoch 325/1500 - Train Loss: 0.6236, Val Loss: 0.6053
-Retraining Epoch 326/1500 - Train Loss: 0.6201, Val Loss: 0.6049
-Retraining Epoch 327/1500 - Train Loss: 0.6236, Val Loss: 0.6061
-Retraining Epoch 328/1500 - Train Loss: 0.6199, Val Loss: 0.6041
-Retraining Epoch 329/1500 - Train Loss: 0.6207, Val Loss: 0.6057
-Retraining Epoch 330/1500 - Train Loss: 0.6203, Val Loss: 0.6030
-Retraining Epoch 331/1500 - Train Loss: 0.6157, Val Loss: 0.6025
-Retraining Epoch 332/1500 - Train Loss: 0.6190, Val Loss: 0.6038
-Retraining Epoch 333/1500 - Train Loss: 0.6192, Val Loss: 0.6029
-Retraining Epoch 334/1500 - Train Loss: 0.6185, Val Loss: 0.6043
-Retraining Epoch 335/1500 - Train Loss: 0.6184, Val Loss: 0.6013
-Retraining Epoch 336/1500 - Train Loss: 0.6176, Val Loss: 0.6028
-Retraining Epoch 337/1500 - Train Loss: 0.6170, Val Loss: 0.6006
-Retraining Epoch 338/1500 - Train Loss: 0.6183, Val Loss: 0.6035
-Retraining Epoch 339/1500 - Train Loss: 0.6164, Val Loss: 0.6003
-Retraining Epoch 340/1500 - Train Loss: 0.6135, Val Loss: 0.6009
-Retraining Epoch 341/1500 - Train Loss: 0.6148, Val Loss: 0.5988
-Retraining Epoch 342/1500 - Train Loss: 0.6127, Val Loss: 0.5989
-Retraining Epoch 343/1500 - Train Loss: 0.6164, Val Loss: 0.6012
-Retraining Epoch 344/1500 - Train Loss: 0.6116, Val Loss: 0.5989
-Retraining Epoch 345/1500 - Train Loss: 0.6173, Val Loss: 0.6053
-Retraining Epoch 346/1500 - Train Loss: 0.6181, Val Loss: 0.5986
-Retraining Epoch 347/1500 - Train Loss: 0.6165, Val Loss: 0.5985
-Retraining Epoch 348/1500 - Train Loss: 0.6118, Val Loss: 0.5976
-Retraining Epoch 349/1500 - Train Loss: 0.6120, Val Loss: 0.5964
-Retraining Epoch 350/1500 - Train Loss: 0.6127, Val Loss: 0.5993
-Retraining Epoch 351/1500 - Train Loss: 0.6139, Val Loss: 0.5960
-Retraining Epoch 352/1500 - Train Loss: 0.6128, Val Loss: 0.5965
-Retraining Epoch 353/1500 - Train Loss: 0.6089, Val Loss: 0.5961
-Retraining Epoch 354/1500 - Train Loss: 0.6078, Val Loss: 0.5950
-Retraining Epoch 355/1500 - Train Loss: 0.6095, Val Loss: 0.6034
-Retraining Epoch 356/1500 - Train Loss: 0.6130, Val Loss: 0.5989
-Retraining Epoch 357/1500 - Train Loss: 0.6149, Val Loss: 0.6019
-Retraining Epoch 358/1500 - Train Loss: 0.6151, Val Loss: 0.5930
-Retraining Epoch 359/1500 - Train Loss: 0.6074, Val Loss: 0.5943
-Retraining Epoch 360/1500 - Train Loss: 0.6108, Val Loss: 0.6021
-Retraining Epoch 361/1500 - Train Loss: 0.6147, Val Loss: 0.5934
-Retraining Epoch 362/1500 - Train Loss: 0.6092, Val Loss: 0.5954
-Retraining Epoch 363/1500 - Train Loss: 0.6123, Val Loss: 0.6064
-Retraining Epoch 364/1500 - Train Loss: 0.6178, Val Loss: 0.5915
-Retraining Epoch 365/1500 - Train Loss: 0.6049, Val Loss: 0.6003
-Retraining Epoch 366/1500 - Train Loss: 0.6153, Val Loss: 0.6120
-Retraining Epoch 367/1500 - Train Loss: 0.6203, Val Loss: 0.6004
-Retraining Epoch 368/1500 - Train Loss: 0.6127, Val Loss: 0.6082
-Retraining Epoch 369/1500 - Train Loss: 0.6246, Val Loss: 0.5968
-Retraining Epoch 370/1500 - Train Loss: 0.6084, Val Loss: 0.6045
-Retraining Epoch 371/1500 - Train Loss: 0.6175, Val Loss: 0.5929
-Retraining Epoch 372/1500 - Train Loss: 0.6069, Val Loss: 0.5975
-Retraining Epoch 373/1500 - Train Loss: 0.6148, Val Loss: 0.5970
-Retraining Epoch 374/1500 - Train Loss: 0.6100, Val Loss: 0.5962
-Retraining Epoch 375/1500 - Train Loss: 0.6096, Val Loss: 0.5944
-Retraining Epoch 376/1500 - Train Loss: 0.6084, Val Loss: 0.5899
-Retraining Epoch 377/1500 - Train Loss: 0.6046, Val Loss: 0.5973
-Retraining Epoch 378/1500 - Train Loss: 0.6104, Val Loss: 0.5886
-Retraining Epoch 379/1500 - Train Loss: 0.6043, Val Loss: 0.5914
-Retraining Epoch 380/1500 - Train Loss: 0.6097, Val Loss: 0.5931
-Retraining Epoch 381/1500 - Train Loss: 0.6044, Val Loss: 0.5928
-Retraining Epoch 382/1500 - Train Loss: 0.6041, Val Loss: 0.5898
-Retraining Epoch 383/1500 - Train Loss: 0.6048, Val Loss: 0.5868
-Retraining Epoch 384/1500 - Train Loss: 0.6005, Val Loss: 0.5922
-Retraining Epoch 385/1500 - Train Loss: 0.6050, Val Loss: 0.5866
-Retraining Epoch 386/1500 - Train Loss: 0.6003, Val Loss: 0.5883
-Retraining Epoch 387/1500 - Train Loss: 0.6031, Val Loss: 0.5903
-Retraining Epoch 388/1500 - Train Loss: 0.6018, Val Loss: 0.5868
-Retraining Epoch 389/1500 - Train Loss: 0.6005, Val Loss: 0.5879
-Retraining Epoch 390/1500 - Train Loss: 0.6046, Val Loss: 0.5892
-Retraining Epoch 391/1500 - Train Loss: 0.6017, Val Loss: 0.5873
-Retraining Epoch 392/1500 - Train Loss: 0.5995, Val Loss: 0.5872
-Retraining Epoch 393/1500 - Train Loss: 0.6034, Val Loss: 0.5857
-Retraining Epoch 394/1500 - Train Loss: 0.5991, Val Loss: 0.5879
-Retraining Epoch 395/1500 - Train Loss: 0.5992, Val Loss: 0.5843
-Retraining Epoch 396/1500 - Train Loss: 0.6003, Val Loss: 0.5831
-Retraining Epoch 397/1500 - Train Loss: 0.5953, Val Loss: 0.5856
-Retraining Epoch 398/1500 - Train Loss: 0.5999, Val Loss: 0.5821
-Retraining Epoch 399/1500 - Train Loss: 0.5980, Val Loss: 0.5822
-Retraining Epoch 400/1500 - Train Loss: 0.5960, Val Loss: 0.5836
-Retraining Epoch 401/1500 - Train Loss: 0.5955, Val Loss: 0.5824
-Retraining Epoch 402/1500 - Train Loss: 0.5932, Val Loss: 0.5814
-Retraining Epoch 403/1500 - Train Loss: 0.5966, Val Loss: 0.5818
-Retraining Epoch 404/1500 - Train Loss: 0.5948, Val Loss: 0.5813
-Retraining Epoch 405/1500 - Train Loss: 0.5969, Val Loss: 0.5804
-Retraining Epoch 406/1500 - Train Loss: 0.5963, Val Loss: 0.5812
-Retraining Epoch 407/1500 - Train Loss: 0.5970, Val Loss: 0.5802
-Retraining Epoch 408/1500 - Train Loss: 0.5950, Val Loss: 0.5792
-Retraining Epoch 409/1500 - Train Loss: 0.5942, Val Loss: 0.5798
-Retraining Epoch 410/1500 - Train Loss: 0.5917, Val Loss: 0.5787
-Retraining Epoch 411/1500 - Train Loss: 0.5951, Val Loss: 0.5790
-Retraining Epoch 412/1500 - Train Loss: 0.5958, Val Loss: 0.5792
-Retraining Epoch 413/1500 - Train Loss: 0.5926, Val Loss: 0.5781
-Retraining Epoch 414/1500 - Train Loss: 0.5940, Val Loss: 0.5786
-Retraining Epoch 415/1500 - Train Loss: 0.5928, Val Loss: 0.5775
-Retraining Epoch 416/1500 - Train Loss: 0.5930, Val Loss: 0.5779
-Retraining Epoch 417/1500 - Train Loss: 0.5919, Val Loss: 0.5779
-Retraining Epoch 418/1500 - Train Loss: 0.5924, Val Loss: 0.5764
-Retraining Epoch 419/1500 - Train Loss: 0.5950, Val Loss: 0.5778
-Retraining Epoch 420/1500 - Train Loss: 0.5928, Val Loss: 0.5763
-Retraining Epoch 421/1500 - Train Loss: 0.5890, Val Loss: 0.5760
-Retraining Epoch 422/1500 - Train Loss: 0.5896, Val Loss: 0.5772
-Retraining Epoch 423/1500 - Train Loss: 0.5914, Val Loss: 0.5750
-Retraining Epoch 424/1500 - Train Loss: 0.5881, Val Loss: 0.5757
-Retraining Epoch 425/1500 - Train Loss: 0.5892, Val Loss: 0.5749
-Retraining Epoch 426/1500 - Train Loss: 0.5912, Val Loss: 0.5752
-Retraining Epoch 427/1500 - Train Loss: 0.5911, Val Loss: 0.5739
-Retraining Epoch 428/1500 - Train Loss: 0.5914, Val Loss: 0.5737
-Retraining Epoch 429/1500 - Train Loss: 0.5912, Val Loss: 0.5739
-Retraining Epoch 430/1500 - Train Loss: 0.5863, Val Loss: 0.5739
-Retraining Epoch 431/1500 - Train Loss: 0.5908, Val Loss: 0.5728
-Retraining Epoch 432/1500 - Train Loss: 0.5907, Val Loss: 0.5734
-Retraining Epoch 433/1500 - Train Loss: 0.5905, Val Loss: 0.5724
-Retraining Epoch 434/1500 - Train Loss: 0.5867, Val Loss: 0.5723
-Retraining Epoch 435/1500 - Train Loss: 0.5859, Val Loss: 0.5727
-Retraining Epoch 436/1500 - Train Loss: 0.5870, Val Loss: 0.5718
-Retraining Epoch 437/1500 - Train Loss: 0.5868, Val Loss: 0.5711
-Retraining Epoch 438/1500 - Train Loss: 0.5840, Val Loss: 0.5732
-Retraining Epoch 439/1500 - Train Loss: 0.5864, Val Loss: 0.5708
-Retraining Epoch 440/1500 - Train Loss: 0.5850, Val Loss: 0.5737
-Retraining Epoch 441/1500 - Train Loss: 0.5874, Val Loss: 0.5699
-Retraining Epoch 442/1500 - Train Loss: 0.5842, Val Loss: 0.5695
-Retraining Epoch 443/1500 - Train Loss: 0.5853, Val Loss: 0.5722
-Retraining Epoch 444/1500 - Train Loss: 0.5865, Val Loss: 0.5707
-Retraining Epoch 445/1500 - Train Loss: 0.5884, Val Loss: 0.5821
-Retraining Epoch 446/1500 - Train Loss: 0.5943, Val Loss: 0.5721
-Retraining Epoch 447/1500 - Train Loss: 0.5896, Val Loss: 0.5722
-Retraining Epoch 448/1500 - Train Loss: 0.5850, Val Loss: 0.5696
-Retraining Epoch 449/1500 - Train Loss: 0.5847, Val Loss: 0.5709
-Retraining Epoch 450/1500 - Train Loss: 0.5876, Val Loss: 0.5779
-Retraining Epoch 451/1500 - Train Loss: 0.5889, Val Loss: 0.5675
-Retraining Epoch 452/1500 - Train Loss: 0.5818, Val Loss: 0.5705
-Retraining Epoch 453/1500 - Train Loss: 0.5904, Val Loss: 0.5910
-Retraining Epoch 454/1500 - Train Loss: 0.6000, Val Loss: 0.5687
-Retraining Epoch 455/1500 - Train Loss: 0.5816, Val Loss: 0.5762
-Retraining Epoch 456/1500 - Train Loss: 0.5952, Val Loss: 0.5905
-Retraining Epoch 457/1500 - Train Loss: 0.6029, Val Loss: 0.5725
-Retraining Epoch 458/1500 - Train Loss: 0.5856, Val Loss: 0.5879
-Retraining Epoch 459/1500 - Train Loss: 0.6096, Val Loss: 0.5773
-Retraining Epoch 460/1500 - Train Loss: 0.5888, Val Loss: 0.5859
-Retraining Epoch 461/1500 - Train Loss: 0.6009, Val Loss: 0.5688
-Retraining Epoch 462/1500 - Train Loss: 0.5878, Val Loss: 0.5730
-Retraining Epoch 463/1500 - Train Loss: 0.5939, Val Loss: 0.5817
-Retraining Epoch 464/1500 - Train Loss: 0.5945, Val Loss: 0.5765
-Retraining Epoch 465/1500 - Train Loss: 0.5900, Val Loss: 0.5771
-Retraining Epoch 466/1500 - Train Loss: 0.5964, Val Loss: 0.5667
-Retraining Epoch 467/1500 - Train Loss: 0.5856, Val Loss: 0.5791
-Retraining Epoch 468/1500 - Train Loss: 0.5922, Val Loss: 0.5674
-Retraining Epoch 469/1500 - Train Loss: 0.5810, Val Loss: 0.5731
-Retraining Epoch 470/1500 - Train Loss: 0.5894, Val Loss: 0.5716
-Retraining Epoch 471/1500 - Train Loss: 0.5842, Val Loss: 0.5742
-Retraining Epoch 472/1500 - Train Loss: 0.5861, Val Loss: 0.5659
-Retraining Epoch 473/1500 - Train Loss: 0.5841, Val Loss: 0.5645
-Retraining Epoch 474/1500 - Train Loss: 0.5800, Val Loss: 0.5699
-Retraining Epoch 475/1500 - Train Loss: 0.5855, Val Loss: 0.5671
-Retraining Epoch 476/1500 - Train Loss: 0.5788, Val Loss: 0.5655
-Retraining Epoch 477/1500 - Train Loss: 0.5819, Val Loss: 0.5645
-Retraining Epoch 478/1500 - Train Loss: 0.5792, Val Loss: 0.5668
-Retraining Epoch 479/1500 - Train Loss: 0.5805, Val Loss: 0.5627
-Retraining Epoch 480/1500 - Train Loss: 0.5836, Val Loss: 0.5644
-Retraining Epoch 481/1500 - Train Loss: 0.5814, Val Loss: 0.5661
-Retraining Epoch 482/1500 - Train Loss: 0.5791, Val Loss: 0.5621
-Retraining Epoch 483/1500 - Train Loss: 0.5774, Val Loss: 0.5622
-Retraining Epoch 484/1500 - Train Loss: 0.5779, Val Loss: 0.5640
-Retraining Epoch 485/1500 - Train Loss: 0.5767, Val Loss: 0.5615
-Retraining Epoch 486/1500 - Train Loss: 0.5781, Val Loss: 0.5614
-Retraining Epoch 487/1500 - Train Loss: 0.5786, Val Loss: 0.5625
-Retraining Epoch 488/1500 - Train Loss: 0.5794, Val Loss: 0.5603
-Retraining Epoch 489/1500 - Train Loss: 0.5738, Val Loss: 0.5597
-Retraining Epoch 490/1500 - Train Loss: 0.5769, Val Loss: 0.5618
-Retraining Epoch 491/1500 - Train Loss: 0.5784, Val Loss: 0.5600
-Retraining Epoch 492/1500 - Train Loss: 0.5781, Val Loss: 0.5588
-Retraining Epoch 493/1500 - Train Loss: 0.5782, Val Loss: 0.5609
-Retraining Epoch 494/1500 - Train Loss: 0.5755, Val Loss: 0.5590
-Retraining Epoch 495/1500 - Train Loss: 0.5774, Val Loss: 0.5586
-Retraining Epoch 496/1500 - Train Loss: 0.5793, Val Loss: 0.5599
-Retraining Epoch 497/1500 - Train Loss: 0.5756, Val Loss: 0.5584
-Retraining Epoch 498/1500 - Train Loss: 0.5768, Val Loss: 0.5575
-Retraining Epoch 499/1500 - Train Loss: 0.5749, Val Loss: 0.5582
-Retraining Epoch 500/1500 - Train Loss: 0.5750, Val Loss: 0.5591
-Retraining Epoch 501/1500 - Train Loss: 0.5747, Val Loss: 0.5571
-Retraining Epoch 502/1500 - Train Loss: 0.5759, Val Loss: 0.5580
-Retraining Epoch 503/1500 - Train Loss: 0.5717, Val Loss: 0.5572
-Retraining Epoch 504/1500 - Train Loss: 0.5725, Val Loss: 0.5564
-Retraining Epoch 505/1500 - Train Loss: 0.5759, Val Loss: 0.5596
-Retraining Epoch 506/1500 - Train Loss: 0.5743, Val Loss: 0.5556
-Retraining Epoch 507/1500 - Train Loss: 0.5763, Val Loss: 0.5553
-Retraining Epoch 508/1500 - Train Loss: 0.5743, Val Loss: 0.5594
-Retraining Epoch 509/1500 - Train Loss: 0.5768, Val Loss: 0.5548
-Retraining Epoch 510/1500 - Train Loss: 0.5756, Val Loss: 0.5548
-Retraining Epoch 511/1500 - Train Loss: 0.5719, Val Loss: 0.5563
-Retraining Epoch 512/1500 - Train Loss: 0.5692, Val Loss: 0.5546
-Retraining Epoch 513/1500 - Train Loss: 0.5737, Val Loss: 0.5596
-Retraining Epoch 514/1500 - Train Loss: 0.5753, Val Loss: 0.5542
-Retraining Epoch 515/1500 - Train Loss: 0.5715, Val Loss: 0.5535
-Retraining Epoch 516/1500 - Train Loss: 0.5725, Val Loss: 0.5575
-Retraining Epoch 517/1500 - Train Loss: 0.5730, Val Loss: 0.5546
-Retraining Epoch 518/1500 - Train Loss: 0.5735, Val Loss: 0.5573
-Retraining Epoch 519/1500 - Train Loss: 0.5735, Val Loss: 0.5532
-Retraining Epoch 520/1500 - Train Loss: 0.5728, Val Loss: 0.5523
-Retraining Epoch 521/1500 - Train Loss: 0.5743, Val Loss: 0.5547
-Retraining Epoch 522/1500 - Train Loss: 0.5735, Val Loss: 0.5521
-Retraining Epoch 523/1500 - Train Loss: 0.5721, Val Loss: 0.5529
-Retraining Epoch 524/1500 - Train Loss: 0.5699, Val Loss: 0.5528
-Retraining Epoch 525/1500 - Train Loss: 0.5695, Val Loss: 0.5516
-Retraining Epoch 526/1500 - Train Loss: 0.5681, Val Loss: 0.5523
-Retraining Epoch 527/1500 - Train Loss: 0.5650, Val Loss: 0.5510
-Retraining Epoch 528/1500 - Train Loss: 0.5697, Val Loss: 0.5516
-Retraining Epoch 529/1500 - Train Loss: 0.5726, Val Loss: 0.5506
-Retraining Epoch 530/1500 - Train Loss: 0.5697, Val Loss: 0.5516
-Retraining Epoch 531/1500 - Train Loss: 0.5693, Val Loss: 0.5499
-Retraining Epoch 532/1500 - Train Loss: 0.5667, Val Loss: 0.5515
-Retraining Epoch 533/1500 - Train Loss: 0.5711, Val Loss: 0.5494
-Retraining Epoch 534/1500 - Train Loss: 0.5694, Val Loss: 0.5497
-Retraining Epoch 535/1500 - Train Loss: 0.5656, Val Loss: 0.5492
-Retraining Epoch 536/1500 - Train Loss: 0.5657, Val Loss: 0.5483
-Retraining Epoch 537/1500 - Train Loss: 0.5690, Val Loss: 0.5513
-Retraining Epoch 538/1500 - Train Loss: 0.5680, Val Loss: 0.5485
-Retraining Epoch 539/1500 - Train Loss: 0.5674, Val Loss: 0.5498
-Retraining Epoch 540/1500 - Train Loss: 0.5658, Val Loss: 0.5478
-Retraining Epoch 541/1500 - Train Loss: 0.5681, Val Loss: 0.5490
-Retraining Epoch 542/1500 - Train Loss: 0.5674, Val Loss: 0.5476
-Retraining Epoch 543/1500 - Train Loss: 0.5653, Val Loss: 0.5501
-Retraining Epoch 544/1500 - Train Loss: 0.5646, Val Loss: 0.5472
-Retraining Epoch 545/1500 - Train Loss: 0.5690, Val Loss: 0.5520
-Retraining Epoch 546/1500 - Train Loss: 0.5700, Val Loss: 0.5487
-Retraining Epoch 547/1500 - Train Loss: 0.5663, Val Loss: 0.5515
-Retraining Epoch 548/1500 - Train Loss: 0.5674, Val Loss: 0.5465
-Retraining Epoch 549/1500 - Train Loss: 0.5620, Val Loss: 0.5462
-Retraining Epoch 550/1500 - Train Loss: 0.5653, Val Loss: 0.5514
-Retraining Epoch 551/1500 - Train Loss: 0.5679, Val Loss: 0.5483
-Retraining Epoch 552/1500 - Train Loss: 0.5682, Val Loss: 0.5576
-Retraining Epoch 553/1500 - Train Loss: 0.5736, Val Loss: 0.5467
-Retraining Epoch 554/1500 - Train Loss: 0.5670, Val Loss: 0.5458
-Retraining Epoch 555/1500 - Train Loss: 0.5664, Val Loss: 0.5471
-Retraining Epoch 556/1500 - Train Loss: 0.5658, Val Loss: 0.5457
-Retraining Epoch 557/1500 - Train Loss: 0.5633, Val Loss: 0.5540
-Retraining Epoch 558/1500 - Train Loss: 0.5700, Val Loss: 0.5462
-Retraining Epoch 559/1500 - Train Loss: 0.5671, Val Loss: 0.5481
-Retraining Epoch 560/1500 - Train Loss: 0.5645, Val Loss: 0.5440
-Retraining Epoch 561/1500 - Train Loss: 0.5624, Val Loss: 0.5437
-Retraining Epoch 562/1500 - Train Loss: 0.5626, Val Loss: 0.5464
-Retraining Epoch 563/1500 - Train Loss: 0.5623, Val Loss: 0.5434
-Retraining Epoch 564/1500 - Train Loss: 0.5645, Val Loss: 0.5446
-Retraining Epoch 565/1500 - Train Loss: 0.5620, Val Loss: 0.5445
-Retraining Epoch 566/1500 - Train Loss: 0.5642, Val Loss: 0.5429
-Retraining Epoch 567/1500 - Train Loss: 0.5642, Val Loss: 0.5464
-Retraining Epoch 568/1500 - Train Loss: 0.5621, Val Loss: 0.5423
-Retraining Epoch 569/1500 - Train Loss: 0.5610, Val Loss: 0.5437
-Retraining Epoch 570/1500 - Train Loss: 0.5612, Val Loss: 0.5422
-Retraining Epoch 571/1500 - Train Loss: 0.5601, Val Loss: 0.5413
-Retraining Epoch 572/1500 - Train Loss: 0.5646, Val Loss: 0.5444
-Retraining Epoch 573/1500 - Train Loss: 0.5606, Val Loss: 0.5411
-Retraining Epoch 574/1500 - Train Loss: 0.5596, Val Loss: 0.5446
-Retraining Epoch 575/1500 - Train Loss: 0.5645, Val Loss: 0.5409
-Retraining Epoch 576/1500 - Train Loss: 0.5623, Val Loss: 0.5477
-Retraining Epoch 577/1500 - Train Loss: 0.5659, Val Loss: 0.5423
-Retraining Epoch 578/1500 - Train Loss: 0.5646, Val Loss: 0.5453
-Retraining Epoch 579/1500 - Train Loss: 0.5598, Val Loss: 0.5400
-Retraining Epoch 580/1500 - Train Loss: 0.5588, Val Loss: 0.5399
-Retraining Epoch 581/1500 - Train Loss: 0.5611, Val Loss: 0.5473
-Retraining Epoch 582/1500 - Train Loss: 0.5622, Val Loss: 0.5426
-Retraining Epoch 583/1500 - Train Loss: 0.5654, Val Loss: 0.5527
-Retraining Epoch 584/1500 - Train Loss: 0.5668, Val Loss: 0.5408
-Retraining Epoch 585/1500 - Train Loss: 0.5649, Val Loss: 0.5397
-Retraining Epoch 586/1500 - Train Loss: 0.5584, Val Loss: 0.5452
-Retraining Epoch 587/1500 - Train Loss: 0.5617, Val Loss: 0.5414
-Retraining Epoch 588/1500 - Train Loss: 0.5615, Val Loss: 0.5445
-Retraining Epoch 589/1500 - Train Loss: 0.5598, Val Loss: 0.5389
-Retraining Epoch 590/1500 - Train Loss: 0.5557, Val Loss: 0.5389
-Retraining Epoch 591/1500 - Train Loss: 0.5570, Val Loss: 0.5480
-Retraining Epoch 592/1500 - Train Loss: 0.5660, Val Loss: 0.5406
-Retraining Epoch 593/1500 - Train Loss: 0.5629, Val Loss: 0.5423
-Retraining Epoch 594/1500 - Train Loss: 0.5572, Val Loss: 0.5382
-Retraining Epoch 595/1500 - Train Loss: 0.5547, Val Loss: 0.5379
-Retraining Epoch 596/1500 - Train Loss: 0.5590, Val Loss: 0.5466
-Retraining Epoch 597/1500 - Train Loss: 0.5611, Val Loss: 0.5400
-Retraining Epoch 598/1500 - Train Loss: 0.5615, Val Loss: 0.5428
-Retraining Epoch 599/1500 - Train Loss: 0.5601, Val Loss: 0.5371
-Retraining Epoch 600/1500 - Train Loss: 0.5568, Val Loss: 0.5367
-Retraining Epoch 601/1500 - Train Loss: 0.5580, Val Loss: 0.5419
-Retraining Epoch 602/1500 - Train Loss: 0.5599, Val Loss: 0.5375
-Retraining Epoch 603/1500 - Train Loss: 0.5594, Val Loss: 0.5403
-Retraining Epoch 604/1500 - Train Loss: 0.5603, Val Loss: 0.5356
-Retraining Epoch 605/1500 - Train Loss: 0.5581, Val Loss: 0.5354
-Retraining Epoch 606/1500 - Train Loss: 0.5550, Val Loss: 0.5417
-Retraining Epoch 607/1500 - Train Loss: 0.5599, Val Loss: 0.5376
-Retraining Epoch 608/1500 - Train Loss: 0.5585, Val Loss: 0.5422
-Retraining Epoch 609/1500 - Train Loss: 0.5577, Val Loss: 0.5353
-Retraining Epoch 610/1500 - Train Loss: 0.5545, Val Loss: 0.5350
-Retraining Epoch 611/1500 - Train Loss: 0.5558, Val Loss: 0.5383
-Retraining Epoch 612/1500 - Train Loss: 0.5583, Val Loss: 0.5350
-Retraining Epoch 613/1500 - Train Loss: 0.5549, Val Loss: 0.5365
-Retraining Epoch 614/1500 - Train Loss: 0.5528, Val Loss: 0.5343
-Retraining Epoch 615/1500 - Train Loss: 0.5574, Val Loss: 0.5361
-Retraining Epoch 616/1500 - Train Loss: 0.5571, Val Loss: 0.5338
-Retraining Epoch 617/1500 - Train Loss: 0.5542, Val Loss: 0.5339
-Retraining Epoch 618/1500 - Train Loss: 0.5549, Val Loss: 0.5343
-Retraining Epoch 619/1500 - Train Loss: 0.5533, Val Loss: 0.5331
-Retraining Epoch 620/1500 - Train Loss: 0.5532, Val Loss: 0.5356
-Retraining Epoch 621/1500 - Train Loss: 0.5547, Val Loss: 0.5325
-Retraining Epoch 622/1500 - Train Loss: 0.5546, Val Loss: 0.5328
-Retraining Epoch 623/1500 - Train Loss: 0.5513, Val Loss: 0.5333
-Retraining Epoch 624/1500 - Train Loss: 0.5533, Val Loss: 0.5322
-Retraining Epoch 625/1500 - Train Loss: 0.5538, Val Loss: 0.5319
-Retraining Epoch 626/1500 - Train Loss: 0.5540, Val Loss: 0.5341
-Retraining Epoch 627/1500 - Train Loss: 0.5529, Val Loss: 0.5319
-Retraining Epoch 628/1500 - Train Loss: 0.5534, Val Loss: 0.5347
-Retraining Epoch 629/1500 - Train Loss: 0.5582, Val Loss: 0.5320
-Retraining Epoch 630/1500 - Train Loss: 0.5558, Val Loss: 0.5451
-Retraining Epoch 631/1500 - Train Loss: 0.5591, Val Loss: 0.5380
-Retraining Epoch 632/1500 - Train Loss: 0.5621, Val Loss: 0.5426
-Retraining Epoch 633/1500 - Train Loss: 0.5593, Val Loss: 0.5312
-Retraining Epoch 634/1500 - Train Loss: 0.5528, Val Loss: 0.5313
-Retraining Epoch 635/1500 - Train Loss: 0.5524, Val Loss: 0.5369
-Retraining Epoch 636/1500 - Train Loss: 0.5559, Val Loss: 0.5329
-Retraining Epoch 637/1500 - Train Loss: 0.5543, Val Loss: 0.5375
-Retraining Epoch 638/1500 - Train Loss: 0.5540, Val Loss: 0.5308
-Retraining Epoch 639/1500 - Train Loss: 0.5531, Val Loss: 0.5304
-Retraining Epoch 640/1500 - Train Loss: 0.5508, Val Loss: 0.5340
-Retraining Epoch 641/1500 - Train Loss: 0.5515, Val Loss: 0.5313
-Retraining Epoch 642/1500 - Train Loss: 0.5533, Val Loss: 0.5353
-Retraining Epoch 643/1500 - Train Loss: 0.5565, Val Loss: 0.5299
-Retraining Epoch 644/1500 - Train Loss: 0.5521, Val Loss: 0.5295
-Retraining Epoch 645/1500 - Train Loss: 0.5495, Val Loss: 0.5316
-Retraining Epoch 646/1500 - Train Loss: 0.5502, Val Loss: 0.5302
-Retraining Epoch 647/1500 - Train Loss: 0.5571, Val Loss: 0.5333
-Retraining Epoch 648/1500 - Train Loss: 0.5504, Val Loss: 0.5291
-Retraining Epoch 649/1500 - Train Loss: 0.5535, Val Loss: 0.5289
-Retraining Epoch 650/1500 - Train Loss: 0.5502, Val Loss: 0.5312
-Retraining Epoch 651/1500 - Train Loss: 0.5504, Val Loss: 0.5284
-Retraining Epoch 652/1500 - Train Loss: 0.5480, Val Loss: 0.5307
-Retraining Epoch 653/1500 - Train Loss: 0.5523, Val Loss: 0.5271
-Retraining Epoch 654/1500 - Train Loss: 0.5506, Val Loss: 0.5293
-Retraining Epoch 655/1500 - Train Loss: 0.5520, Val Loss: 0.5271
-Retraining Epoch 656/1500 - Train Loss: 0.5487, Val Loss: 0.5294
-Retraining Epoch 657/1500 - Train Loss: 0.5497, Val Loss: 0.5269
-Retraining Epoch 658/1500 - Train Loss: 0.5513, Val Loss: 0.5285
-Retraining Epoch 659/1500 - Train Loss: 0.5473, Val Loss: 0.5269
-Retraining Epoch 660/1500 - Train Loss: 0.5487, Val Loss: 0.5265
-Retraining Epoch 661/1500 - Train Loss: 0.5457, Val Loss: 0.5300
-Retraining Epoch 662/1500 - Train Loss: 0.5510, Val Loss: 0.5289
-Retraining Epoch 663/1500 - Train Loss: 0.5528, Val Loss: 0.5368
-Retraining Epoch 664/1500 - Train Loss: 0.5550, Val Loss: 0.5319
-Retraining Epoch 665/1500 - Train Loss: 0.5563, Val Loss: 0.5404
-Retraining Epoch 666/1500 - Train Loss: 0.5605, Val Loss: 0.5293
-Retraining Epoch 667/1500 - Train Loss: 0.5524, Val Loss: 0.5264
-Retraining Epoch 668/1500 - Train Loss: 0.5477, Val Loss: 0.5387
-Retraining Epoch 669/1500 - Train Loss: 0.5562, Val Loss: 0.5315
-Retraining Epoch 670/1500 - Train Loss: 0.5557, Val Loss: 0.5338
-Retraining Epoch 671/1500 - Train Loss: 0.5487, Val Loss: 0.5291
-Retraining Epoch 672/1500 - Train Loss: 0.5516, Val Loss: 0.5305
-Retraining Epoch 673/1500 - Train Loss: 0.5550, Val Loss: 0.5363
-Retraining Epoch 674/1500 - Train Loss: 0.5542, Val Loss: 0.5302
-Retraining Epoch 675/1500 - Train Loss: 0.5520, Val Loss: 0.5272
-Retraining Epoch 676/1500 - Train Loss: 0.5488, Val Loss: 0.5403
-Retraining Epoch 677/1500 - Train Loss: 0.5571, Val Loss: 0.5279
-Retraining Epoch 678/1500 - Train Loss: 0.5490, Val Loss: 0.5315
-Retraining Epoch 679/1500 - Train Loss: 0.5526, Val Loss: 0.5268
-Retraining Epoch 680/1500 - Train Loss: 0.5445, Val Loss: 0.5273
-Retraining Epoch 681/1500 - Train Loss: 0.5482, Val Loss: 0.5314
-Retraining Epoch 682/1500 - Train Loss: 0.5498, Val Loss: 0.5268
-Retraining Epoch 683/1500 - Train Loss: 0.5503, Val Loss: 0.5244
-Retraining Epoch 684/1500 - Train Loss: 0.5447, Val Loss: 0.5300
-Retraining Epoch 685/1500 - Train Loss: 0.5486, Val Loss: 0.5258
-Retraining Epoch 686/1500 - Train Loss: 0.5506, Val Loss: 0.5302
-Retraining Epoch 687/1500 - Train Loss: 0.5484, Val Loss: 0.5246
-Retraining Epoch 688/1500 - Train Loss: 0.5485, Val Loss: 0.5234
-Retraining Epoch 689/1500 - Train Loss: 0.5435, Val Loss: 0.5293
-Retraining Epoch 690/1500 - Train Loss: 0.5504, Val Loss: 0.5237
-Retraining Epoch 691/1500 - Train Loss: 0.5453, Val Loss: 0.5245
-Retraining Epoch 692/1500 - Train Loss: 0.5443, Val Loss: 0.5253
-Retraining Epoch 693/1500 - Train Loss: 0.5456, Val Loss: 0.5245
-Retraining Epoch 694/1500 - Train Loss: 0.5474, Val Loss: 0.5280
-Retraining Epoch 695/1500 - Train Loss: 0.5499, Val Loss: 0.5237
-Retraining Epoch 696/1500 - Train Loss: 0.5453, Val Loss: 0.5222
-Retraining Epoch 697/1500 - Train Loss: 0.5436, Val Loss: 0.5259
-Retraining Epoch 698/1500 - Train Loss: 0.5445, Val Loss: 0.5221
-Retraining Epoch 699/1500 - Train Loss: 0.5456, Val Loss: 0.5240
-Retraining Epoch 700/1500 - Train Loss: 0.5470, Val Loss: 0.5220
-Retraining Epoch 701/1500 - Train Loss: 0.5468, Val Loss: 0.5218
-Retraining Epoch 702/1500 - Train Loss: 0.5454, Val Loss: 0.5235
-Retraining Epoch 703/1500 - Train Loss: 0.5452, Val Loss: 0.5215
-Retraining Epoch 704/1500 - Train Loss: 0.5421, Val Loss: 0.5223
-Retraining Epoch 705/1500 - Train Loss: 0.5418, Val Loss: 0.5208
-Retraining Epoch 706/1500 - Train Loss: 0.5445, Val Loss: 0.5204
-Retraining Epoch 707/1500 - Train Loss: 0.5406, Val Loss: 0.5216
-Retraining Epoch 708/1500 - Train Loss: 0.5452, Val Loss: 0.5207
-Retraining Epoch 709/1500 - Train Loss: 0.5468, Val Loss: 0.5221
-Retraining Epoch 710/1500 - Train Loss: 0.5394, Val Loss: 0.5208
-Retraining Epoch 711/1500 - Train Loss: 0.5439, Val Loss: 0.5204
-Retraining Epoch 712/1500 - Train Loss: 0.5397, Val Loss: 0.5220
-Retraining Epoch 713/1500 - Train Loss: 0.5449, Val Loss: 0.5199
-Retraining Epoch 714/1500 - Train Loss: 0.5435, Val Loss: 0.5271
-Retraining Epoch 715/1500 - Train Loss: 0.5482, Val Loss: 0.5220
-Retraining Epoch 716/1500 - Train Loss: 0.5463, Val Loss: 0.5272
-Retraining Epoch 717/1500 - Train Loss: 0.5473, Val Loss: 0.5196
-Retraining Epoch 718/1500 - Train Loss: 0.5436, Val Loss: 0.5203
-Retraining Epoch 719/1500 - Train Loss: 0.5408, Val Loss: 0.5250
-Retraining Epoch 720/1500 - Train Loss: 0.5422, Val Loss: 0.5223
-Retraining Epoch 721/1500 - Train Loss: 0.5468, Val Loss: 0.5259
-Retraining Epoch 722/1500 - Train Loss: 0.5465, Val Loss: 0.5195
-Retraining Epoch 723/1500 - Train Loss: 0.5398, Val Loss: 0.5199
-Retraining Epoch 724/1500 - Train Loss: 0.5410, Val Loss: 0.5235
-Retraining Epoch 725/1500 - Train Loss: 0.5408, Val Loss: 0.5203
-Retraining Epoch 726/1500 - Train Loss: 0.5444, Val Loss: 0.5181
-Retraining Epoch 727/1500 - Train Loss: 0.5406, Val Loss: 0.5224
-Retraining Epoch 728/1500 - Train Loss: 0.5396, Val Loss: 0.5203
-Retraining Epoch 729/1500 - Train Loss: 0.5483, Val Loss: 0.5328
-Retraining Epoch 730/1500 - Train Loss: 0.5521, Val Loss: 0.5195
-Retraining Epoch 731/1500 - Train Loss: 0.5443, Val Loss: 0.5196
-Retraining Epoch 732/1500 - Train Loss: 0.5404, Val Loss: 0.5209
-Retraining Epoch 733/1500 - Train Loss: 0.5435, Val Loss: 0.5203
-Retraining Epoch 734/1500 - Train Loss: 0.5462, Val Loss: 0.5255
-Retraining Epoch 735/1500 - Train Loss: 0.5455, Val Loss: 0.5176
-Retraining Epoch 736/1500 - Train Loss: 0.5411, Val Loss: 0.5185
-Retraining Epoch 737/1500 - Train Loss: 0.5411, Val Loss: 0.5224
-Retraining Epoch 738/1500 - Train Loss: 0.5413, Val Loss: 0.5183
-Retraining Epoch 739/1500 - Train Loss: 0.5418, Val Loss: 0.5166
-Retraining Epoch 740/1500 - Train Loss: 0.5403, Val Loss: 0.5201
-Retraining Epoch 741/1500 - Train Loss: 0.5382, Val Loss: 0.5172
-Retraining Epoch 742/1500 - Train Loss: 0.5396, Val Loss: 0.5201
-Retraining Epoch 743/1500 - Train Loss: 0.5397, Val Loss: 0.5162
-Retraining Epoch 744/1500 - Train Loss: 0.5371, Val Loss: 0.5164
-Retraining Epoch 745/1500 - Train Loss: 0.5388, Val Loss: 0.5166
-Retraining Epoch 746/1500 - Train Loss: 0.5351, Val Loss: 0.5152
-Retraining Epoch 747/1500 - Train Loss: 0.5397, Val Loss: 0.5170
-Retraining Epoch 748/1500 - Train Loss: 0.5416, Val Loss: 0.5148
-Retraining Epoch 749/1500 - Train Loss: 0.5389, Val Loss: 0.5147
-Retraining Epoch 750/1500 - Train Loss: 0.5353, Val Loss: 0.5153
-Retraining Epoch 751/1500 - Train Loss: 0.5365, Val Loss: 0.5148
-Retraining Epoch 752/1500 - Train Loss: 0.5372, Val Loss: 0.5187
-Retraining Epoch 753/1500 - Train Loss: 0.5390, Val Loss: 0.5149
-Retraining Epoch 754/1500 - Train Loss: 0.5368, Val Loss: 0.5152
-Retraining Epoch 755/1500 - Train Loss: 0.5375, Val Loss: 0.5143
-Retraining Epoch 756/1500 - Train Loss: 0.5382, Val Loss: 0.5135
-Retraining Epoch 757/1500 - Train Loss: 0.5353, Val Loss: 0.5158
-Retraining Epoch 758/1500 - Train Loss: 0.5398, Val Loss: 0.5140
-Retraining Epoch 759/1500 - Train Loss: 0.5406, Val Loss: 0.5160
-Retraining Epoch 760/1500 - Train Loss: 0.5406, Val Loss: 0.5134
-Retraining Epoch 761/1500 - Train Loss: 0.5382, Val Loss: 0.5137
-Retraining Epoch 762/1500 - Train Loss: 0.5351, Val Loss: 0.5143
-Retraining Epoch 763/1500 - Train Loss: 0.5373, Val Loss: 0.5132
-Retraining Epoch 764/1500 - Train Loss: 0.5360, Val Loss: 0.5140
-Retraining Epoch 765/1500 - Train Loss: 0.5405, Val Loss: 0.5127
-Retraining Epoch 766/1500 - Train Loss: 0.5391, Val Loss: 0.5131
-Retraining Epoch 767/1500 - Train Loss: 0.5387, Val Loss: 0.5124
-Retraining Epoch 768/1500 - Train Loss: 0.5386, Val Loss: 0.5198
-Retraining Epoch 769/1500 - Train Loss: 0.5392, Val Loss: 0.5168
-Retraining Epoch 770/1500 - Train Loss: 0.5462, Val Loss: 0.5206
-Retraining Epoch 771/1500 - Train Loss: 0.5388, Val Loss: 0.5125
-Retraining Epoch 772/1500 - Train Loss: 0.5351, Val Loss: 0.5129
-Retraining Epoch 773/1500 - Train Loss: 0.5348, Val Loss: 0.5202
-Retraining Epoch 774/1500 - Train Loss: 0.5429, Val Loss: 0.5151
-Retraining Epoch 775/1500 - Train Loss: 0.5386, Val Loss: 0.5154
-Retraining Epoch 776/1500 - Train Loss: 0.5361, Val Loss: 0.5123
-Retraining Epoch 777/1500 - Train Loss: 0.5363, Val Loss: 0.5129
-Retraining Epoch 778/1500 - Train Loss: 0.5413, Val Loss: 0.5226
-Retraining Epoch 779/1500 - Train Loss: 0.5448, Val Loss: 0.5153
-Retraining Epoch 780/1500 - Train Loss: 0.5390, Val Loss: 0.5139
-Retraining Epoch 781/1500 - Train Loss: 0.5367, Val Loss: 0.5144
-Retraining Epoch 782/1500 - Train Loss: 0.5343, Val Loss: 0.5137
-Retraining Epoch 783/1500 - Train Loss: 0.5373, Val Loss: 0.5176
-Retraining Epoch 784/1500 - Train Loss: 0.5374, Val Loss: 0.5114
-Retraining Epoch 785/1500 - Train Loss: 0.5353, Val Loss: 0.5114
-Retraining Epoch 786/1500 - Train Loss: 0.5345, Val Loss: 0.5125
-Retraining Epoch 787/1500 - Train Loss: 0.5379, Val Loss: 0.5110
-Retraining Epoch 788/1500 - Train Loss: 0.5361, Val Loss: 0.5131
-Retraining Epoch 789/1500 - Train Loss: 0.5372, Val Loss: 0.5113
-Retraining Epoch 790/1500 - Train Loss: 0.5353, Val Loss: 0.5164
-Retraining Epoch 791/1500 - Train Loss: 0.5391, Val Loss: 0.5139
-Retraining Epoch 792/1500 - Train Loss: 0.5391, Val Loss: 0.5156
-Retraining Epoch 793/1500 - Train Loss: 0.5338, Val Loss: 0.5110
-Retraining Epoch 794/1500 - Train Loss: 0.5350, Val Loss: 0.5107
-Retraining Epoch 795/1500 - Train Loss: 0.5336, Val Loss: 0.5173
-Retraining Epoch 796/1500 - Train Loss: 0.5365, Val Loss: 0.5103
-Retraining Epoch 797/1500 - Train Loss: 0.5342, Val Loss: 0.5105
-Retraining Epoch 798/1500 - Train Loss: 0.5378, Val Loss: 0.5101
-Retraining Epoch 799/1500 - Train Loss: 0.5342, Val Loss: 0.5097
-Retraining Epoch 800/1500 - Train Loss: 0.5313, Val Loss: 0.5187
-Retraining Epoch 801/1500 - Train Loss: 0.5386, Val Loss: 0.5120
-Retraining Epoch 802/1500 - Train Loss: 0.5378, Val Loss: 0.5150
-Retraining Epoch 803/1500 - Train Loss: 0.5382, Val Loss: 0.5083
-Retraining Epoch 804/1500 - Train Loss: 0.5306, Val Loss: 0.5093
-Retraining Epoch 805/1500 - Train Loss: 0.5336, Val Loss: 0.5156
-Retraining Epoch 806/1500 - Train Loss: 0.5347, Val Loss: 0.5122
-Retraining Epoch 807/1500 - Train Loss: 0.5362, Val Loss: 0.5145
-Retraining Epoch 808/1500 - Train Loss: 0.5357, Val Loss: 0.5087
-Retraining Epoch 809/1500 - Train Loss: 0.5277, Val Loss: 0.5084
-Retraining Epoch 810/1500 - Train Loss: 0.5306, Val Loss: 0.5128
-Retraining Epoch 811/1500 - Train Loss: 0.5350, Val Loss: 0.5086
-Retraining Epoch 812/1500 - Train Loss: 0.5322, Val Loss: 0.5097
-Retraining Epoch 813/1500 - Train Loss: 0.5326, Val Loss: 0.5079
-Retraining Epoch 814/1500 - Train Loss: 0.5292, Val Loss: 0.5081
-Retraining Epoch 815/1500 - Train Loss: 0.5313, Val Loss: 0.5080
-Retraining Epoch 816/1500 - Train Loss: 0.5294, Val Loss: 0.5072
-Retraining Epoch 817/1500 - Train Loss: 0.5297, Val Loss: 0.5086
-Retraining Epoch 818/1500 - Train Loss: 0.5315, Val Loss: 0.5070
-Retraining Epoch 819/1500 - Train Loss: 0.5300, Val Loss: 0.5072
-Retraining Epoch 820/1500 - Train Loss: 0.5308, Val Loss: 0.5072
-Retraining Epoch 821/1500 - Train Loss: 0.5317, Val Loss: 0.5068
-Retraining Epoch 822/1500 - Train Loss: 0.5313, Val Loss: 0.5069
-Retraining Epoch 823/1500 - Train Loss: 0.5328, Val Loss: 0.5059
-Retraining Epoch 824/1500 - Train Loss: 0.5281, Val Loss: 0.5079
-Retraining Epoch 825/1500 - Train Loss: 0.5290, Val Loss: 0.5056
-Retraining Epoch 826/1500 - Train Loss: 0.5302, Val Loss: 0.5065
-Retraining Epoch 827/1500 - Train Loss: 0.5319, Val Loss: 0.5061
-Retraining Epoch 828/1500 - Train Loss: 0.5273, Val Loss: 0.5061
-Retraining Epoch 829/1500 - Train Loss: 0.5296, Val Loss: 0.5057
-Retraining Epoch 830/1500 - Train Loss: 0.5266, Val Loss: 0.5050
-Retraining Epoch 831/1500 - Train Loss: 0.5256, Val Loss: 0.5048
-Retraining Epoch 832/1500 - Train Loss: 0.5267, Val Loss: 0.5046
-Retraining Epoch 833/1500 - Train Loss: 0.5261, Val Loss: 0.5060
-Retraining Epoch 834/1500 - Train Loss: 0.5300, Val Loss: 0.5041
-Retraining Epoch 835/1500 - Train Loss: 0.5306, Val Loss: 0.5049
-Retraining Epoch 836/1500 - Train Loss: 0.5277, Val Loss: 0.5048
-Retraining Epoch 837/1500 - Train Loss: 0.5283, Val Loss: 0.5043
-Retraining Epoch 838/1500 - Train Loss: 0.5283, Val Loss: 0.5115
-Retraining Epoch 839/1500 - Train Loss: 0.5315, Val Loss: 0.5089
-Retraining Epoch 840/1500 - Train Loss: 0.5351, Val Loss: 0.5278
-Retraining Epoch 841/1500 - Train Loss: 0.5451, Val Loss: 0.5181
-Retraining Epoch 842/1500 - Train Loss: 0.5442, Val Loss: 0.5156
-Retraining Epoch 843/1500 - Train Loss: 0.5329, Val Loss: 0.5067
-Retraining Epoch 844/1500 - Train Loss: 0.5261, Val Loss: 0.5115
-Retraining Epoch 845/1500 - Train Loss: 0.5363, Val Loss: 0.5237
-Retraining Epoch 846/1500 - Train Loss: 0.5419, Val Loss: 0.5053
-Retraining Epoch 847/1500 - Train Loss: 0.5306, Val Loss: 0.5094
-Retraining Epoch 848/1500 - Train Loss: 0.5346, Val Loss: 0.5230
-Retraining Epoch 849/1500 - Train Loss: 0.5432, Val Loss: 0.5082
-Retraining Epoch 850/1500 - Train Loss: 0.5319, Val Loss: 0.5057
-Retraining Epoch 851/1500 - Train Loss: 0.5291, Val Loss: 0.5249
-Retraining Epoch 852/1500 - Train Loss: 0.5395, Val Loss: 0.5104
-Retraining Epoch 853/1500 - Train Loss: 0.5363, Val Loss: 0.5080
-Retraining Epoch 854/1500 - Train Loss: 0.5311, Val Loss: 0.5142
-Retraining Epoch 855/1500 - Train Loss: 0.5334, Val Loss: 0.5124
-Retraining Epoch 856/1500 - Train Loss: 0.5391, Val Loss: 0.5089
-Retraining Epoch 857/1500 - Train Loss: 0.5288, Val Loss: 0.5082
-Retraining Epoch 858/1500 - Train Loss: 0.5319, Val Loss: 0.5062
-Retraining Epoch 859/1500 - Train Loss: 0.5318, Val Loss: 0.5097
-Retraining Epoch 860/1500 - Train Loss: 0.5326, Val Loss: 0.5035
-Retraining Epoch 861/1500 - Train Loss: 0.5264, Val Loss: 0.5039
-Retraining Epoch 862/1500 - Train Loss: 0.5290, Val Loss: 0.5069
-Retraining Epoch 863/1500 - Train Loss: 0.5264, Val Loss: 0.5037
-Retraining Epoch 864/1500 - Train Loss: 0.5296, Val Loss: 0.5040
-Retraining Epoch 865/1500 - Train Loss: 0.5265, Val Loss: 0.5028
-Retraining Epoch 866/1500 - Train Loss: 0.5256, Val Loss: 0.5017
-Retraining Epoch 867/1500 - Train Loss: 0.5287, Val Loss: 0.5049
-Retraining Epoch 868/1500 - Train Loss: 0.5298, Val Loss: 0.5016
-Retraining Epoch 869/1500 - Train Loss: 0.5276, Val Loss: 0.5018
-Retraining Epoch 870/1500 - Train Loss: 0.5257, Val Loss: 0.5043
-Retraining Epoch 871/1500 - Train Loss: 0.5262, Val Loss: 0.5028
-Retraining Epoch 872/1500 - Train Loss: 0.5271, Val Loss: 0.5070
-Retraining Epoch 873/1500 - Train Loss: 0.5325, Val Loss: 0.5016
-Retraining Epoch 874/1500 - Train Loss: 0.5259, Val Loss: 0.5014
-Retraining Epoch 875/1500 - Train Loss: 0.5243, Val Loss: 0.5042
-Retraining Epoch 876/1500 - Train Loss: 0.5313, Val Loss: 0.5037
-Retraining Epoch 877/1500 - Train Loss: 0.5290, Val Loss: 0.5091
-Retraining Epoch 878/1500 - Train Loss: 0.5272, Val Loss: 0.4999
-Retraining Epoch 879/1500 - Train Loss: 0.5266, Val Loss: 0.4999
-Retraining Epoch 880/1500 - Train Loss: 0.5216, Val Loss: 0.5035
-Retraining Epoch 881/1500 - Train Loss: 0.5274, Val Loss: 0.5005
-Retraining Epoch 882/1500 - Train Loss: 0.5236, Val Loss: 0.5031
-Retraining Epoch 883/1500 - Train Loss: 0.5277, Val Loss: 0.5000
-Retraining Epoch 884/1500 - Train Loss: 0.5248, Val Loss: 0.5003
-Retraining Epoch 885/1500 - Train Loss: 0.5223, Val Loss: 0.5003
-Retraining Epoch 886/1500 - Train Loss: 0.5249, Val Loss: 0.4992
-Retraining Epoch 887/1500 - Train Loss: 0.5226, Val Loss: 0.5019
-Retraining Epoch 888/1500 - Train Loss: 0.5237, Val Loss: 0.4989
-Retraining Epoch 889/1500 - Train Loss: 0.5269, Val Loss: 0.5009
-Retraining Epoch 890/1500 - Train Loss: 0.5272, Val Loss: 0.4985
-Retraining Epoch 891/1500 - Train Loss: 0.5227, Val Loss: 0.4993
-Retraining Epoch 892/1500 - Train Loss: 0.5259, Val Loss: 0.4994
-Retraining Epoch 893/1500 - Train Loss: 0.5237, Val Loss: 0.4984
-Retraining Epoch 894/1500 - Train Loss: 0.5244, Val Loss: 0.5023
-Retraining Epoch 895/1500 - Train Loss: 0.5254, Val Loss: 0.4992
-Retraining Epoch 896/1500 - Train Loss: 0.5263, Val Loss: 0.5030
-Retraining Epoch 897/1500 - Train Loss: 0.5296, Val Loss: 0.4991
-Retraining Epoch 898/1500 - Train Loss: 0.5243, Val Loss: 0.5005
-Retraining Epoch 899/1500 - Train Loss: 0.5249, Val Loss: 0.4974
-Retraining Epoch 900/1500 - Train Loss: 0.5224, Val Loss: 0.4970
-Retraining Epoch 901/1500 - Train Loss: 0.5240, Val Loss: 0.5006
-Retraining Epoch 902/1500 - Train Loss: 0.5200, Val Loss: 0.4981
-Retraining Epoch 903/1500 - Train Loss: 0.5231, Val Loss: 0.5004
-Retraining Epoch 904/1500 - Train Loss: 0.5188, Val Loss: 0.4972
-Retraining Epoch 905/1500 - Train Loss: 0.5260, Val Loss: 0.4973
-Retraining Epoch 906/1500 - Train Loss: 0.5244, Val Loss: 0.4996
-Retraining Epoch 907/1500 - Train Loss: 0.5237, Val Loss: 0.4967
-Retraining Epoch 908/1500 - Train Loss: 0.5223, Val Loss: 0.4990
-Retraining Epoch 909/1500 - Train Loss: 0.5208, Val Loss: 0.4961
-Retraining Epoch 910/1500 - Train Loss: 0.5243, Val Loss: 0.4970
-Retraining Epoch 911/1500 - Train Loss: 0.5200, Val Loss: 0.4965
-Retraining Epoch 912/1500 - Train Loss: 0.5206, Val Loss: 0.4958
-Retraining Epoch 913/1500 - Train Loss: 0.5206, Val Loss: 0.4984
-Retraining Epoch 914/1500 - Train Loss: 0.5233, Val Loss: 0.4954
-Retraining Epoch 915/1500 - Train Loss: 0.5198, Val Loss: 0.4969
-Retraining Epoch 916/1500 - Train Loss: 0.5229, Val Loss: 0.4948
-Retraining Epoch 917/1500 - Train Loss: 0.5216, Val Loss: 0.4965
-Retraining Epoch 918/1500 - Train Loss: 0.5212, Val Loss: 0.4953
-Retraining Epoch 919/1500 - Train Loss: 0.5204, Val Loss: 0.4987
-Retraining Epoch 920/1500 - Train Loss: 0.5185, Val Loss: 0.4958
-Retraining Epoch 921/1500 - Train Loss: 0.5215, Val Loss: 0.4974
-Retraining Epoch 922/1500 - Train Loss: 0.5234, Val Loss: 0.4952
-Retraining Epoch 923/1500 - Train Loss: 0.5234, Val Loss: 0.4975
-Retraining Epoch 924/1500 - Train Loss: 0.5185, Val Loss: 0.4951
-Retraining Epoch 925/1500 - Train Loss: 0.5202, Val Loss: 0.4971
-Retraining Epoch 926/1500 - Train Loss: 0.5221, Val Loss: 0.4953
-Retraining Epoch 927/1500 - Train Loss: 0.5222, Val Loss: 0.5010
-Retraining Epoch 928/1500 - Train Loss: 0.5211, Val Loss: 0.4954
-Retraining Epoch 929/1500 - Train Loss: 0.5226, Val Loss: 0.4970
-Retraining Epoch 930/1500 - Train Loss: 0.5200, Val Loss: 0.4937
-Retraining Epoch 931/1500 - Train Loss: 0.5197, Val Loss: 0.4942
-Retraining Epoch 932/1500 - Train Loss: 0.5189, Val Loss: 0.4959
-Retraining Epoch 933/1500 - Train Loss: 0.5169, Val Loss: 0.4945
-Retraining Epoch 934/1500 - Train Loss: 0.5199, Val Loss: 0.5002
-Retraining Epoch 935/1500 - Train Loss: 0.5219, Val Loss: 0.4954
-Retraining Epoch 936/1500 - Train Loss: 0.5198, Val Loss: 0.4997
-Retraining Epoch 937/1500 - Train Loss: 0.5241, Val Loss: 0.4945
-Retraining Epoch 938/1500 - Train Loss: 0.5197, Val Loss: 0.4971
-Retraining Epoch 939/1500 - Train Loss: 0.5213, Val Loss: 0.4945
-Retraining Epoch 940/1500 - Train Loss: 0.5166, Val Loss: 0.4953
-Retraining Epoch 941/1500 - Train Loss: 0.5202, Val Loss: 0.4942
-Retraining Epoch 942/1500 - Train Loss: 0.5158, Val Loss: 0.4946
-Retraining Epoch 943/1500 - Train Loss: 0.5162, Val Loss: 0.4962
-Retraining Epoch 944/1500 - Train Loss: 0.5247, Val Loss: 0.4932
-Retraining Epoch 945/1500 - Train Loss: 0.5188, Val Loss: 0.5004
-Retraining Epoch 946/1500 - Train Loss: 0.5226, Val Loss: 0.4938
-Retraining Epoch 947/1500 - Train Loss: 0.5228, Val Loss: 0.5035
-Retraining Epoch 948/1500 - Train Loss: 0.5242, Val Loss: 0.4928
-Retraining Epoch 949/1500 - Train Loss: 0.5180, Val Loss: 0.4968
-Retraining Epoch 950/1500 - Train Loss: 0.5207, Val Loss: 0.4924
-Retraining Epoch 951/1500 - Train Loss: 0.5189, Val Loss: 0.4938
-Retraining Epoch 952/1500 - Train Loss: 0.5169, Val Loss: 0.4974
-Retraining Epoch 953/1500 - Train Loss: 0.5170, Val Loss: 0.4956
-Retraining Epoch 954/1500 - Train Loss: 0.5221, Val Loss: 0.5017
-Retraining Epoch 955/1500 - Train Loss: 0.5253, Val Loss: 0.4949
-Retraining Epoch 956/1500 - Train Loss: 0.5219, Val Loss: 0.4996
-Retraining Epoch 957/1500 - Train Loss: 0.5219, Val Loss: 0.4933
-Retraining Epoch 958/1500 - Train Loss: 0.5184, Val Loss: 0.4964
-Retraining Epoch 959/1500 - Train Loss: 0.5212, Val Loss: 0.5035
-Retraining Epoch 960/1500 - Train Loss: 0.5218, Val Loss: 0.5000
-Retraining Epoch 961/1500 - Train Loss: 0.5278, Val Loss: 0.5041
-Retraining Epoch 962/1500 - Train Loss: 0.5250, Val Loss: 0.4978
-Retraining Epoch 963/1500 - Train Loss: 0.5250, Val Loss: 0.4956
-Retraining Epoch 964/1500 - Train Loss: 0.5185, Val Loss: 0.5018
-Retraining Epoch 965/1500 - Train Loss: 0.5230, Val Loss: 0.4966
-Retraining Epoch 966/1500 - Train Loss: 0.5184, Val Loss: 0.4990
-Retraining Epoch 967/1500 - Train Loss: 0.5195, Val Loss: 0.4948
-Retraining Epoch 968/1500 - Train Loss: 0.5216, Val Loss: 0.4954
-Retraining Epoch 969/1500 - Train Loss: 0.5185, Val Loss: 0.4990
-Retraining Epoch 970/1500 - Train Loss: 0.5195, Val Loss: 0.4947
-Retraining Epoch 971/1500 - Train Loss: 0.5186, Val Loss: 0.4940
-Retraining Epoch 972/1500 - Train Loss: 0.5149, Val Loss: 0.4982
-Retraining Epoch 973/1500 - Train Loss: 0.5231, Val Loss: 0.4949
-Retraining Epoch 974/1500 - Train Loss: 0.5201, Val Loss: 0.4972
-Retraining Epoch 975/1500 - Train Loss: 0.5171, Val Loss: 0.4931
-Retraining Epoch 976/1500 - Train Loss: 0.5155, Val Loss: 0.4938
-Retraining Epoch 977/1500 - Train Loss: 0.5201, Val Loss: 0.4944
-Retraining Epoch 978/1500 - Train Loss: 0.5148, Val Loss: 0.4913
-Retraining Epoch 979/1500 - Train Loss: 0.5181, Val Loss: 0.4936
-Retraining Epoch 980/1500 - Train Loss: 0.5212, Val Loss: 0.4959
-Retraining Epoch 981/1500 - Train Loss: 0.5199, Val Loss: 0.4925
-Retraining Epoch 982/1500 - Train Loss: 0.5217, Val Loss: 0.4928
-Retraining Epoch 983/1500 - Train Loss: 0.5172, Val Loss: 0.4921
-Retraining Epoch 984/1500 - Train Loss: 0.5156, Val Loss: 0.4922
-Retraining Epoch 985/1500 - Train Loss: 0.5192, Val Loss: 0.4976
-Retraining Epoch 986/1500 - Train Loss: 0.5229, Val Loss: 0.4909
-Retraining Epoch 987/1500 - Train Loss: 0.5183, Val Loss: 0.4915
-Retraining Epoch 988/1500 - Train Loss: 0.5161, Val Loss: 0.4931
-Retraining Epoch 989/1500 - Train Loss: 0.5167, Val Loss: 0.4898
-Retraining Epoch 990/1500 - Train Loss: 0.5187, Val Loss: 0.4936
-Retraining Epoch 991/1500 - Train Loss: 0.5177, Val Loss: 0.4889
-Retraining Epoch 992/1500 - Train Loss: 0.5167, Val Loss: 0.4916
-Retraining Epoch 993/1500 - Train Loss: 0.5142, Val Loss: 0.4879
-Retraining Epoch 994/1500 - Train Loss: 0.5155, Val Loss: 0.4884
-Retraining Epoch 995/1500 - Train Loss: 0.5154, Val Loss: 0.4890
-Retraining Epoch 996/1500 - Train Loss: 0.5118, Val Loss: 0.4884
-Retraining Epoch 997/1500 - Train Loss: 0.5147, Val Loss: 0.4883
-Retraining Epoch 998/1500 - Train Loss: 0.5126, Val Loss: 0.4877
-Retraining Epoch 999/1500 - Train Loss: 0.5117, Val Loss: 0.4876
-Retraining Epoch 1000/1500 - Train Loss: 0.5115, Val Loss: 0.4875
-Retraining Epoch 1001/1500 - Train Loss: 0.5075, Val Loss: 0.4888
-Retraining Epoch 1002/1500 - Train Loss: 0.5119, Val Loss: 0.4866
-Retraining Epoch 1003/1500 - Train Loss: 0.5145, Val Loss: 0.4934
-Retraining Epoch 1004/1500 - Train Loss: 0.5178, Val Loss: 0.4897
-Retraining Epoch 1005/1500 - Train Loss: 0.5184, Val Loss: 0.5013
-Retraining Epoch 1006/1500 - Train Loss: 0.5237, Val Loss: 0.4906
-Retraining Epoch 1007/1500 - Train Loss: 0.5162, Val Loss: 0.4904
-Retraining Epoch 1008/1500 - Train Loss: 0.5134, Val Loss: 0.4896
-Retraining Epoch 1009/1500 - Train Loss: 0.5171, Val Loss: 0.4901
-Retraining Epoch 1010/1500 - Train Loss: 0.5181, Val Loss: 0.4977
-Retraining Epoch 1011/1500 - Train Loss: 0.5235, Val Loss: 0.4885
-Retraining Epoch 1012/1500 - Train Loss: 0.5161, Val Loss: 0.4896
-Retraining Epoch 1013/1500 - Train Loss: 0.5130, Val Loss: 0.4862
-Retraining Epoch 1014/1500 - Train Loss: 0.5108, Val Loss: 0.4858
-Retraining Epoch 1015/1500 - Train Loss: 0.5110, Val Loss: 0.4897
-Retraining Epoch 1016/1500 - Train Loss: 0.5131, Val Loss: 0.4861
-Retraining Epoch 1017/1500 - Train Loss: 0.5109, Val Loss: 0.4915
-Retraining Epoch 1018/1500 - Train Loss: 0.5153, Val Loss: 0.4856
-Retraining Epoch 1019/1500 - Train Loss: 0.5152, Val Loss: 0.4872
-Retraining Epoch 1020/1500 - Train Loss: 0.5113, Val Loss: 0.4859
-Retraining Epoch 1021/1500 - Train Loss: 0.5103, Val Loss: 0.4851
-Retraining Epoch 1022/1500 - Train Loss: 0.5141, Val Loss: 0.4865
-Retraining Epoch 1023/1500 - Train Loss: 0.5111, Val Loss: 0.4853
-Retraining Epoch 1024/1500 - Train Loss: 0.5102, Val Loss: 0.4847
-Retraining Epoch 1025/1500 - Train Loss: 0.5076, Val Loss: 0.4840
-Retraining Epoch 1026/1500 - Train Loss: 0.5130, Val Loss: 0.4846
-Retraining Epoch 1027/1500 - Train Loss: 0.5078, Val Loss: 0.4838
-Retraining Epoch 1028/1500 - Train Loss: 0.5103, Val Loss: 0.4842
-Retraining Epoch 1029/1500 - Train Loss: 0.5094, Val Loss: 0.4842
-Retraining Epoch 1030/1500 - Train Loss: 0.5099, Val Loss: 0.4834
-Retraining Epoch 1031/1500 - Train Loss: 0.5085, Val Loss: 0.4853
-Retraining Epoch 1032/1500 - Train Loss: 0.5103, Val Loss: 0.4828
-Retraining Epoch 1033/1500 - Train Loss: 0.5086, Val Loss: 0.4878
-Retraining Epoch 1034/1500 - Train Loss: 0.5117, Val Loss: 0.4839
-Retraining Epoch 1035/1500 - Train Loss: 0.5093, Val Loss: 0.4875
-Retraining Epoch 1036/1500 - Train Loss: 0.5091, Val Loss: 0.4837
-Retraining Epoch 1037/1500 - Train Loss: 0.5121, Val Loss: 0.4842
-Retraining Epoch 1038/1500 - Train Loss: 0.5109, Val Loss: 0.4832
-Retraining Epoch 1039/1500 - Train Loss: 0.5097, Val Loss: 0.4829
-Retraining Epoch 1040/1500 - Train Loss: 0.5063, Val Loss: 0.4841
-Retraining Epoch 1041/1500 - Train Loss: 0.5102, Val Loss: 0.4826
-Retraining Epoch 1042/1500 - Train Loss: 0.5126, Val Loss: 0.4927
-Retraining Epoch 1043/1500 - Train Loss: 0.5152, Val Loss: 0.4887
-Retraining Epoch 1044/1500 - Train Loss: 0.5181, Val Loss: 0.5032
-Retraining Epoch 1045/1500 - Train Loss: 0.5229, Val Loss: 0.4915
-Retraining Epoch 1046/1500 - Train Loss: 0.5211, Val Loss: 0.4943
-Retraining Epoch 1047/1500 - Train Loss: 0.5172, Val Loss: 0.4837
-Retraining Epoch 1048/1500 - Train Loss: 0.5094, Val Loss: 0.4872
-Retraining Epoch 1049/1500 - Train Loss: 0.5188, Val Loss: 0.5007
-Retraining Epoch 1050/1500 - Train Loss: 0.5199, Val Loss: 0.4844
-Retraining Epoch 1051/1500 - Train Loss: 0.5137, Val Loss: 0.4831
-Retraining Epoch 1052/1500 - Train Loss: 0.5098, Val Loss: 0.4902
-Retraining Epoch 1053/1500 - Train Loss: 0.5153, Val Loss: 0.4859
-Retraining Epoch 1054/1500 - Train Loss: 0.5147, Val Loss: 0.4903
-Retraining Epoch 1055/1500 - Train Loss: 0.5140, Val Loss: 0.4831
-Retraining Epoch 1056/1500 - Train Loss: 0.5082, Val Loss: 0.4829
-Retraining Epoch 1057/1500 - Train Loss: 0.5087, Val Loss: 0.4897
-Retraining Epoch 1058/1500 - Train Loss: 0.5128, Val Loss: 0.4820
-Retraining Epoch 1059/1500 - Train Loss: 0.5095, Val Loss: 0.4826
-Retraining Epoch 1060/1500 - Train Loss: 0.5087, Val Loss: 0.4839
-Retraining Epoch 1061/1500 - Train Loss: 0.5092, Val Loss: 0.4823
-Retraining Epoch 1062/1500 - Train Loss: 0.5131, Val Loss: 0.4909
-Retraining Epoch 1063/1500 - Train Loss: 0.5144, Val Loss: 0.4830
-Retraining Epoch 1064/1500 - Train Loss: 0.5077, Val Loss: 0.4844
-Retraining Epoch 1065/1500 - Train Loss: 0.5080, Val Loss: 0.4809
-Retraining Epoch 1066/1500 - Train Loss: 0.5082, Val Loss: 0.4819
-Retraining Epoch 1067/1500 - Train Loss: 0.5097, Val Loss: 0.4883
-Retraining Epoch 1068/1500 - Train Loss: 0.5084, Val Loss: 0.4823
-Retraining Epoch 1069/1500 - Train Loss: 0.5130, Val Loss: 0.4861
-Retraining Epoch 1070/1500 - Train Loss: 0.5096, Val Loss: 0.4807
-Retraining Epoch 1071/1500 - Train Loss: 0.5118, Val Loss: 0.4823
-Retraining Epoch 1072/1500 - Train Loss: 0.5076, Val Loss: 0.4818
-Retraining Epoch 1073/1500 - Train Loss: 0.5056, Val Loss: 0.4827
-Retraining Epoch 1074/1500 - Train Loss: 0.5088, Val Loss: 0.4840
-Retraining Epoch 1075/1500 - Train Loss: 0.5091, Val Loss: 0.4802
-Retraining Epoch 1076/1500 - Train Loss: 0.5094, Val Loss: 0.4811
-Retraining Epoch 1077/1500 - Train Loss: 0.5071, Val Loss: 0.4814
-Retraining Epoch 1078/1500 - Train Loss: 0.5061, Val Loss: 0.4804
-Retraining Epoch 1079/1500 - Train Loss: 0.5110, Val Loss: 0.4857
-Retraining Epoch 1080/1500 - Train Loss: 0.5070, Val Loss: 0.4825
-Retraining Epoch 1081/1500 - Train Loss: 0.5095, Val Loss: 0.4919
-Retraining Epoch 1082/1500 - Train Loss: 0.5133, Val Loss: 0.4813
-Retraining Epoch 1083/1500 - Train Loss: 0.5119, Val Loss: 0.4846
-Retraining Epoch 1084/1500 - Train Loss: 0.5093, Val Loss: 0.4799
-Retraining Epoch 1085/1500 - Train Loss: 0.5084, Val Loss: 0.4819
-Retraining Epoch 1086/1500 - Train Loss: 0.5115, Val Loss: 0.4857
-Retraining Epoch 1087/1500 - Train Loss: 0.5117, Val Loss: 0.4832
-Retraining Epoch 1088/1500 - Train Loss: 0.5138, Val Loss: 0.4852
-Retraining Epoch 1089/1500 - Train Loss: 0.5095, Val Loss: 0.4805
-Retraining Epoch 1090/1500 - Train Loss: 0.5078, Val Loss: 0.4807
-Retraining Epoch 1091/1500 - Train Loss: 0.5023, Val Loss: 0.4808
-Retraining Epoch 1092/1500 - Train Loss: 0.5049, Val Loss: 0.4794
-Retraining Epoch 1093/1500 - Train Loss: 0.5051, Val Loss: 0.4811
-Retraining Epoch 1094/1500 - Train Loss: 0.5023, Val Loss: 0.4791
-Retraining Epoch 1095/1500 - Train Loss: 0.5048, Val Loss: 0.4807
-Retraining Epoch 1096/1500 - Train Loss: 0.5059, Val Loss: 0.4777
-Retraining Epoch 1097/1500 - Train Loss: 0.5077, Val Loss: 0.4838
-Retraining Epoch 1098/1500 - Train Loss: 0.5055, Val Loss: 0.4795
-Retraining Epoch 1099/1500 - Train Loss: 0.5124, Val Loss: 0.4838
-Retraining Epoch 1100/1500 - Train Loss: 0.5086, Val Loss: 0.4779
-Retraining Epoch 1101/1500 - Train Loss: 0.5073, Val Loss: 0.4804
-Retraining Epoch 1102/1500 - Train Loss: 0.5075, Val Loss: 0.4787
-Retraining Epoch 1103/1500 - Train Loss: 0.5014, Val Loss: 0.4785
-Retraining Epoch 1104/1500 - Train Loss: 0.5076, Val Loss: 0.4785
-Retraining Epoch 1105/1500 - Train Loss: 0.5032, Val Loss: 0.4779
-Retraining Epoch 1106/1500 - Train Loss: 0.5023, Val Loss: 0.4762
-Retraining Epoch 1107/1500 - Train Loss: 0.5020, Val Loss: 0.4777
-Retraining Epoch 1108/1500 - Train Loss: 0.5044, Val Loss: 0.4755
-Retraining Epoch 1109/1500 - Train Loss: 0.5069, Val Loss: 0.4796
-Retraining Epoch 1110/1500 - Train Loss: 0.5040, Val Loss: 0.4765
-Retraining Epoch 1111/1500 - Train Loss: 0.5049, Val Loss: 0.4841
-Retraining Epoch 1112/1500 - Train Loss: 0.5097, Val Loss: 0.4777
-Retraining Epoch 1113/1500 - Train Loss: 0.5135, Val Loss: 0.4854
-Retraining Epoch 1114/1500 - Train Loss: 0.5077, Val Loss: 0.4777
-Retraining Epoch 1115/1500 - Train Loss: 0.5047, Val Loss: 0.4837
-Retraining Epoch 1116/1500 - Train Loss: 0.5041, Val Loss: 0.4757
-Retraining Epoch 1117/1500 - Train Loss: 0.5011, Val Loss: 0.4768
-Retraining Epoch 1118/1500 - Train Loss: 0.5044, Val Loss: 0.4759
-Retraining Epoch 1119/1500 - Train Loss: 0.4996, Val Loss: 0.4745
-Retraining Epoch 1120/1500 - Train Loss: 0.5018, Val Loss: 0.4769
-Retraining Epoch 1121/1500 - Train Loss: 0.5025, Val Loss: 0.4751
-Retraining Epoch 1122/1500 - Train Loss: 0.5016, Val Loss: 0.4756
-Retraining Epoch 1123/1500 - Train Loss: 0.5039, Val Loss: 0.4743
-Retraining Epoch 1124/1500 - Train Loss: 0.5023, Val Loss: 0.4762
-Retraining Epoch 1125/1500 - Train Loss: 0.4997, Val Loss: 0.4739
-Retraining Epoch 1126/1500 - Train Loss: 0.4992, Val Loss: 0.4745
-Retraining Epoch 1127/1500 - Train Loss: 0.5007, Val Loss: 0.4737
-Retraining Epoch 1128/1500 - Train Loss: 0.5007, Val Loss: 0.4744
-Retraining Epoch 1129/1500 - Train Loss: 0.5030, Val Loss: 0.4738
-Retraining Epoch 1130/1500 - Train Loss: 0.5001, Val Loss: 0.4739
-Retraining Epoch 1131/1500 - Train Loss: 0.5006, Val Loss: 0.4733
-Retraining Epoch 1132/1500 - Train Loss: 0.5027, Val Loss: 0.4739
-Retraining Epoch 1133/1500 - Train Loss: 0.4977, Val Loss: 0.4725
-Retraining Epoch 1134/1500 - Train Loss: 0.4994, Val Loss: 0.4731
-Retraining Epoch 1135/1500 - Train Loss: 0.5037, Val Loss: 0.4730
-Retraining Epoch 1136/1500 - Train Loss: 0.4990, Val Loss: 0.4735
-Retraining Epoch 1137/1500 - Train Loss: 0.5009, Val Loss: 0.4722
-Retraining Epoch 1138/1500 - Train Loss: 0.5010, Val Loss: 0.4787
-Retraining Epoch 1139/1500 - Train Loss: 0.5056, Val Loss: 0.4754
-Retraining Epoch 1140/1500 - Train Loss: 0.5102, Val Loss: 0.4917
-Retraining Epoch 1141/1500 - Train Loss: 0.5125, Val Loss: 0.4851
-Retraining Epoch 1142/1500 - Train Loss: 0.5166, Val Loss: 0.4980
-Retraining Epoch 1143/1500 - Train Loss: 0.5183, Val Loss: 0.4775
-Retraining Epoch 1144/1500 - Train Loss: 0.5069, Val Loss: 0.4749
-Retraining Epoch 1145/1500 - Train Loss: 0.5009, Val Loss: 0.4884
-Retraining Epoch 1146/1500 - Train Loss: 0.5099, Val Loss: 0.4809
-Retraining Epoch 1147/1500 - Train Loss: 0.5121, Val Loss: 0.4822
-Retraining Epoch 1148/1500 - Train Loss: 0.5050, Val Loss: 0.4743
-Retraining Epoch 1149/1500 - Train Loss: 0.4994, Val Loss: 0.4772
-Retraining Epoch 1150/1500 - Train Loss: 0.5049, Val Loss: 0.4887
-Retraining Epoch 1151/1500 - Train Loss: 0.5062, Val Loss: 0.4779
-Retraining Epoch 1152/1500 - Train Loss: 0.5070, Val Loss: 0.4772
-Retraining Epoch 1153/1500 - Train Loss: 0.4980, Val Loss: 0.4796
-Retraining Epoch 1154/1500 - Train Loss: 0.5012, Val Loss: 0.4752
-Retraining Epoch 1155/1500 - Train Loss: 0.5028, Val Loss: 0.4792
-Retraining Epoch 1156/1500 - Train Loss: 0.4995, Val Loss: 0.4725
-Retraining Epoch 1157/1500 - Train Loss: 0.4992, Val Loss: 0.4717
-Retraining Epoch 1158/1500 - Train Loss: 0.4993, Val Loss: 0.4732
-Retraining Epoch 1159/1500 - Train Loss: 0.4996, Val Loss: 0.4703
-Retraining Epoch 1160/1500 - Train Loss: 0.4956, Val Loss: 0.4721
-Retraining Epoch 1161/1500 - Train Loss: 0.5002, Val Loss: 0.4720
-Retraining Epoch 1162/1500 - Train Loss: 0.4974, Val Loss: 0.4710
-Retraining Epoch 1163/1500 - Train Loss: 0.4999, Val Loss: 0.4740
-Retraining Epoch 1164/1500 - Train Loss: 0.5009, Val Loss: 0.4717
-Retraining Epoch 1165/1500 - Train Loss: 0.4991, Val Loss: 0.4774
-Retraining Epoch 1166/1500 - Train Loss: 0.5063, Val Loss: 0.4717
-Retraining Epoch 1167/1500 - Train Loss: 0.5046, Val Loss: 0.4813
-Retraining Epoch 1168/1500 - Train Loss: 0.5036, Val Loss: 0.4725
-Retraining Epoch 1169/1500 - Train Loss: 0.5021, Val Loss: 0.4737
-Retraining Epoch 1170/1500 - Train Loss: 0.5028, Val Loss: 0.4752
-Retraining Epoch 1171/1500 - Train Loss: 0.4998, Val Loss: 0.4741
-Retraining Epoch 1172/1500 - Train Loss: 0.5032, Val Loss: 0.4781
-Retraining Epoch 1173/1500 - Train Loss: 0.5021, Val Loss: 0.4708
-Retraining Epoch 1174/1500 - Train Loss: 0.5026, Val Loss: 0.4733
-Retraining Epoch 1175/1500 - Train Loss: 0.4993, Val Loss: 0.4719
-Retraining Epoch 1176/1500 - Train Loss: 0.5030, Val Loss: 0.4712
-Retraining Epoch 1177/1500 - Train Loss: 0.5016, Val Loss: 0.4736
-Retraining Epoch 1178/1500 - Train Loss: 0.4982, Val Loss: 0.4729
-Retraining Epoch 1179/1500 - Train Loss: 0.4957, Val Loss: 0.4756
-Retraining Epoch 1180/1500 - Train Loss: 0.5000, Val Loss: 0.4707
-Retraining Epoch 1181/1500 - Train Loss: 0.5007, Val Loss: 0.4753
-Retraining Epoch 1182/1500 - Train Loss: 0.5003, Val Loss: 0.4713
-Retraining Epoch 1183/1500 - Train Loss: 0.4968, Val Loss: 0.4724
-Retraining Epoch 1184/1500 - Train Loss: 0.4998, Val Loss: 0.4685
-Retraining Epoch 1185/1500 - Train Loss: 0.4938, Val Loss: 0.4725
-Retraining Epoch 1186/1500 - Train Loss: 0.5027, Val Loss: 0.4677
-Retraining Epoch 1187/1500 - Train Loss: 0.4950, Val Loss: 0.4698
-Retraining Epoch 1188/1500 - Train Loss: 0.4968, Val Loss: 0.4683
-Retraining Epoch 1189/1500 - Train Loss: 0.4950, Val Loss: 0.4697
-Retraining Epoch 1190/1500 - Train Loss: 0.4995, Val Loss: 0.4675
-Retraining Epoch 1191/1500 - Train Loss: 0.4957, Val Loss: 0.4691
-Retraining Epoch 1192/1500 - Train Loss: 0.4965, Val Loss: 0.4690
-Retraining Epoch 1193/1500 - Train Loss: 0.4935, Val Loss: 0.4686
-Retraining Epoch 1194/1500 - Train Loss: 0.4946, Val Loss: 0.4677
-Retraining Epoch 1195/1500 - Train Loss: 0.4954, Val Loss: 0.4676
-Retraining Epoch 1196/1500 - Train Loss: 0.4964, Val Loss: 0.4680
-Retraining Epoch 1197/1500 - Train Loss: 0.4960, Val Loss: 0.4661
-Retraining Epoch 1198/1500 - Train Loss: 0.4951, Val Loss: 0.4689
-Retraining Epoch 1199/1500 - Train Loss: 0.5000, Val Loss: 0.4670
-Retraining Epoch 1200/1500 - Train Loss: 0.5004, Val Loss: 0.4682
-Retraining Epoch 1201/1500 - Train Loss: 0.4942, Val Loss: 0.4668
-Retraining Epoch 1202/1500 - Train Loss: 0.4934, Val Loss: 0.4671
-Retraining Epoch 1203/1500 - Train Loss: 0.4980, Val Loss: 0.4665
-Retraining Epoch 1204/1500 - Train Loss: 0.4950, Val Loss: 0.4655
-Retraining Epoch 1205/1500 - Train Loss: 0.4953, Val Loss: 0.4682
-Retraining Epoch 1206/1500 - Train Loss: 0.4947, Val Loss: 0.4656
-Retraining Epoch 1207/1500 - Train Loss: 0.4926, Val Loss: 0.4724
-Retraining Epoch 1208/1500 - Train Loss: 0.4977, Val Loss: 0.4682
-Retraining Epoch 1209/1500 - Train Loss: 0.5000, Val Loss: 0.4897
-Retraining Epoch 1210/1500 - Train Loss: 0.5143, Val Loss: 0.4840
-Retraining Epoch 1211/1500 - Train Loss: 0.5214, Val Loss: 0.5077
-Retraining Epoch 1212/1500 - Train Loss: 0.5257, Val Loss: 0.4754
-Retraining Epoch 1213/1500 - Train Loss: 0.5069, Val Loss: 0.4709
-Retraining Epoch 1214/1500 - Train Loss: 0.4982, Val Loss: 0.4907
-Retraining Epoch 1215/1500 - Train Loss: 0.5103, Val Loss: 0.4732
-Retraining Epoch 1216/1500 - Train Loss: 0.5000, Val Loss: 0.4688
-Retraining Epoch 1217/1500 - Train Loss: 0.4988, Val Loss: 0.4848
-Retraining Epoch 1218/1500 - Train Loss: 0.5098, Val Loss: 0.4704
-Retraining Epoch 1219/1500 - Train Loss: 0.5005, Val Loss: 0.4685
-Retraining Epoch 1220/1500 - Train Loss: 0.4977, Val Loss: 0.4805
-Retraining Epoch 1221/1500 - Train Loss: 0.5015, Val Loss: 0.4699
-Retraining Epoch 1222/1500 - Train Loss: 0.5013, Val Loss: 0.4686
-Retraining Epoch 1223/1500 - Train Loss: 0.4945, Val Loss: 0.4747
-Retraining Epoch 1224/1500 - Train Loss: 0.5000, Val Loss: 0.4691
-Retraining Epoch 1225/1500 - Train Loss: 0.5048, Val Loss: 0.4705
-Retraining Epoch 1226/1500 - Train Loss: 0.5007, Val Loss: 0.4674
-Retraining Epoch 1227/1500 - Train Loss: 0.4964, Val Loss: 0.4667
-Retraining Epoch 1228/1500 - Train Loss: 0.4960, Val Loss: 0.4737
-Retraining Epoch 1229/1500 - Train Loss: 0.4986, Val Loss: 0.4657
-Retraining Epoch 1230/1500 - Train Loss: 0.4953, Val Loss: 0.4658
-Retraining Epoch 1231/1500 - Train Loss: 0.4938, Val Loss: 0.4696
-Retraining Epoch 1232/1500 - Train Loss: 0.4931, Val Loss: 0.4657
-Retraining Epoch 1233/1500 - Train Loss: 0.5017, Val Loss: 0.4726
-Retraining Epoch 1234/1500 - Train Loss: 0.4976, Val Loss: 0.4656
-Retraining Epoch 1235/1500 - Train Loss: 0.4947, Val Loss: 0.4661
-Retraining Epoch 1236/1500 - Train Loss: 0.4922, Val Loss: 0.4652
-Retraining Epoch 1237/1500 - Train Loss: 0.4944, Val Loss: 0.4655
-Retraining Epoch 1238/1500 - Train Loss: 0.4948, Val Loss: 0.4689
-Retraining Epoch 1239/1500 - Train Loss: 0.4958, Val Loss: 0.4647
-Retraining Epoch 1240/1500 - Train Loss: 0.4946, Val Loss: 0.4669
-Retraining Epoch 1241/1500 - Train Loss: 0.4932, Val Loss: 0.4645
-Retraining Epoch 1242/1500 - Train Loss: 0.4932, Val Loss: 0.4633
-Retraining Epoch 1243/1500 - Train Loss: 0.4953, Val Loss: 0.4653
-Retraining Epoch 1244/1500 - Train Loss: 0.4916, Val Loss: 0.4633
-Retraining Epoch 1245/1500 - Train Loss: 0.4943, Val Loss: 0.4648
-Retraining Epoch 1246/1500 - Train Loss: 0.4894, Val Loss: 0.4627
-Retraining Epoch 1247/1500 - Train Loss: 0.4939, Val Loss: 0.4628
-Retraining Epoch 1248/1500 - Train Loss: 0.4940, Val Loss: 0.4651
-Retraining Epoch 1249/1500 - Train Loss: 0.4915, Val Loss: 0.4620
-Retraining Epoch 1250/1500 - Train Loss: 0.4894, Val Loss: 0.4677
-Retraining Epoch 1251/1500 - Train Loss: 0.4904, Val Loss: 0.4626
-Retraining Epoch 1252/1500 - Train Loss: 0.4891, Val Loss: 0.4689
-Retraining Epoch 1253/1500 - Train Loss: 0.4967, Val Loss: 0.4638
-Retraining Epoch 1254/1500 - Train Loss: 0.4982, Val Loss: 0.4731
-Retraining Epoch 1255/1500 - Train Loss: 0.4974, Val Loss: 0.4628
-Retraining Epoch 1256/1500 - Train Loss: 0.4936, Val Loss: 0.4622
-Retraining Epoch 1257/1500 - Train Loss: 0.4883, Val Loss: 0.4719
-Retraining Epoch 1258/1500 - Train Loss: 0.4966, Val Loss: 0.4670
-Retraining Epoch 1259/1500 - Train Loss: 0.5021, Val Loss: 0.4781
-Retraining Epoch 1260/1500 - Train Loss: 0.5005, Val Loss: 0.4652
-Retraining Epoch 1261/1500 - Train Loss: 0.4990, Val Loss: 0.4688
-Retraining Epoch 1262/1500 - Train Loss: 0.4906, Val Loss: 0.4653
-Retraining Epoch 1263/1500 - Train Loss: 0.4960, Val Loss: 0.4658
-Retraining Epoch 1264/1500 - Train Loss: 0.4972, Val Loss: 0.4726
-Retraining Epoch 1265/1500 - Train Loss: 0.4996, Val Loss: 0.4648
-Retraining Epoch 1266/1500 - Train Loss: 0.4931, Val Loss: 0.4631
-Retraining Epoch 1267/1500 - Train Loss: 0.4947, Val Loss: 0.4652
-Retraining Epoch 1268/1500 - Train Loss: 0.4904, Val Loss: 0.4669
-Retraining Epoch 1269/1500 - Train Loss: 0.5000, Val Loss: 0.4729
-Retraining Epoch 1270/1500 - Train Loss: 0.4965, Val Loss: 0.4637
-Retraining Epoch 1271/1500 - Train Loss: 0.4998, Val Loss: 0.4691
-Retraining Epoch 1272/1500 - Train Loss: 0.4914, Val Loss: 0.4710
-Retraining Epoch 1273/1500 - Train Loss: 0.4939, Val Loss: 0.4680
-Retraining Epoch 1274/1500 - Train Loss: 0.4988, Val Loss: 0.4708
-Retraining Epoch 1275/1500 - Train Loss: 0.4929, Val Loss: 0.4664
-Retraining Epoch 1276/1500 - Train Loss: 0.4950, Val Loss: 0.4607
-Retraining Epoch 1277/1500 - Train Loss: 0.4875, Val Loss: 0.4624
-Retraining Epoch 1278/1500 - Train Loss: 0.4889, Val Loss: 0.4610
-Retraining Epoch 1279/1500 - Train Loss: 0.4934, Val Loss: 0.4614
-Retraining Epoch 1280/1500 - Train Loss: 0.4887, Val Loss: 0.4607
-Retraining Epoch 1281/1500 - Train Loss: 0.4915, Val Loss: 0.4596
-Retraining Epoch 1282/1500 - Train Loss: 0.4933, Val Loss: 0.4634
-Retraining Epoch 1283/1500 - Train Loss: 0.4935, Val Loss: 0.4592
-Retraining Epoch 1284/1500 - Train Loss: 0.4876, Val Loss: 0.4602
-Retraining Epoch 1285/1500 - Train Loss: 0.4873, Val Loss: 0.4603
-Retraining Epoch 1286/1500 - Train Loss: 0.4906, Val Loss: 0.4592
-Retraining Epoch 1287/1500 - Train Loss: 0.4896, Val Loss: 0.4678
-Retraining Epoch 1288/1500 - Train Loss: 0.4940, Val Loss: 0.4630
-Retraining Epoch 1289/1500 - Train Loss: 0.4981, Val Loss: 0.4807
-Retraining Epoch 1290/1500 - Train Loss: 0.5059, Val Loss: 0.4682
-Retraining Epoch 1291/1500 - Train Loss: 0.4998, Val Loss: 0.4766
-Retraining Epoch 1292/1500 - Train Loss: 0.5004, Val Loss: 0.4602
-Retraining Epoch 1293/1500 - Train Loss: 0.4929, Val Loss: 0.4603
-Retraining Epoch 1294/1500 - Train Loss: 0.4875, Val Loss: 0.4684
-Retraining Epoch 1295/1500 - Train Loss: 0.4928, Val Loss: 0.4595
-Retraining Epoch 1296/1500 - Train Loss: 0.4908, Val Loss: 0.4600
-Retraining Epoch 1297/1500 - Train Loss: 0.4887, Val Loss: 0.4614
-Retraining Epoch 1298/1500 - Train Loss: 0.4886, Val Loss: 0.4588
-Retraining Epoch 1299/1500 - Train Loss: 0.4932, Val Loss: 0.4623
-Retraining Epoch 1300/1500 - Train Loss: 0.4857, Val Loss: 0.4602
-Retraining Epoch 1301/1500 - Train Loss: 0.4901, Val Loss: 0.4589
-Retraining Epoch 1302/1500 - Train Loss: 0.4901, Val Loss: 0.4665
-Retraining Epoch 1303/1500 - Train Loss: 0.4923, Val Loss: 0.4612
-Retraining Epoch 1304/1500 - Train Loss: 0.4933, Val Loss: 0.4673
-Retraining Epoch 1305/1500 - Train Loss: 0.4921, Val Loss: 0.4580
-Retraining Epoch 1306/1500 - Train Loss: 0.4913, Val Loss: 0.4609
-Retraining Epoch 1307/1500 - Train Loss: 0.4859, Val Loss: 0.4595
-Retraining Epoch 1308/1500 - Train Loss: 0.4872, Val Loss: 0.4573
-Retraining Epoch 1309/1500 - Train Loss: 0.4893, Val Loss: 0.4646
-Retraining Epoch 1310/1500 - Train Loss: 0.4891, Val Loss: 0.4592
-Retraining Epoch 1311/1500 - Train Loss: 0.4906, Val Loss: 0.4615
-Retraining Epoch 1312/1500 - Train Loss: 0.4850, Val Loss: 0.4567
-Retraining Epoch 1313/1500 - Train Loss: 0.4835, Val Loss: 0.4611
-Retraining Epoch 1314/1500 - Train Loss: 0.4866, Val Loss: 0.4585
-Retraining Epoch 1315/1500 - Train Loss: 0.4857, Val Loss: 0.4584
-Retraining Epoch 1316/1500 - Train Loss: 0.4927, Val Loss: 0.4637
-Retraining Epoch 1317/1500 - Train Loss: 0.4888, Val Loss: 0.4600
-Retraining Epoch 1318/1500 - Train Loss: 0.4887, Val Loss: 0.4592
-Retraining Epoch 1319/1500 - Train Loss: 0.4880, Val Loss: 0.4570
-Retraining Epoch 1320/1500 - Train Loss: 0.4836, Val Loss: 0.4589
-Retraining Epoch 1321/1500 - Train Loss: 0.4883, Val Loss: 0.4575
-Retraining Epoch 1322/1500 - Train Loss: 0.4862, Val Loss: 0.4578
-Retraining Epoch 1323/1500 - Train Loss: 0.4913, Val Loss: 0.4588
-Retraining Epoch 1324/1500 - Train Loss: 0.4892, Val Loss: 0.4591
-Retraining Epoch 1325/1500 - Train Loss: 0.4897, Val Loss: 0.4618
-Retraining Epoch 1326/1500 - Train Loss: 0.4888, Val Loss: 0.4561
-Retraining Epoch 1327/1500 - Train Loss: 0.4905, Val Loss: 0.4644
-Retraining Epoch 1328/1500 - Train Loss: 0.4945, Val Loss: 0.4572
-Retraining Epoch 1329/1500 - Train Loss: 0.4877, Val Loss: 0.4586
-Retraining Epoch 1330/1500 - Train Loss: 0.4908, Val Loss: 0.4621
-Retraining Epoch 1331/1500 - Train Loss: 0.4890, Val Loss: 0.4633
-Retraining Epoch 1332/1500 - Train Loss: 0.4971, Val Loss: 0.4739
-Retraining Epoch 1333/1500 - Train Loss: 0.5002, Val Loss: 0.4651
-Retraining Epoch 1334/1500 - Train Loss: 0.5004, Val Loss: 0.4844
-Retraining Epoch 1335/1500 - Train Loss: 0.5049, Val Loss: 0.4779
-Retraining Epoch 1336/1500 - Train Loss: 0.5038, Val Loss: 0.4776
-Retraining Epoch 1337/1500 - Train Loss: 0.5017, Val Loss: 0.4754
-Retraining Epoch 1338/1500 - Train Loss: 0.5074, Val Loss: 0.4699
-Retraining Epoch 1339/1500 - Train Loss: 0.4948, Val Loss: 0.4834
-Retraining Epoch 1340/1500 - Train Loss: 0.5077, Val Loss: 0.4597
-Retraining Epoch 1341/1500 - Train Loss: 0.4866, Val Loss: 0.4743
-Retraining Epoch 1342/1500 - Train Loss: 0.5053, Val Loss: 0.4752
-Retraining Epoch 1343/1500 - Train Loss: 0.4990, Val Loss: 0.4845
-Retraining Epoch 1344/1500 - Train Loss: 0.5144, Val Loss: 0.4812
-Retraining Epoch 1345/1500 - Train Loss: 0.5045, Val Loss: 0.4690
-Retraining Epoch 1346/1500 - Train Loss: 0.5017, Val Loss: 0.4606
-Retraining Epoch 1347/1500 - Train Loss: 0.4909, Val Loss: 0.4759
-Retraining Epoch 1348/1500 - Train Loss: 0.4969, Val Loss: 0.4673
-Retraining Epoch 1349/1500 - Train Loss: 0.4904, Val Loss: 0.4639
-Retraining Epoch 1350/1500 - Train Loss: 0.4889, Val Loss: 0.4686
-Retraining Epoch 1351/1500 - Train Loss: 0.4949, Val Loss: 0.4581
-Retraining Epoch 1352/1500 - Train Loss: 0.4850, Val Loss: 0.4641
-Retraining Epoch 1353/1500 - Train Loss: 0.4915, Val Loss: 0.4578
-Retraining Epoch 1354/1500 - Train Loss: 0.4886, Val Loss: 0.4590
-Retraining Epoch 1355/1500 - Train Loss: 0.4907, Val Loss: 0.4602
-Retraining Epoch 1356/1500 - Train Loss: 0.4909, Val Loss: 0.4643
-Retraining Epoch 1357/1500 - Train Loss: 0.4942, Val Loss: 0.4627
-Retraining Epoch 1358/1500 - Train Loss: 0.4901, Val Loss: 0.4578
-Retraining Epoch 1359/1500 - Train Loss: 0.4904, Val Loss: 0.4546
-Retraining Epoch 1360/1500 - Train Loss: 0.4877, Val Loss: 0.4623
-Retraining Epoch 1361/1500 - Train Loss: 0.4910, Val Loss: 0.4562
-Retraining Epoch 1362/1500 - Train Loss: 0.4833, Val Loss: 0.4598
-Retraining Epoch 1363/1500 - Train Loss: 0.4864, Val Loss: 0.4550
-Retraining Epoch 1364/1500 - Train Loss: 0.4846, Val Loss: 0.4567
-Retraining Epoch 1365/1500 - Train Loss: 0.4825, Val Loss: 0.4561
-Retraining Epoch 1366/1500 - Train Loss: 0.4830, Val Loss: 0.4535
-Retraining Epoch 1367/1500 - Train Loss: 0.4814, Val Loss: 0.4548
-Retraining Epoch 1368/1500 - Train Loss: 0.4860, Val Loss: 0.4543
-Retraining Epoch 1369/1500 - Train Loss: 0.4804, Val Loss: 0.4580
-Retraining Epoch 1370/1500 - Train Loss: 0.4838, Val Loss: 0.4533
-Retraining Epoch 1371/1500 - Train Loss: 0.4843, Val Loss: 0.4535
-Retraining Epoch 1372/1500 - Train Loss: 0.4839, Val Loss: 0.4525
-Retraining Epoch 1373/1500 - Train Loss: 0.4842, Val Loss: 0.4538
-Retraining Epoch 1374/1500 - Train Loss: 0.4813, Val Loss: 0.4585
-Retraining Epoch 1375/1500 - Train Loss: 0.4843, Val Loss: 0.4553
-Retraining Epoch 1376/1500 - Train Loss: 0.4888, Val Loss: 0.4684
-Retraining Epoch 1377/1500 - Train Loss: 0.4922, Val Loss: 0.4609
-Retraining Epoch 1378/1500 - Train Loss: 0.4876, Val Loss: 0.4586
-Retraining Epoch 1379/1500 - Train Loss: 0.4848, Val Loss: 0.4543
-Retraining Epoch 1380/1500 - Train Loss: 0.4857, Val Loss: 0.4536
-Retraining Epoch 1381/1500 - Train Loss: 0.4877, Val Loss: 0.4625
-Retraining Epoch 1382/1500 - Train Loss: 0.4885, Val Loss: 0.4521
-Retraining Epoch 1383/1500 - Train Loss: 0.4876, Val Loss: 0.4552
-Retraining Epoch 1384/1500 - Train Loss: 0.4849, Val Loss: 0.4548
-Retraining Epoch 1385/1500 - Train Loss: 0.4834, Val Loss: 0.4567
-Retraining Epoch 1386/1500 - Train Loss: 0.4930, Val Loss: 0.4644
-Retraining Epoch 1387/1500 - Train Loss: 0.4892, Val Loss: 0.4544
-Retraining Epoch 1388/1500 - Train Loss: 0.4880, Val Loss: 0.4544
-Retraining Epoch 1389/1500 - Train Loss: 0.4851, Val Loss: 0.4597
-Retraining Epoch 1390/1500 - Train Loss: 0.4837, Val Loss: 0.4532
-Retraining Epoch 1391/1500 - Train Loss: 0.4839, Val Loss: 0.4546
-Retraining Epoch 1392/1500 - Train Loss: 0.4840, Val Loss: 0.4512
-Retraining Epoch 1393/1500 - Train Loss: 0.4822, Val Loss: 0.4532
-Retraining Epoch 1394/1500 - Train Loss: 0.4850, Val Loss: 0.4536
-Retraining Epoch 1395/1500 - Train Loss: 0.4846, Val Loss: 0.4506
-Retraining Epoch 1396/1500 - Train Loss: 0.4841, Val Loss: 0.4569
-Retraining Epoch 1397/1500 - Train Loss: 0.4849, Val Loss: 0.4547
-Retraining Epoch 1398/1500 - Train Loss: 0.4874, Val Loss: 0.4531
-Retraining Epoch 1399/1500 - Train Loss: 0.4790, Val Loss: 0.4511
-Retraining Epoch 1400/1500 - Train Loss: 0.4854, Val Loss: 0.4529
-Retraining Epoch 1401/1500 - Train Loss: 0.4823, Val Loss: 0.4533
-Retraining Epoch 1402/1500 - Train Loss: 0.4827, Val Loss: 0.4505
-Retraining Epoch 1403/1500 - Train Loss: 0.4791, Val Loss: 0.4550
-Retraining Epoch 1404/1500 - Train Loss: 0.4834, Val Loss: 0.4512
-Retraining Epoch 1405/1500 - Train Loss: 0.4806, Val Loss: 0.4535
-Retraining Epoch 1406/1500 - Train Loss: 0.4843, Val Loss: 0.4490
-Retraining Epoch 1407/1500 - Train Loss: 0.4813, Val Loss: 0.4491
-Retraining Epoch 1408/1500 - Train Loss: 0.4803, Val Loss: 0.4510
-Retraining Epoch 1409/1500 - Train Loss: 0.4794, Val Loss: 0.4514
-Retraining Epoch 1410/1500 - Train Loss: 0.4814, Val Loss: 0.4516
-Retraining Epoch 1411/1500 - Train Loss: 0.4812, Val Loss: 0.4482
-Retraining Epoch 1412/1500 - Train Loss: 0.4810, Val Loss: 0.4567
-Retraining Epoch 1413/1500 - Train Loss: 0.4828, Val Loss: 0.4502
-Retraining Epoch 1414/1500 - Train Loss: 0.4849, Val Loss: 0.4547
-Retraining Epoch 1415/1500 - Train Loss: 0.4823, Val Loss: 0.4485
-Retraining Epoch 1416/1500 - Train Loss: 0.4804, Val Loss: 0.4547
-Retraining Epoch 1417/1500 - Train Loss: 0.4793, Val Loss: 0.4505
-Retraining Epoch 1418/1500 - Train Loss: 0.4785, Val Loss: 0.4503
-Retraining Epoch 1419/1500 - Train Loss: 0.4815, Val Loss: 0.4475
-Retraining Epoch 1420/1500 - Train Loss: 0.4813, Val Loss: 0.4582
-Retraining Epoch 1421/1500 - Train Loss: 0.4857, Val Loss: 0.4528
-Retraining Epoch 1422/1500 - Train Loss: 0.4894, Val Loss: 0.4657
-Retraining Epoch 1423/1500 - Train Loss: 0.4894, Val Loss: 0.4547
-Retraining Epoch 1424/1500 - Train Loss: 0.4932, Val Loss: 0.4654
-Retraining Epoch 1425/1500 - Train Loss: 0.4907, Val Loss: 0.4566
-Retraining Epoch 1426/1500 - Train Loss: 0.4892, Val Loss: 0.4527
-Retraining Epoch 1427/1500 - Train Loss: 0.4825, Val Loss: 0.4537
-Retraining Epoch 1428/1500 - Train Loss: 0.4800, Val Loss: 0.4516
-Retraining Epoch 1429/1500 - Train Loss: 0.4842, Val Loss: 0.4561
-Retraining Epoch 1430/1500 - Train Loss: 0.4857, Val Loss: 0.4504
-Retraining Epoch 1431/1500 - Train Loss: 0.4792, Val Loss: 0.4521
-Retraining Epoch 1432/1500 - Train Loss: 0.4870, Val Loss: 0.4611
-Retraining Epoch 1433/1500 - Train Loss: 0.4886, Val Loss: 0.4636
-Retraining Epoch 1434/1500 - Train Loss: 0.4960, Val Loss: 0.4734
-Retraining Epoch 1435/1500 - Train Loss: 0.5032, Val Loss: 0.4706
-Retraining Epoch 1436/1500 - Train Loss: 0.5120, Val Loss: 0.4736
-Retraining Epoch 1437/1500 - Train Loss: 0.4951, Val Loss: 0.4867
-Retraining Epoch 1438/1500 - Train Loss: 0.5166, Val Loss: 0.4701
-Retraining Epoch 1439/1500 - Train Loss: 0.4940, Val Loss: 0.4801
-Retraining Epoch 1440/1500 - Train Loss: 0.5095, Val Loss: 0.4601
-Retraining Epoch 1441/1500 - Train Loss: 0.4866, Val Loss: 0.4686
-Retraining Epoch 1442/1500 - Train Loss: 0.4954, Val Loss: 0.4729
-Retraining Epoch 1443/1500 - Train Loss: 0.4967, Val Loss: 0.4553
-Retraining Epoch 1444/1500 - Train Loss: 0.4799, Val Loss: 0.4634
-Retraining Epoch 1445/1500 - Train Loss: 0.4917, Val Loss: 0.4605
-Retraining Epoch 1446/1500 - Train Loss: 0.4838, Val Loss: 0.4568
-Retraining Epoch 1447/1500 - Train Loss: 0.4840, Val Loss: 0.4639
-Retraining Epoch 1448/1500 - Train Loss: 0.4846, Val Loss: 0.4547
-Retraining Epoch 1449/1500 - Train Loss: 0.4798, Val Loss: 0.4550
-Retraining Epoch 1450/1500 - Train Loss: 0.4895, Val Loss: 0.4576
-Retraining Epoch 1451/1500 - Train Loss: 0.4822, Val Loss: 0.4520
-Retraining Epoch 1452/1500 - Train Loss: 0.4818, Val Loss: 0.4528
-Retraining Epoch 1453/1500 - Train Loss: 0.4829, Val Loss: 0.4573
-Retraining Epoch 1454/1500 - Train Loss: 0.4843, Val Loss: 0.4515
-Retraining Epoch 1455/1500 - Train Loss: 0.4877, Val Loss: 0.4540
-Retraining Epoch 1456/1500 - Train Loss: 0.4793, Val Loss: 0.4510
-Retraining Epoch 1457/1500 - Train Loss: 0.4809, Val Loss: 0.4480
-Retraining Epoch 1458/1500 - Train Loss: 0.4824, Val Loss: 0.4490
-Retraining Epoch 1459/1500 - Train Loss: 0.4822, Val Loss: 0.4459
-Retraining Epoch 1460/1500 - Train Loss: 0.4795, Val Loss: 0.4515
-Retraining Epoch 1461/1500 - Train Loss: 0.4829, Val Loss: 0.4492
-Retraining Epoch 1462/1500 - Train Loss: 0.4802, Val Loss: 0.4455
-Retraining Epoch 1463/1500 - Train Loss: 0.4811, Val Loss: 0.4494
-Retraining Epoch 1464/1500 - Train Loss: 0.4761, Val Loss: 0.4453
-Retraining Epoch 1465/1500 - Train Loss: 0.4775, Val Loss: 0.4512
-Retraining Epoch 1466/1500 - Train Loss: 0.4797, Val Loss: 0.4464
-Retraining Epoch 1467/1500 - Train Loss: 0.4742, Val Loss: 0.4470
-Retraining Epoch 1468/1500 - Train Loss: 0.4768, Val Loss: 0.4494
-Retraining Epoch 1469/1500 - Train Loss: 0.4772, Val Loss: 0.4470
-Retraining Epoch 1470/1500 - Train Loss: 0.4792, Val Loss: 0.4475
-Retraining Epoch 1471/1500 - Train Loss: 0.4754, Val Loss: 0.4440
-Retraining Epoch 1472/1500 - Train Loss: 0.4813, Val Loss: 0.4446
-Retraining Epoch 1473/1500 - Train Loss: 0.4749, Val Loss: 0.4458
-Retraining Epoch 1474/1500 - Train Loss: 0.4786, Val Loss: 0.4446
-Retraining Epoch 1475/1500 - Train Loss: 0.4762, Val Loss: 0.4507
-Retraining Epoch 1476/1500 - Train Loss: 0.4784, Val Loss: 0.4444
-Retraining Epoch 1477/1500 - Train Loss: 0.4820, Val Loss: 0.4535
-Retraining Epoch 1478/1500 - Train Loss: 0.4817, Val Loss: 0.4444
-Retraining Epoch 1479/1500 - Train Loss: 0.4791, Val Loss: 0.4485
-Retraining Epoch 1480/1500 - Train Loss: 0.4779, Val Loss: 0.4434
-Retraining Epoch 1481/1500 - Train Loss: 0.4828, Val Loss: 0.4478
-Retraining Epoch 1482/1500 - Train Loss: 0.4794, Val Loss: 0.4445
-Retraining Epoch 1483/1500 - Train Loss: 0.4757, Val Loss: 0.4445
-Retraining Epoch 1484/1500 - Train Loss: 0.4754, Val Loss: 0.4441
-Retraining Epoch 1485/1500 - Train Loss: 0.4727, Val Loss: 0.4429
-Retraining Epoch 1486/1500 - Train Loss: 0.4782, Val Loss: 0.4437
-Retraining Epoch 1487/1500 - Train Loss: 0.4770, Val Loss: 0.4430
-Retraining Epoch 1488/1500 - Train Loss: 0.4772, Val Loss: 0.4412
-Retraining Epoch 1489/1500 - Train Loss: 0.4735, Val Loss: 0.4493
-Retraining Epoch 1490/1500 - Train Loss: 0.4784, Val Loss: 0.4451
-Retraining Epoch 1491/1500 - Train Loss: 0.4800, Val Loss: 0.4556
-Retraining Epoch 1492/1500 - Train Loss: 0.4816, Val Loss: 0.4440
-Retraining Epoch 1493/1500 - Train Loss: 0.4766, Val Loss: 0.4484
-Retraining Epoch 1494/1500 - Train Loss: 0.4759, Val Loss: 0.4419
-Retraining Epoch 1495/1500 - Train Loss: 0.4744, Val Loss: 0.4421
-Retraining Epoch 1496/1500 - Train Loss: 0.4728, Val Loss: 0.4452
-Retraining Epoch 1497/1500 - Train Loss: 0.4762, Val Loss: 0.4418
-Retraining Epoch 1498/1500 - Train Loss: 0.4761, Val Loss: 0.4495
-Retraining Epoch 1499/1500 - Train Loss: 0.4814, Val Loss: 0.4426
-Retraining Epoch 1500/1500 - Train Loss: 0.4797, Val Loss: 0.4511
+--- Testing Learning Rate: 0.0001 ---
+  > Fold 1/5
+  > Fold 2/5
+  > Fold 3/5
+  > Fold 4/5
+  > Fold 5/5
+  > Avg Metrics for LR=0.0001: Plasmid F1=0.5690, Chromosome F1=0.9433, Loss=0.6174
 
-Final retraining finished. Loading best model state from ./ESKAPEE_model/final_retrained_best_model.pt for evaluation.
-Setting thresholds using best model. Log directory for thresholds: None
-Optimal thresholds saved to config file in ./ESKAPEE_model as best_config_with_thresholds.yaml
+--- Testing Learning Rate: 0.0005 ---
+  > Fold 1/5
+  > Fold 2/5
+  > Fold 3/5
+  > Fold 4/5
+  > Fold 5/5
+  > Avg Metrics for LR=0.0005: Plasmid F1=0.6576, Chromosome F1=0.9479, Loss=0.5077
 
---- Final Evaluation Metrics on Validation Set (Best Optuna Trial) ---
-Final PLASMID Metrics | F1: 0.7071 @ Thresh: 0.38 | Acc: 0.9000 | Prec: 0.7142 | Rec: 0.7002 | AUROC: 0.9301
-Final CHROMOSOME Metrics | F1: 0.9543 @ Thresh: 0.51 | Acc: 0.9183 | Prec: 0.9327 | Rec: 0.9768 | AUROC: 0.9308
+--- Testing Learning Rate: 0.001 ---
+  > Fold 1/5
+  > Fold 2/5
+  > Fold 3/5
+  > Fold 4/5
+  > Fold 5/5
+  > Avg Metrics for LR=0.001: Plasmid F1=0.6765, Chromosome F1=0.9497, Loss=0.4853
+
+--- Testing Learning Rate: 0.005 ---
+  > Fold 1/5
+  > Fold 2/5
+  > Fold 3/5
+  > Fold 4/5
+  > Fold 5/5
+  > Avg Metrics for LR=0.005: Plasmid F1=0.7448, Chromosome F1=0.9590, Loss=0.3845
+
+============================================================
+🏆 Final Results Summary (from Stage 2)
+============================================================
+      lr  avg_loss  avg_acc_plasmid  avg_prec_plasmid  avg_rec_plasmid  \
+0 0.0001    0.6174           0.8323            0.5190           0.6336   
+1 0.0005    0.5077           0.8727            0.6190           0.7041   
+2 0.0010    0.4853           0.8875            0.6774           0.6779   
+3 0.0050    0.3845           0.9082            0.7208           0.7708   
+
+   avg_f1_plasmid  avg_auroc_plasmid  avg_acc_chromosome  avg_prec_chromosome  \
+0          0.5690             0.8434              0.8966               0.9061   
+1          0.6576             0.9032              0.9059               0.9181   
+2          0.6765             0.9131              0.9092               0.9203   
+3          0.7448             0.9462              0.9269               0.9412   
+
+   avg_rec_chromosome  avg_f1_chromosome  avg_auroc_chromosome  
+0              0.9836             0.9433                0.8360  
+1              0.9798             0.9479                0.8998  
+2              0.9812             0.9497                0.9098  
+3              0.9775             0.9590                0.9470  
+
+============================================================
+📋 Final Evaluation Metrics (Best Configuration)
+(Based on best avg F1 score for LR=0.005)
+============================================================
+Final PLASMID Metrics    | F1: 0.7448 | Acc: 0.9082 | Prec: 0.7208 | Rec: 0.7708 | AUROC: 0.9462
+Final CHROMOSOME Metrics | F1: 0.9590 | Acc: 0.9269 | Prec: 0.9412 | Rec: 0.9775 | AUROC: 0.9470
+
+============================================================
+💾 Training Final Model on ALL Labeled Data for Deployment
+============================================================
+Final training... Epoch 10/1000, Loss: 0.8556
+Final training... Epoch 20/1000, Loss: 0.8138
+Final training... Epoch 30/1000, Loss: 0.8038
+Final training... Epoch 40/1000, Loss: 0.7882
+Final training... Epoch 50/1000, Loss: 0.7507
+Final training... Epoch 60/1000, Loss: 0.7323
+Final training... Epoch 70/1000, Loss: 0.7133
+Final training... Epoch 80/1000, Loss: 0.6995
+Final training... Epoch 90/1000, Loss: 0.6824
+Final training... Epoch 100/1000, Loss: 0.6799
+Final training... Epoch 110/1000, Loss: 0.6656
+Final training... Epoch 120/1000, Loss: 0.6563
+Final training... Epoch 130/1000, Loss: 0.6368
+Final training... Epoch 140/1000, Loss: 0.6331
+Final training... Epoch 150/1000, Loss: 0.6177
+Final training... Epoch 160/1000, Loss: 0.6200
+Final training... Epoch 170/1000, Loss: 0.6010
+Final training... Epoch 180/1000, Loss: 0.6017
+Final training... Epoch 190/1000, Loss: 0.5971
+Final training... Epoch 200/1000, Loss: 0.5935
+Final training... Epoch 210/1000, Loss: 0.5854
+Final training... Epoch 220/1000, Loss: 0.5857
+Final training... Epoch 230/1000, Loss: 0.5981
+Final training... Epoch 240/1000, Loss: 0.5806
+Final training... Epoch 250/1000, Loss: 0.5676
+Final training... Epoch 260/1000, Loss: 0.5649
+Final training... Epoch 270/1000, Loss: 0.5617
+Final training... Epoch 280/1000, Loss: 0.5631
+Final training... Epoch 290/1000, Loss: 0.5500
+Final training... Epoch 300/1000, Loss: 0.5418
+Final training... Epoch 310/1000, Loss: 0.5401
+Final training... Epoch 320/1000, Loss: 0.5416
+Final training... Epoch 330/1000, Loss: 0.5412
+Final training... Epoch 340/1000, Loss: 0.5416
+Final training... Epoch 350/1000, Loss: 0.5317
+Final training... Epoch 360/1000, Loss: 0.5311
+Final training... Epoch 370/1000, Loss: 0.5537
+Final training... Epoch 380/1000, Loss: 0.5231
+Final training... Epoch 390/1000, Loss: 0.5123
+Final training... Epoch 400/1000, Loss: 0.5028
+Final training... Epoch 410/1000, Loss: 0.5148
+Final training... Epoch 420/1000, Loss: 0.5315
+Final training... Epoch 430/1000, Loss: 0.4931
+Final training... Epoch 440/1000, Loss: 0.5130
+Final training... Epoch 450/1000, Loss: 0.4879
+Final training... Epoch 460/1000, Loss: 0.5224
+Final training... Epoch 470/1000, Loss: 0.4959
+Final training... Epoch 480/1000, Loss: 0.4894
+Final training... Epoch 490/1000, Loss: 0.5216
+Final training... Epoch 500/1000, Loss: 0.5071
+Final training... Epoch 510/1000, Loss: 0.4861
+Final training... Epoch 520/1000, Loss: 0.4802
+Final training... Epoch 530/1000, Loss: 0.4722
+Final training... Epoch 540/1000, Loss: 0.4699
+Final training... Epoch 550/1000, Loss: 0.4662
+Final training... Epoch 560/1000, Loss: 0.4827
+Final training... Epoch 570/1000, Loss: 0.4670
+Final training... Epoch 580/1000, Loss: 0.5270
+Final training... Epoch 590/1000, Loss: 0.4681
+Final training... Epoch 600/1000, Loss: 0.4644
+Final training... Epoch 610/1000, Loss: 0.4575
+Final training... Epoch 620/1000, Loss: 0.4669
+Final training... Epoch 630/1000, Loss: 0.4544
+Final training... Epoch 640/1000, Loss: 0.4533
+Final training... Epoch 650/1000, Loss: 0.4572
+Final training... Epoch 660/1000, Loss: 0.4537
+Final training... Epoch 670/1000, Loss: 0.4608
+Final training... Epoch 680/1000, Loss: 0.4543
+Final training... Epoch 690/1000, Loss: 0.4513
+Final training... Epoch 700/1000, Loss: 0.4551
+Final training... Epoch 710/1000, Loss: 0.4649
+Final training... Epoch 720/1000, Loss: 0.4342
+Final training... Epoch 730/1000, Loss: 0.4432
+Final training... Epoch 740/1000, Loss: 0.4307
+Final training... Epoch 750/1000, Loss: 0.4318
+Final training... Epoch 760/1000, Loss: 0.4372
+Final training... Epoch 770/1000, Loss: 0.4303
+Final training... Epoch 780/1000, Loss: 0.4261
+Final training... Epoch 790/1000, Loss: 0.4385
+Final training... Epoch 800/1000, Loss: 0.4232
+Final training... Epoch 810/1000, Loss: 0.4225
+Final training... Epoch 820/1000, Loss: 0.4160
+Final training... Epoch 830/1000, Loss: 0.4211
+Final training... Epoch 840/1000, Loss: 0.4458
+Final training... Epoch 850/1000, Loss: 0.4248
+Final training... Epoch 860/1000, Loss: 0.4178
+Final training... Epoch 870/1000, Loss: 0.4073
+Final training... Epoch 880/1000, Loss: 0.4234
+Final training... Epoch 890/1000, Loss: 0.4089
+Final training... Epoch 900/1000, Loss: 0.4043
+Final training... Epoch 910/1000, Loss: 0.4138
+Final training... Epoch 920/1000, Loss: 0.4067
+Final training... Epoch 930/1000, Loss: 0.3949
+Final training... Epoch 940/1000, Loss: 0.3943
+Final training... Epoch 950/1000, Loss: 0.4108
+Final training... Epoch 960/1000, Loss: 0.3916
+Final training... Epoch 970/1000, Loss: 0.4021
+Final training... Epoch 980/1000, Loss: 0.3897
+Final training... Epoch 990/1000, Loss: 0.3970
+Final training... Epoch 1000/1000, Loss: 0.3980
+
+Final model training loss plot saved to ./ESKAPEE_model
+
+Final model and config saved to ./ESKAPEE_model

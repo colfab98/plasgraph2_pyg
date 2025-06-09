@@ -35,12 +35,12 @@ random_seed: 123
 # Plasmid and ambiguous contigs weight
 plasmid_ambiguous_weight: 1
 # Learning rate
-learning_rate: 0.01
+learning_rate: 0.005
 # The number of learning epochs
-epochs: 1500
+epochs: 1000
+# epochs during optuna trials 
+epochs_trials: 100
 # The number of epochs when no improvement before early stopping happens
-epochs_trials: 500
-
 early_stopping_patience: 100
 # Set threshold for plasmid and chromosome classification to optimize validation F1 score
 set_thresholds: true
@@ -50,3 +50,7 @@ minimum_contig_length: 100
 model_type: GGNNModel
 gradient_clipping: 1
 edge_gate_hidden_dim: 32
+k_folds: 5
+optuna_n_trials: 20
+lrs_to_test_retrain: [0.0001, 0.0005, 0.001, 0.005]
+early_stopping_patience_retrain: 100
