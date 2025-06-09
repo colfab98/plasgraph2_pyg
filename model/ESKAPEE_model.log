@@ -7,76 +7,33 @@ Using device: mps
 Using fixed Learning Rate: 0.005
 ============================================================
 
---- Starting Trial 0 with params: {'l2_reg': 2.2499461453716427e-06, 'n_channels': 32, 'n_gnn_layers': 1, 'dropout_rate': 0.1641983625461992, 'gradient_clipping': 0.07699688841962926, 'edge_gate_hidden_dim': 40} ---
-[I 2025-06-08 16:52:54,639] Trial 0 finished with value: 0.715071189403534 and parameters: {'l2_reg': 2.2499461453716427e-06, 'n_channels': 32, 'n_gnn_layers': 1, 'dropout_rate': 0.1641983625461992, 'gradient_clipping': 0.07699688841962926, 'edge_gate_hidden_dim': 40}. Best is trial 0 with value: 0.715071189403534.
+--- Starting Trial 0 with params: {'l2_reg': 2.3864589867901805e-06, 'n_channels': 112, 'n_gnn_layers': 4, 'dropout_rate': 0.027026068856115693, 'gradient_clipping': 0.07616543561985145, 'edge_gate_hidden_dim': 16} ---
+[I 2025-06-09 11:18:57,407] Trial 0 finished with value: 0.8375062346458435 and parameters: {'l2_reg': 2.3864589867901805e-06, 'n_channels': 112, 'n_gnn_layers': 4, 'dropout_rate': 0.027026068856115693, 'gradient_clipping': 0.07616543561985145, 'edge_gate_hidden_dim': 16}. Best is trial 0 with value: 0.8375062346458435.
 
---- Starting Trial 1 with params: {'l2_reg': 9.762988006087049e-05, 'n_channels': 16, 'n_gnn_layers': 5, 'dropout_rate': 0.3301623794841022, 'gradient_clipping': 0.8024991372639432, 'edge_gate_hidden_dim': 24} ---
-[I 2025-06-08 16:54:24,803] Trial 1 finished with value: 0.7713363409042359 and parameters: {'l2_reg': 9.762988006087049e-05, 'n_channels': 16, 'n_gnn_layers': 5, 'dropout_rate': 0.3301623794841022, 'gradient_clipping': 0.8024991372639432, 'edge_gate_hidden_dim': 24}. Best is trial 0 with value: 0.715071189403534.
+--- Starting Trial 1 with params: {'l2_reg': 8.479380027393615e-05, 'n_channels': 64, 'n_gnn_layers': 4, 'dropout_rate': 0.34344548132655084, 'gradient_clipping': 0.31957375786264086, 'edge_gate_hidden_dim': 24} ---
+[I 2025-06-09 11:19:18,730] Trial 1 finished with value: 0.8401937484741211 and parameters: {'l2_reg': 8.479380027393615e-05, 'n_channels': 64, 'n_gnn_layers': 4, 'dropout_rate': 0.34344548132655084, 'gradient_clipping': 0.31957375786264086, 'edge_gate_hidden_dim': 24}. Best is trial 0 with value: 0.8375062346458435.
 
---- Starting Trial 2 with params: {'l2_reg': 7.72547140029526e-05, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.4506096036446616, 'gradient_clipping': 0.7430925433964896, 'edge_gate_hidden_dim': 24} ---
-[I 2025-06-08 16:59:27,447] Trial 2 finished with value: 0.6688024401664734 and parameters: {'l2_reg': 7.72547140029526e-05, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.4506096036446616, 'gradient_clipping': 0.7430925433964896, 'edge_gate_hidden_dim': 24}. Best is trial 2 with value: 0.6688024401664734.
+--- Starting Trial 2 with params: {'l2_reg': 0.00013814022434183588, 'n_channels': 128, 'n_gnn_layers': 1, 'dropout_rate': 0.40695090672053025, 'gradient_clipping': 0.5463575533301109, 'edge_gate_hidden_dim': 8} ---
+[I 2025-06-09 11:19:30,533] Trial 2 finished with value: 0.8362640857696533 and parameters: {'l2_reg': 0.00013814022434183588, 'n_channels': 128, 'n_gnn_layers': 1, 'dropout_rate': 0.40695090672053025, 'gradient_clipping': 0.5463575533301109, 'edge_gate_hidden_dim': 8}. Best is trial 2 with value: 0.8362640857696533.
 
---- Starting Trial 3 with params: {'l2_reg': 1.541090261057933e-06, 'n_channels': 64, 'n_gnn_layers': 3, 'dropout_rate': 0.42379194407072734, 'gradient_clipping': 0.1302725213332444, 'edge_gate_hidden_dim': 16} ---
-[I 2025-06-08 17:02:09,576] Trial 3 finished with value: 0.6995789408683777 and parameters: {'l2_reg': 1.541090261057933e-06, 'n_channels': 64, 'n_gnn_layers': 3, 'dropout_rate': 0.42379194407072734, 'gradient_clipping': 0.1302725213332444, 'edge_gate_hidden_dim': 16}. Best is trial 2 with value: 0.6688024401664734.
+--- Starting Trial 3 with params: {'l2_reg': 5.272431448070915e-06, 'n_channels': 128, 'n_gnn_layers': 1, 'dropout_rate': 0.058824708400289354, 'gradient_clipping': 0.6150381985055683, 'edge_gate_hidden_dim': 56} ---
+[I 2025-06-09 11:19:42,183] Trial 3 finished with value: 0.8325032234191895 and parameters: {'l2_reg': 5.272431448070915e-06, 'n_channels': 128, 'n_gnn_layers': 1, 'dropout_rate': 0.058824708400289354, 'gradient_clipping': 0.6150381985055683, 'edge_gate_hidden_dim': 56}. Best is trial 3 with value: 0.8325032234191895.
 
---- Starting Trial 4 with params: {'l2_reg': 2.95785484227645e-05, 'n_channels': 128, 'n_gnn_layers': 5, 'dropout_rate': 0.5071062772621138, 'gradient_clipping': 0.9609426126830675, 'edge_gate_hidden_dim': 16} ---
-[I 2025-06-08 17:10:14,299] Trial 4 finished with value: 0.6715787172317504 and parameters: {'l2_reg': 2.95785484227645e-05, 'n_channels': 128, 'n_gnn_layers': 5, 'dropout_rate': 0.5071062772621138, 'gradient_clipping': 0.9609426126830675, 'edge_gate_hidden_dim': 16}. Best is trial 2 with value: 0.6688024401664734.
-
---- Starting Trial 5 with params: {'l2_reg': 5.214132423525942e-06, 'n_channels': 112, 'n_gnn_layers': 1, 'dropout_rate': 0.6342652612695645, 'gradient_clipping': 0.7083751196850355, 'edge_gate_hidden_dim': 24} ---
-[I 2025-06-08 17:11:58,352] Trial 5 finished with value: 0.6776414155960083 and parameters: {'l2_reg': 5.214132423525942e-06, 'n_channels': 112, 'n_gnn_layers': 1, 'dropout_rate': 0.6342652612695645, 'gradient_clipping': 0.7083751196850355, 'edge_gate_hidden_dim': 24}. Best is trial 2 with value: 0.6688024401664734.
-
---- Starting Trial 6 with params: {'l2_reg': 0.0009924254041859917, 'n_channels': 128, 'n_gnn_layers': 1, 'dropout_rate': 0.36826688089691806, 'gradient_clipping': 0.36815937513226704, 'edge_gate_hidden_dim': 64} ---
-[I 2025-06-08 17:12:21,972] Trial 6 pruned. 
-
---- Starting Trial 7 with params: {'l2_reg': 0.0003733912653938866, 'n_channels': 112, 'n_gnn_layers': 4, 'dropout_rate': 0.6622342482138216, 'gradient_clipping': 0.3394070641049982, 'edge_gate_hidden_dim': 56} ---
-[I 2025-06-08 17:18:23,300] Trial 7 finished with value: 0.6839305996894837 and parameters: {'l2_reg': 0.0003733912653938866, 'n_channels': 112, 'n_gnn_layers': 4, 'dropout_rate': 0.6622342482138216, 'gradient_clipping': 0.3394070641049982, 'edge_gate_hidden_dim': 56}. Best is trial 2 with value: 0.6688024401664734.
-
---- Starting Trial 8 with params: {'l2_reg': 3.097161003089907e-06, 'n_channels': 80, 'n_gnn_layers': 4, 'dropout_rate': 0.09778943795355499, 'gradient_clipping': 0.5049834715648822, 'edge_gate_hidden_dim': 16} ---
-[I 2025-06-08 17:22:27,789] Trial 8 finished with value: 0.6694200038909912 and parameters: {'l2_reg': 3.097161003089907e-06, 'n_channels': 80, 'n_gnn_layers': 4, 'dropout_rate': 0.09778943795355499, 'gradient_clipping': 0.5049834715648822, 'edge_gate_hidden_dim': 16}. Best is trial 2 with value: 0.6688024401664734.
-
---- Starting Trial 9 with params: {'l2_reg': 5.0584177004335324e-05, 'n_channels': 16, 'n_gnn_layers': 2, 'dropout_rate': 0.580017666221273, 'gradient_clipping': 0.8995342670056518, 'edge_gate_hidden_dim': 24} ---
-[I 2025-06-08 17:22:35,799] Trial 9 pruned. 
-
---- Starting Trial 10 with params: {'l2_reg': 1.1983129253813262e-05, 'n_channels': 80, 'n_gnn_layers': 3, 'dropout_rate': 0.2598320535214984, 'gradient_clipping': 0.6206262515892333, 'edge_gate_hidden_dim': 40} ---
-[I 2025-06-08 17:25:54,060] Trial 10 finished with value: 0.6815457344055176 and parameters: {'l2_reg': 1.1983129253813262e-05, 'n_channels': 80, 'n_gnn_layers': 3, 'dropout_rate': 0.2598320535214984, 'gradient_clipping': 0.6206262515892333, 'edge_gate_hidden_dim': 40}. Best is trial 2 with value: 0.6688024401664734.
-
---- Starting Trial 11 with params: {'l2_reg': 0.0001393706693626943, 'n_channels': 80, 'n_gnn_layers': 4, 'dropout_rate': 0.04728915118226158, 'gradient_clipping': 0.5284934517056926, 'edge_gate_hidden_dim': 8} ---
-[I 2025-06-08 17:26:43,431] Trial 11 pruned. 
-
---- Starting Trial 12 with params: {'l2_reg': 1.6079461430229112e-05, 'n_channels': 48, 'n_gnn_layers': 4, 'dropout_rate': 0.04576320954601798, 'gradient_clipping': 0.41389113896351315, 'edge_gate_hidden_dim': 8} ---
-[I 2025-06-08 17:27:14,981] Trial 12 pruned. 
-
---- Starting Trial 13 with params: {'l2_reg': 8.067207884186877e-06, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.19425050382091996, 'gradient_clipping': 0.6162749986578835, 'edge_gate_hidden_dim': 32} ---
-[I 2025-06-08 17:29:55,989] Trial 13 finished with value: 0.659518039226532 and parameters: {'l2_reg': 8.067207884186877e-06, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.19425050382091996, 'gradient_clipping': 0.6162749986578835, 'edge_gate_hidden_dim': 32}. Best is trial 13 with value: 0.659518039226532.
-
---- Starting Trial 14 with params: {'l2_reg': 7.944405804124523e-06, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.23160006778086337, 'gradient_clipping': 0.7225206678435863, 'edge_gate_hidden_dim': 32} ---
-[I 2025-06-08 17:32:34,047] Trial 14 finished with value: 0.6711914539337158 and parameters: {'l2_reg': 7.944405804124523e-06, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.23160006778086337, 'gradient_clipping': 0.7225206678435863, 'edge_gate_hidden_dim': 32}. Best is trial 13 with value: 0.659518039226532.
-
---- Starting Trial 15 with params: {'l2_reg': 2.948149371316669e-05, 'n_channels': 112, 'n_gnn_layers': 2, 'dropout_rate': 0.47945496338062965, 'gradient_clipping': 0.8374950878275487, 'edge_gate_hidden_dim': 48} ---
-[I 2025-06-08 17:33:11,193] Trial 15 pruned. 
-
---- Starting Trial 16 with params: {'l2_reg': 0.00016256550304973605, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.29156052222901574, 'gradient_clipping': 0.6040760132097286, 'edge_gate_hidden_dim': 32} ---
-[I 2025-06-08 17:35:50,282] Trial 16 finished with value: 0.674619996547699 and parameters: {'l2_reg': 0.00016256550304973605, 'n_channels': 96, 'n_gnn_layers': 2, 'dropout_rate': 0.29156052222901574, 'gradient_clipping': 0.6040760132097286, 'edge_gate_hidden_dim': 32}. Best is trial 13 with value: 0.659518039226532.
-
---- Starting Trial 17 with params: {'l2_reg': 6.693310395725377e-05, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.17592878349127128, 'gradient_clipping': 0.22825514712341177, 'edge_gate_hidden_dim': 48} ---
-[I 2025-06-08 17:40:58,193] Trial 17 finished with value: 0.651492464542389 and parameters: {'l2_reg': 6.693310395725377e-05, 'n_channels': 128, 'n_gnn_layers': 3, 'dropout_rate': 0.17592878349127128, 'gradient_clipping': 0.22825514712341177, 'edge_gate_hidden_dim': 48}. Best is trial 17 with value: 0.651492464542389.
-
---- Starting Trial 18 with params: {'l2_reg': 1.0792430384065852e-06, 'n_channels': 96, 'n_gnn_layers': 3, 'dropout_rate': 0.17821668799599027, 'gradient_clipping': 0.21736895624809893, 'edge_gate_hidden_dim': 48} ---
-[I 2025-06-08 17:41:46,075] Trial 18 pruned. 
-
---- Starting Trial 19 with params: {'l2_reg': 0.0002936422228582711, 'n_channels': 64, 'n_gnn_layers': 2, 'dropout_rate': 0.13533567952820247, 'gradient_clipping': 0.28166193938026723, 'edge_gate_hidden_dim': 48} ---
-[I 2025-06-08 17:42:08,929] Trial 19 pruned. 
+--- Starting Trial 4 with params: {'l2_reg': 0.0006584207187775094, 'n_channels': 16, 'n_gnn_layers': 3, 'dropout_rate': 0.5536122049860757, 'gradient_clipping': 0.0034128483243434093, 'edge_gate_hidden_dim': 16} ---
+[I 2025-06-09 11:19:48,564] Trial 4 finished with value: 1.1084050297737122 and parameters: {'l2_reg': 0.0006584207187775094, 'n_channels': 16, 'n_gnn_layers': 3, 'dropout_rate': 0.5536122049860757, 'gradient_clipping': 0.0034128483243434093, 'edge_gate_hidden_dim': 16}. Best is trial 3 with value: 0.8325032234191895.
 
 Optuna study finished.
 Best trial:
-  Value (Best Avg Validation Loss): 0.6515
+  Value (Best Avg Validation Loss): 0.8325
   Params: 
-    l2_reg: 6.693310395725377e-05
+    l2_reg: 5.272431448070915e-06
     n_channels: 128
-    n_gnn_layers: 3
-    dropout_rate: 0.17592878349127128
-    gradient_clipping: 0.22825514712341177
-    edge_gate_hidden_dim: 48
+    n_gnn_layers: 1
+    dropout_rate: 0.058824708400289354
+    gradient_clipping: 0.6150381985055683
+    edge_gate_hidden_dim: 56
+
+✅ Best architecture parameters saved to: ./ESKAPEE_model/best_arch_params.yaml
 
 ============================================================
 🔬 Stage 2: Learning Rate Search & Final K-Fold Evaluation
@@ -88,7 +45,7 @@ Best trial:
   > Fold 3/5
   > Fold 4/5
   > Fold 5/5
-  > Avg Metrics for LR=0.0001: Plasmid F1=0.5690, Chromosome F1=0.9433, Loss=0.6174
+  > Avg Metrics for LR=0.0001: Plasmid F1=0.3605, Chromosome F1=0.9328, Loss=0.8350
 
 --- Testing Learning Rate: 0.0005 ---
   > Fold 1/5
@@ -96,7 +53,7 @@ Best trial:
   > Fold 3/5
   > Fold 4/5
   > Fold 5/5
-  > Avg Metrics for LR=0.0005: Plasmid F1=0.6576, Chromosome F1=0.9479, Loss=0.5077
+  > Avg Metrics for LR=0.0005: Plasmid F1=0.4164, Chromosome F1=0.9339, Loss=0.7948
 
 --- Testing Learning Rate: 0.001 ---
   > Fold 1/5
@@ -104,7 +61,7 @@ Best trial:
   > Fold 3/5
   > Fold 4/5
   > Fold 5/5
-  > Avg Metrics for LR=0.001: Plasmid F1=0.6765, Chromosome F1=0.9497, Loss=0.4853
+  > Avg Metrics for LR=0.001: Plasmid F1=0.4604, Chromosome F1=0.9345, Loss=0.7676
 
 --- Testing Learning Rate: 0.005 ---
   > Fold 1/5
@@ -112,139 +69,49 @@ Best trial:
   > Fold 3/5
   > Fold 4/5
   > Fold 5/5
-  > Avg Metrics for LR=0.005: Plasmid F1=0.7448, Chromosome F1=0.9590, Loss=0.3845
+  > Avg Metrics for LR=0.005: Plasmid F1=0.5203, Chromosome F1=0.9393, Loss=0.6642
 
 ============================================================
 🏆 Final Results Summary (from Stage 2)
 ============================================================
       lr  avg_loss  avg_acc_plasmid  avg_prec_plasmid  avg_rec_plasmid  \
-0 0.0001    0.6174           0.8323            0.5190           0.6336   
-1 0.0005    0.5077           0.8727            0.6190           0.7041   
-2 0.0010    0.4853           0.8875            0.6774           0.6779   
-3 0.0050    0.3845           0.9082            0.7208           0.7708   
+0 0.0001    0.8350           0.5522            0.2572           0.6893   
+1 0.0005    0.7948           0.7333            0.3371           0.5468   
+2 0.0010    0.7676           0.7522            0.3710           0.6090   
+3 0.0050    0.6642           0.8091            0.4720           0.5918   
 
    avg_f1_plasmid  avg_auroc_plasmid  avg_acc_chromosome  avg_prec_chromosome  \
-0          0.5690             0.8434              0.8966               0.9061   
-1          0.6576             0.9032              0.9059               0.9181   
-2          0.6765             0.9131              0.9092               0.9203   
-3          0.7448             0.9462              0.9269               0.9412   
+0          0.3605             0.6476              0.8741               0.8742   
+1          0.4164             0.7209              0.8763               0.8765   
+2          0.4604             0.7442              0.8776               0.8779   
+3          0.5203             0.8144              0.8880               0.8923   
 
    avg_rec_chromosome  avg_f1_chromosome  avg_auroc_chromosome  
-0              0.9836             0.9433                0.8360  
-1              0.9798             0.9479                0.8998  
-2              0.9812             0.9497                0.9098  
-3              0.9775             0.9590                0.9470  
+0              0.9998             0.9328                0.5801  
+1              0.9994             0.9339                0.6656  
+2              0.9988             0.9345                0.6998  
+3              0.9915             0.9393                0.8054  
 
 ============================================================
 📋 Final Evaluation Metrics (Best Configuration)
 (Based on best avg F1 score for LR=0.005)
 ============================================================
-Final PLASMID Metrics    | F1: 0.7448 | Acc: 0.9082 | Prec: 0.7208 | Rec: 0.7708 | AUROC: 0.9462
-Final CHROMOSOME Metrics | F1: 0.9590 | Acc: 0.9269 | Prec: 0.9412 | Rec: 0.9775 | AUROC: 0.9470
+Final PLASMID Metrics    | F1: 0.5203 | Acc: 0.8091 | Prec: 0.4720 | Rec: 0.5918 | AUROC: 0.8144
+Final CHROMOSOME Metrics | F1: 0.9393 | Acc: 0.8880 | Prec: 0.8923 | Rec: 0.9915 | AUROC: 0.8054
 
 ============================================================
 💾 Training Final Model on ALL Labeled Data for Deployment
 ============================================================
-Final training... Epoch 10/1000, Loss: 0.8556
-Final training... Epoch 20/1000, Loss: 0.8138
-Final training... Epoch 30/1000, Loss: 0.8038
-Final training... Epoch 40/1000, Loss: 0.7882
-Final training... Epoch 50/1000, Loss: 0.7507
-Final training... Epoch 60/1000, Loss: 0.7323
-Final training... Epoch 70/1000, Loss: 0.7133
-Final training... Epoch 80/1000, Loss: 0.6995
-Final training... Epoch 90/1000, Loss: 0.6824
-Final training... Epoch 100/1000, Loss: 0.6799
-Final training... Epoch 110/1000, Loss: 0.6656
-Final training... Epoch 120/1000, Loss: 0.6563
-Final training... Epoch 130/1000, Loss: 0.6368
-Final training... Epoch 140/1000, Loss: 0.6331
-Final training... Epoch 150/1000, Loss: 0.6177
-Final training... Epoch 160/1000, Loss: 0.6200
-Final training... Epoch 170/1000, Loss: 0.6010
-Final training... Epoch 180/1000, Loss: 0.6017
-Final training... Epoch 190/1000, Loss: 0.5971
-Final training... Epoch 200/1000, Loss: 0.5935
-Final training... Epoch 210/1000, Loss: 0.5854
-Final training... Epoch 220/1000, Loss: 0.5857
-Final training... Epoch 230/1000, Loss: 0.5981
-Final training... Epoch 240/1000, Loss: 0.5806
-Final training... Epoch 250/1000, Loss: 0.5676
-Final training... Epoch 260/1000, Loss: 0.5649
-Final training... Epoch 270/1000, Loss: 0.5617
-Final training... Epoch 280/1000, Loss: 0.5631
-Final training... Epoch 290/1000, Loss: 0.5500
-Final training... Epoch 300/1000, Loss: 0.5418
-Final training... Epoch 310/1000, Loss: 0.5401
-Final training... Epoch 320/1000, Loss: 0.5416
-Final training... Epoch 330/1000, Loss: 0.5412
-Final training... Epoch 340/1000, Loss: 0.5416
-Final training... Epoch 350/1000, Loss: 0.5317
-Final training... Epoch 360/1000, Loss: 0.5311
-Final training... Epoch 370/1000, Loss: 0.5537
-Final training... Epoch 380/1000, Loss: 0.5231
-Final training... Epoch 390/1000, Loss: 0.5123
-Final training... Epoch 400/1000, Loss: 0.5028
-Final training... Epoch 410/1000, Loss: 0.5148
-Final training... Epoch 420/1000, Loss: 0.5315
-Final training... Epoch 430/1000, Loss: 0.4931
-Final training... Epoch 440/1000, Loss: 0.5130
-Final training... Epoch 450/1000, Loss: 0.4879
-Final training... Epoch 460/1000, Loss: 0.5224
-Final training... Epoch 470/1000, Loss: 0.4959
-Final training... Epoch 480/1000, Loss: 0.4894
-Final training... Epoch 490/1000, Loss: 0.5216
-Final training... Epoch 500/1000, Loss: 0.5071
-Final training... Epoch 510/1000, Loss: 0.4861
-Final training... Epoch 520/1000, Loss: 0.4802
-Final training... Epoch 530/1000, Loss: 0.4722
-Final training... Epoch 540/1000, Loss: 0.4699
-Final training... Epoch 550/1000, Loss: 0.4662
-Final training... Epoch 560/1000, Loss: 0.4827
-Final training... Epoch 570/1000, Loss: 0.4670
-Final training... Epoch 580/1000, Loss: 0.5270
-Final training... Epoch 590/1000, Loss: 0.4681
-Final training... Epoch 600/1000, Loss: 0.4644
-Final training... Epoch 610/1000, Loss: 0.4575
-Final training... Epoch 620/1000, Loss: 0.4669
-Final training... Epoch 630/1000, Loss: 0.4544
-Final training... Epoch 640/1000, Loss: 0.4533
-Final training... Epoch 650/1000, Loss: 0.4572
-Final training... Epoch 660/1000, Loss: 0.4537
-Final training... Epoch 670/1000, Loss: 0.4608
-Final training... Epoch 680/1000, Loss: 0.4543
-Final training... Epoch 690/1000, Loss: 0.4513
-Final training... Epoch 700/1000, Loss: 0.4551
-Final training... Epoch 710/1000, Loss: 0.4649
-Final training... Epoch 720/1000, Loss: 0.4342
-Final training... Epoch 730/1000, Loss: 0.4432
-Final training... Epoch 740/1000, Loss: 0.4307
-Final training... Epoch 750/1000, Loss: 0.4318
-Final training... Epoch 760/1000, Loss: 0.4372
-Final training... Epoch 770/1000, Loss: 0.4303
-Final training... Epoch 780/1000, Loss: 0.4261
-Final training... Epoch 790/1000, Loss: 0.4385
-Final training... Epoch 800/1000, Loss: 0.4232
-Final training... Epoch 810/1000, Loss: 0.4225
-Final training... Epoch 820/1000, Loss: 0.4160
-Final training... Epoch 830/1000, Loss: 0.4211
-Final training... Epoch 840/1000, Loss: 0.4458
-Final training... Epoch 850/1000, Loss: 0.4248
-Final training... Epoch 860/1000, Loss: 0.4178
-Final training... Epoch 870/1000, Loss: 0.4073
-Final training... Epoch 880/1000, Loss: 0.4234
-Final training... Epoch 890/1000, Loss: 0.4089
-Final training... Epoch 900/1000, Loss: 0.4043
-Final training... Epoch 910/1000, Loss: 0.4138
-Final training... Epoch 920/1000, Loss: 0.4067
-Final training... Epoch 930/1000, Loss: 0.3949
-Final training... Epoch 940/1000, Loss: 0.3943
-Final training... Epoch 950/1000, Loss: 0.4108
-Final training... Epoch 960/1000, Loss: 0.3916
-Final training... Epoch 970/1000, Loss: 0.4021
-Final training... Epoch 980/1000, Loss: 0.3897
-Final training... Epoch 990/1000, Loss: 0.3970
-Final training... Epoch 1000/1000, Loss: 0.3980
+Final training... Epoch 10/100, Loss: 0.8342
+Final training... Epoch 20/100, Loss: 0.8164
+Final training... Epoch 30/100, Loss: 0.8001
+Final training... Epoch 40/100, Loss: 0.7830
+Final training... Epoch 50/100, Loss: 0.7481
+Final training... Epoch 60/100, Loss: 0.7188
+Final training... Epoch 70/100, Loss: 0.7010
+Final training... Epoch 80/100, Loss: 0.6852
+Final training... Epoch 90/100, Loss: 0.6680
+Final training... Epoch 100/100, Loss: 0.6545
 
 Final model training loss plot saved to ./ESKAPEE_model
 
