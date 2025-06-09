@@ -3,37 +3,9 @@ Generated 5 folds for cross-validation on 30577 labeled nodes.
 Using device: mps
 
 ============================================================
-🏛️  Stage 1: Optuna Search for Best Architecture (fixed LR)
-Using fixed Learning Rate: 0.005
+⏭️  Skipping Stage 1: Optuna Search.
+Loading best architecture parameters from: ./ESKAPEE_model/best_arch_params.yaml
 ============================================================
-
---- Starting Trial 0 with params: {'l2_reg': 2.3864589867901805e-06, 'n_channels': 112, 'n_gnn_layers': 4, 'dropout_rate': 0.027026068856115693, 'gradient_clipping': 0.07616543561985145, 'edge_gate_hidden_dim': 16} ---
-[I 2025-06-09 11:18:57,407] Trial 0 finished with value: 0.8375062346458435 and parameters: {'l2_reg': 2.3864589867901805e-06, 'n_channels': 112, 'n_gnn_layers': 4, 'dropout_rate': 0.027026068856115693, 'gradient_clipping': 0.07616543561985145, 'edge_gate_hidden_dim': 16}. Best is trial 0 with value: 0.8375062346458435.
-
---- Starting Trial 1 with params: {'l2_reg': 8.479380027393615e-05, 'n_channels': 64, 'n_gnn_layers': 4, 'dropout_rate': 0.34344548132655084, 'gradient_clipping': 0.31957375786264086, 'edge_gate_hidden_dim': 24} ---
-[I 2025-06-09 11:19:18,730] Trial 1 finished with value: 0.8401937484741211 and parameters: {'l2_reg': 8.479380027393615e-05, 'n_channels': 64, 'n_gnn_layers': 4, 'dropout_rate': 0.34344548132655084, 'gradient_clipping': 0.31957375786264086, 'edge_gate_hidden_dim': 24}. Best is trial 0 with value: 0.8375062346458435.
-
---- Starting Trial 2 with params: {'l2_reg': 0.00013814022434183588, 'n_channels': 128, 'n_gnn_layers': 1, 'dropout_rate': 0.40695090672053025, 'gradient_clipping': 0.5463575533301109, 'edge_gate_hidden_dim': 8} ---
-[I 2025-06-09 11:19:30,533] Trial 2 finished with value: 0.8362640857696533 and parameters: {'l2_reg': 0.00013814022434183588, 'n_channels': 128, 'n_gnn_layers': 1, 'dropout_rate': 0.40695090672053025, 'gradient_clipping': 0.5463575533301109, 'edge_gate_hidden_dim': 8}. Best is trial 2 with value: 0.8362640857696533.
-
---- Starting Trial 3 with params: {'l2_reg': 5.272431448070915e-06, 'n_channels': 128, 'n_gnn_layers': 1, 'dropout_rate': 0.058824708400289354, 'gradient_clipping': 0.6150381985055683, 'edge_gate_hidden_dim': 56} ---
-[I 2025-06-09 11:19:42,183] Trial 3 finished with value: 0.8325032234191895 and parameters: {'l2_reg': 5.272431448070915e-06, 'n_channels': 128, 'n_gnn_layers': 1, 'dropout_rate': 0.058824708400289354, 'gradient_clipping': 0.6150381985055683, 'edge_gate_hidden_dim': 56}. Best is trial 3 with value: 0.8325032234191895.
-
---- Starting Trial 4 with params: {'l2_reg': 0.0006584207187775094, 'n_channels': 16, 'n_gnn_layers': 3, 'dropout_rate': 0.5536122049860757, 'gradient_clipping': 0.0034128483243434093, 'edge_gate_hidden_dim': 16} ---
-[I 2025-06-09 11:19:48,564] Trial 4 finished with value: 1.1084050297737122 and parameters: {'l2_reg': 0.0006584207187775094, 'n_channels': 16, 'n_gnn_layers': 3, 'dropout_rate': 0.5536122049860757, 'gradient_clipping': 0.0034128483243434093, 'edge_gate_hidden_dim': 16}. Best is trial 3 with value: 0.8325032234191895.
-
-Optuna study finished.
-Best trial:
-  Value (Best Avg Validation Loss): 0.8325
-  Params: 
-    l2_reg: 5.272431448070915e-06
-    n_channels: 128
-    n_gnn_layers: 1
-    dropout_rate: 0.058824708400289354
-    gradient_clipping: 0.6150381985055683
-    edge_gate_hidden_dim: 56
-
-✅ Best architecture parameters saved to: ./ESKAPEE_model/best_arch_params.yaml
 
 ============================================================
 🔬 Stage 2: Learning Rate Search & Final K-Fold Evaluation
@@ -45,7 +17,7 @@ Best trial:
   > Fold 3/5
   > Fold 4/5
   > Fold 5/5
-  > Avg Metrics for LR=0.0001: Plasmid F1=0.3605, Chromosome F1=0.9328, Loss=0.8350
+  > Avg Metrics for LR=0.0001: Plasmid F1=0.3462, Chromosome F1=0.9328, Loss=1.1270
 
 --- Testing Learning Rate: 0.0005 ---
   > Fold 1/5
@@ -53,7 +25,7 @@ Best trial:
   > Fold 3/5
   > Fold 4/5
   > Fold 5/5
-  > Avg Metrics for LR=0.0005: Plasmid F1=0.4164, Chromosome F1=0.9339, Loss=0.7948
+  > Avg Metrics for LR=0.0005: Plasmid F1=0.4112, Chromosome F1=0.9327, Loss=0.8148
 
 --- Testing Learning Rate: 0.001 ---
   > Fold 1/5
@@ -61,7 +33,7 @@ Best trial:
   > Fold 3/5
   > Fold 4/5
   > Fold 5/5
-  > Avg Metrics for LR=0.001: Plasmid F1=0.4604, Chromosome F1=0.9345, Loss=0.7676
+  > Avg Metrics for LR=0.001: Plasmid F1=0.4258, Chromosome F1=0.9336, Loss=0.7921
 
 --- Testing Learning Rate: 0.005 ---
   > Fold 1/5
@@ -69,49 +41,49 @@ Best trial:
   > Fold 3/5
   > Fold 4/5
   > Fold 5/5
-  > Avg Metrics for LR=0.005: Plasmid F1=0.5203, Chromosome F1=0.9393, Loss=0.6642
+  > Avg Metrics for LR=0.005: Plasmid F1=0.5088, Chromosome F1=0.9370, Loss=0.6965
 
 ============================================================
 🏆 Final Results Summary (from Stage 2)
 ============================================================
       lr  avg_loss  avg_acc_plasmid  avg_prec_plasmid  avg_rec_plasmid  \
-0 0.0001    0.8350           0.5522            0.2572           0.6893   
-1 0.0005    0.7948           0.7333            0.3371           0.5468   
-2 0.0010    0.7676           0.7522            0.3710           0.6090   
-3 0.0050    0.6642           0.8091            0.4720           0.5918   
+0 0.0001    1.1270           0.4834            0.2537           0.7250   
+1 0.0005    0.8148           0.7301            0.3319           0.5432   
+2 0.0010    0.7921           0.7427            0.3483           0.5505   
+3 0.0050    0.6965           0.7789            0.4157           0.6590   
 
    avg_f1_plasmid  avg_auroc_plasmid  avg_acc_chromosome  avg_prec_chromosome  \
-0          0.3605             0.6476              0.8741               0.8742   
-1          0.4164             0.7209              0.8763               0.8765   
-2          0.4604             0.7442              0.8776               0.8779   
-3          0.5203             0.8144              0.8880               0.8923   
+0          0.3462             0.5710              0.8741               0.8742   
+1          0.4112             0.7054              0.8740               0.8741   
+2          0.4258             0.7216              0.8756               0.8757   
+3          0.5088             0.8010              0.8835               0.8881   
 
    avg_rec_chromosome  avg_f1_chromosome  avg_auroc_chromosome  
-0              0.9998             0.9328                0.5801  
-1              0.9994             0.9339                0.6656  
-2              0.9988             0.9345                0.6998  
-3              0.9915             0.9393                0.8054  
+0              0.9998             0.9328                0.5401  
+1              0.9998             0.9327                0.6448  
+2              0.9996             0.9336                0.6565  
+3              0.9917             0.9370                0.7868  
 
 ============================================================
 📋 Final Evaluation Metrics (Best Configuration)
 (Based on best avg F1 score for LR=0.005)
 ============================================================
-Final PLASMID Metrics    | F1: 0.5203 | Acc: 0.8091 | Prec: 0.4720 | Rec: 0.5918 | AUROC: 0.8144
-Final CHROMOSOME Metrics | F1: 0.9393 | Acc: 0.8880 | Prec: 0.8923 | Rec: 0.9915 | AUROC: 0.8054
+Final PLASMID Metrics    | F1: 0.5088 | Acc: 0.7789 | Prec: 0.4157 | Rec: 0.6590 | AUROC: 0.8010
+Final CHROMOSOME Metrics | F1: 0.9370 | Acc: 0.8835 | Prec: 0.8881 | Rec: 0.9917 | AUROC: 0.7868
 
 ============================================================
 💾 Training Final Model on ALL Labeled Data for Deployment
 ============================================================
-Final training... Epoch 10/100, Loss: 0.8342
-Final training... Epoch 20/100, Loss: 0.8164
-Final training... Epoch 30/100, Loss: 0.8001
-Final training... Epoch 40/100, Loss: 0.7830
-Final training... Epoch 50/100, Loss: 0.7481
-Final training... Epoch 60/100, Loss: 0.7188
-Final training... Epoch 70/100, Loss: 0.7010
-Final training... Epoch 80/100, Loss: 0.6852
-Final training... Epoch 90/100, Loss: 0.6680
-Final training... Epoch 100/100, Loss: 0.6545
+Final training... Epoch 10/100, Loss: 0.8641
+Final training... Epoch 20/100, Loss: 0.8467
+Final training... Epoch 30/100, Loss: 0.8322
+Final training... Epoch 40/100, Loss: 0.8221
+Final training... Epoch 50/100, Loss: 0.8084
+Final training... Epoch 60/100, Loss: 0.7953
+Final training... Epoch 70/100, Loss: 0.7755
+Final training... Epoch 80/100, Loss: 0.7636
+Final training... Epoch 90/100, Loss: 0.7467
+Final training... Epoch 100/100, Loss: 0.7294
 
 Final model training loss plot saved to ./ESKAPEE_model
 
