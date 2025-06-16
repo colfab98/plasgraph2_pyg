@@ -3,88 +3,30 @@ Generated 5 folds for cross-validation on 30577 labeled nodes.
 Using device: mps
 
 ============================================================
-⏭️  Skipping Stage 1: Optuna Search.
-Loading best architecture parameters from: ./ESKAPEE_model/best_arch_params.yaml
+🏛️  Stage 1: Optuna Search for Best Architecture (fixed LR)
+Using fixed Learning Rate: 0.005
 ============================================================
-
-============================================================
-🔬 Stage 2: Learning Rate Search & Final K-Fold Evaluation
-============================================================
-
---- Testing Learning Rate: 0.0001 ---
-  > Fold 1/5
-  > Fold 2/5
-  > Fold 3/5
-  > Fold 4/5
-  > Fold 5/5
-  > Avg Metrics for LR=0.0001: Plasmid F1=0.3462, Chromosome F1=0.9328, Loss=1.1270
-
---- Testing Learning Rate: 0.0005 ---
-  > Fold 1/5
-  > Fold 2/5
-  > Fold 3/5
-  > Fold 4/5
-  > Fold 5/5
-  > Avg Metrics for LR=0.0005: Plasmid F1=0.4112, Chromosome F1=0.9327, Loss=0.8148
-
---- Testing Learning Rate: 0.001 ---
-  > Fold 1/5
-  > Fold 2/5
-  > Fold 3/5
-  > Fold 4/5
-  > Fold 5/5
-  > Avg Metrics for LR=0.001: Plasmid F1=0.4258, Chromosome F1=0.9336, Loss=0.7921
-
---- Testing Learning Rate: 0.005 ---
-  > Fold 1/5
-  > Fold 2/5
-  > Fold 3/5
-  > Fold 4/5
-  > Fold 5/5
-  > Avg Metrics for LR=0.005: Plasmid F1=0.5088, Chromosome F1=0.9370, Loss=0.6965
-
-============================================================
-🏆 Final Results Summary (from Stage 2)
-============================================================
-      lr  avg_loss  avg_acc_plasmid  avg_prec_plasmid  avg_rec_plasmid  \
-0 0.0001    1.1270           0.4834            0.2537           0.7250   
-1 0.0005    0.8148           0.7301            0.3319           0.5432   
-2 0.0010    0.7921           0.7427            0.3483           0.5505   
-3 0.0050    0.6965           0.7789            0.4157           0.6590   
-
-   avg_f1_plasmid  avg_auroc_plasmid  avg_acc_chromosome  avg_prec_chromosome  \
-0          0.3462             0.5710              0.8741               0.8742   
-1          0.4112             0.7054              0.8740               0.8741   
-2          0.4258             0.7216              0.8756               0.8757   
-3          0.5088             0.8010              0.8835               0.8881   
-
-   avg_rec_chromosome  avg_f1_chromosome  avg_auroc_chromosome  
-0              0.9998             0.9328                0.5401  
-1              0.9998             0.9327                0.6448  
-2              0.9996             0.9336                0.6565  
-3              0.9917             0.9370                0.7868  
-
-============================================================
-📋 Final Evaluation Metrics (Best Configuration)
-(Based on best avg F1 score for LR=0.005)
-============================================================
-Final PLASMID Metrics    | F1: 0.5088 | Acc: 0.7789 | Prec: 0.4157 | Rec: 0.6590 | AUROC: 0.8010
-Final CHROMOSOME Metrics | F1: 0.9370 | Acc: 0.8835 | Prec: 0.8881 | Rec: 0.9917 | AUROC: 0.7868
-
-============================================================
-💾 Training Final Model on ALL Labeled Data for Deployment
-============================================================
-Final training... Epoch 10/100, Loss: 0.8641
-Final training... Epoch 20/100, Loss: 0.8467
-Final training... Epoch 30/100, Loss: 0.8322
-Final training... Epoch 40/100, Loss: 0.8221
-Final training... Epoch 50/100, Loss: 0.8084
-Final training... Epoch 60/100, Loss: 0.7953
-Final training... Epoch 70/100, Loss: 0.7755
-Final training... Epoch 80/100, Loss: 0.7636
-Final training... Epoch 90/100, Loss: 0.7467
-Final training... Epoch 100/100, Loss: 0.7294
-
-Final model training loss plot saved to ./ESKAPEE_model
-
-Final model and config saved to ./ESKAPEE_model
+[W 2025-06-16 18:03:14,939] Trial 0 failed with parameters: {'l2_reg': 0.00014981928309445043, 'n_channels': 64, 'n_gnn_layers': 7, 'dropout_rate': 0.24918568610275313, 'gradient_clipping': 0.1855056401469255, 'edge_gate_hidden_dim': 32, 'n_channels_preproc': 16} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "/Users/fabiocolantonio/plASgraph2_pyg/.venv/lib/python3.10/site-packages/optuna/study/_optimize.py", line 197, in _run_trial
+    value_or_values = func(trial)
+  File "/Users/fabiocolantonio/plASgraph2_pyg/model/../src/plASgraph2_train.py", line 170, in <lambda>
+    study.optimize(lambda trial: objective(trial, parameters, data, device, splits, labeled_indices),
+  File "/Users/fabiocolantonio/plASgraph2_pyg/model/../src/plASgraph2_train.py", line 94, in objective
+    val_outputs = model(data)
+  File "/Users/fabiocolantonio/plASgraph2_pyg/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/fabiocolantonio/plASgraph2_pyg/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/fabiocolantonio/plASgraph2_pyg/src/architecture.py", line 216, in forward
+    h = self.ggnn_layer(h, edge_index, edge_attr=current_edge_attr)
+  File "/Users/fabiocolantonio/plASgraph2_pyg/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/fabiocolantonio/plASgraph2_pyg/.venv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/fabiocolantonio/plASgraph2_pyg/src/architecture.py", line 128, in forward
+    return self.propagate(edge_index_with_self_loops, x=x, norm=norm, edge_attr=edge_attr_with_self_loops)
+  File "/var/folders/gl/_h4nt3w10cs0cymjs5g3dknr0000gn/T/architecture_GGNNConv_propagate_ptno2ef7.py", line 142, in propagate
+    def propagate(
+KeyboardInterrupt
+[W 2025-06-16 18:03:14,944] Trial 0 failed with value None.

@@ -34,12 +34,6 @@ loss_function: crossentropy
 random_seed: 123
 # Plasmid and ambiguous contigs weight
 plasmid_ambiguous_weight: 1
-# Learning rate
-learning_rate: 0.005
-# The number of learning epochs
-epochs: 100
-# epochs during optuna trials 
-epochs_trials: 10
 # The number of epochs when no improvement before early stopping happens
 early_stopping_patience: 100
 # Set threshold for plasmid and chromosome classification to optimize validation F1 score
@@ -51,6 +45,19 @@ model_type: GGNNModel
 gradient_clipping: 1
 edge_gate_hidden_dim: 32
 k_folds: 5
-optuna_n_trials: 5
-lrs_to_test_retrain: [0.0001, 0.0005, 0.001, 0.005]
-early_stopping_patience_retrain: 100
+
+
+optuna_n_trials: 50
+# lrs_to_test_retrain: [0.005, 0.01]
+# early_stopping_patience_retrain: 100
+# The number of learning epochs
+epochs: 3000
+# epochs during optuna trials 
+epochs_trials: 200
+
+scheduler_factor : 0.5
+scheduler_patience : 100
+early_stopping_patience_retrain : 300
+
+# Learning rate
+learning_rate: 0.005
